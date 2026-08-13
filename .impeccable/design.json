@@ -1,0 +1,556 @@
+{
+ "schemaVersion": 2,
+ "generatedAt": "2026-08-13T00:00:00.000Z",
+ "title": "Design System: Shri Aradhyam",
+ "extensions": {
+  "colorMeta": {
+   "bone-200": {
+    "role": "neutral",
+    "displayName": "Almanac Bone",
+    "canonical": "#f2eadc",
+    "tonalRamp": [
+     "#241f16",
+     "#3d3524",
+     "#5c5138",
+     "#8a7a58",
+     "#c4b294",
+     "#d8c9ae",
+     "#e7dcc8",
+     "#faf5ec"
+    ]
+   },
+   "bone-100": {
+    "role": "neutral",
+    "displayName": "Leaf Bone",
+    "canonical": "#faf5ec",
+    "tonalRamp": [
+     "#241f16",
+     "#3d3524",
+     "#5c5138",
+     "#8a7a58",
+     "#c4b294",
+     "#e7dcc8",
+     "#faf5ec",
+     "#fdfaf4"
+    ]
+   },
+   "bone-400": {
+    "role": "neutral",
+    "displayName": "Bone Ruling",
+    "canonical": "#d8c9ae",
+    "tonalRamp": [
+     "#221d13",
+     "#3b3221",
+     "#584a31",
+     "#7d6b47",
+     "#a8926a",
+     "#c4b294",
+     "#d8c9ae",
+     "#f2eadc"
+    ]
+   },
+   "ink-800": {
+    "role": "neutral",
+    "displayName": "Chocolate Ink",
+    "canonical": "#26150d",
+    "tonalRamp": [
+     "#150b06",
+     "#1f1109",
+     "#26150d",
+     "#3a2318",
+     "#4e3325",
+     "#6d4a35",
+     "#9a7259",
+     "#cfae95"
+    ]
+   },
+   "ink-700": {
+    "role": "neutral",
+    "displayName": "Signage Ink",
+    "canonical": "#3a2318",
+    "tonalRamp": [
+     "#150b06",
+     "#1f1109",
+     "#26150d",
+     "#3a2318",
+     "#4e3325",
+     "#6d4a35",
+     "#9a7259",
+     "#cfae95"
+    ]
+   },
+   "granite-500": {
+    "role": "neutral",
+    "displayName": "Granite Plinth",
+    "canonical": "#575149",
+    "tonalRamp": [
+     "#1c1a17",
+     "#2b2825",
+     "#3f3c39",
+     "#4a4744",
+     "#575149",
+     "#635d54",
+     "#8d857a",
+     "#c0b8ac"
+    ]
+   },
+   "brass-500": {
+    "role": "primary",
+    "displayName": "Signage Brass",
+    "canonical": "#c9a227",
+    "tonalRamp": [
+     "#241a02",
+     "#3d2c05",
+     "#57400a",
+     "#785c0f",
+     "#a8811a",
+     "#c9a227",
+     "#dcbb54",
+     "#ecd9a0"
+    ]
+   },
+   "brass-700": {
+    "role": "primary",
+    "displayName": "Small-Text Brass",
+    "canonical": "#785c0f",
+    "tonalRamp": [
+     "#241a02",
+     "#3d2c05",
+     "#57400a",
+     "#785c0f",
+     "#a8811a",
+     "#c9a227",
+     "#dcbb54",
+     "#ecd9a0"
+    ]
+   },
+   "kumkum-600": {
+    "role": "secondary",
+    "displayName": "Kumkum Red",
+    "canonical": "#9e2b25",
+    "tonalRamp": [
+     "#2b0c0a",
+     "#471310",
+     "#621916",
+     "#7d1f1b",
+     "#9e2b25",
+     "#b8443c",
+     "#d07d76",
+     "#eec3bf"
+    ]
+   }
+  },
+  "typographyMeta": {
+   "display": {
+    "displayName": "Display",
+    "purpose": "The wordmark in the hero leaf. Once per page at most."
+   },
+   "headline": {
+    "displayName": "Headline",
+    "purpose": "Section headings, capped at 22-26ch so they break as two or three balanced lines."
+   },
+   "title": {
+    "displayName": "Title",
+    "purpose": "Panel headings, form headings, card names."
+   },
+   "lead": {
+    "displayName": "Lead",
+    "purpose": "The one-sentence statement under a display or headline, set in Eczar regular so it reads as prose set large."
+   },
+   "body": {
+    "displayName": "Body",
+    "purpose": "All prose, held to 46-62ch."
+   },
+   "body-small": {
+    "displayName": "Body Small",
+    "purpose": "Register row glosses, captions, secondary notes."
+   },
+   "label": {
+    "displayName": "Label",
+    "purpose": "Nav, buttons, column headings, ruled captions. Uppercase Archivo at 0.19em."
+   },
+   "label-small": {
+    "displayName": "Label Small",
+    "purpose": "Margin glosses and micro-captions at 0.625rem. The floor of the label register: nothing in this system sets uppercase 0.19em type below it."
+   },
+   "data": {
+    "displayName": "Data",
+    "purpose": "Days, dates, telephone numbers; anything that must align in a column. Tabular figures."
+   },
+   "indic": {
+    "displayName": "Indic",
+    "purpose": "A city's or the brand's own script, per-language Noto Serif with a real lang attribute."
+   },
+   "subhead": {
+    "displayName": "Subhead",
+    "purpose": "Fixed upper step of the title tier at 1.5rem. Franchise support headings, locator outlet names, the wordmark from sm up."
+   },
+   "entry": {
+    "displayName": "Entry",
+    "purpose": "Fixed lower step of the title tier at 1.35rem, and the workhorse of every ruled register."
+   },
+   "indic-entry": {
+    "displayName": "Indic Entry",
+    "purpose": "An Entry set in an Indic script at 1.65rem, one step above its Latin counterpart by the Indic Optical Step Rule."
+   },
+   "seal-display": {
+    "displayName": "Seal Display",
+    "purpose": "The struck city on the brass plate at 2.35rem. One-off step for the single focal element."
+   }
+  },
+  "shadows": [
+   {
+    "name": "lift-leaf",
+    "value": "0 2px 4px rgba(31,17,9,0.16), 0 12px 26px rgba(31,17,9,0.22), 0 34px 70px rgba(31,17,9,0.26)",
+    "purpose": "A sheet of paper laid over the building. Hero-scale surfaces over photography."
+   },
+   {
+    "name": "lift-panel",
+    "value": "0 1px 2px rgba(31,17,9,0.08), 0 8px 20px rgba(31,17,9,0.1)",
+    "purpose": "A panel resting on paper. Detail panes, forms, cards."
+   },
+   {
+    "name": "brass-plate",
+    "value": "inset 0 1px 0 rgba(255,249,224,0.65), inset 0 -1px 0 rgba(63,44,4,0.4), 0 2px 3px rgba(31,17,9,0.3), 0 14px 30px rgba(31,17,9,0.34)",
+    "purpose": "The seal: raised top edge, dark seated bottom edge, plate shadow beneath a 168deg four-stop brass gradient."
+   },
+   {
+    "name": "struck",
+    "value": "text-shadow: 0 1px 0 rgba(255,249,224,0.45)",
+    "purpose": "Type engraved into the brass plate rather than printed on it. Only used on a plate."
+   }
+  ],
+  "motion": [
+   {
+    "name": "ease-almanac",
+    "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "purpose": "The single shared ease. Every transition and keyframe in the system uses it."
+   },
+   {
+    "name": "rise",
+    "value": "900ms; opacity 0 -> 1, translateY 26px -> 0, blur 6px -> 0",
+    "purpose": "The default scroll reveal."
+   },
+   {
+    "name": "wipe-up",
+    "value": "1100ms; clip-path inset(100% 0 0 0) -> inset(0), translateY 14px -> 0",
+    "purpose": "Reveal for large paper leaves."
+   },
+   {
+    "name": "rule-draw",
+    "value": "1200ms; scaleX 0 -> 1 from left center",
+    "purpose": "Register rows and hairlines drawing in, staggered 70ms per row."
+   },
+   {
+    "name": "seal-press",
+    "value": "1200ms; scale 1.5 rot -14deg blur 8px -> scale 0.97 rot 1.5deg -> settled",
+    "purpose": "The brass plate landing on the page."
+   },
+   {
+    "name": "kolam-draw",
+    "value": "2600ms; stroke-dashoffset var(--dash,1200) -> 0",
+    "purpose": "The threshold kolam drawing itself."
+   },
+   {
+    "name": "lamp",
+    "value": "5.5s ease-in-out infinite; opacity 0.72 -> 1, scale 1 -> 1.05",
+    "purpose": "Breathing lamp glow."
+   },
+   {
+    "name": "rail",
+    "value": "46s linear infinite; translateX 0 -> -50%",
+    "purpose": "The brass assurance marquee. Pauses on hover and focus-within."
+   },
+   {
+    "name": "morph",
+    "value": "700ms; opacity + 5px blur + 0.16em drift cross-fade",
+    "purpose": "The script morph between an Indic and a Latin reading."
+   },
+   {
+    "name": "link-brass",
+    "value": "620ms; scaleX 0 -> 1 from left center",
+    "purpose": "The brass underline growing under a text link on hover or focus-visible."
+   },
+   {
+    "name": "reveal-protocol",
+    "value": "data-reveal -> data-armed=\"true\" -> data-shown=\"true\", with per-element --reveal-delay",
+    "purpose": "Content is visible in authored markup; JS arms then plays. A failsafe sweep shows anything left armed."
+   },
+   {
+    "name": "reduced-motion",
+    "value": "prefers-reduced-motion: reduce flattens all reveals, stops rail/lamp/kolam, cuts morph transitions to 1ms, locks settling morphs to their Latin reading",
+    "purpose": "The full accessibility fallback."
+   }
+  ],
+  "breakpoints": [
+   {
+    "name": "sm",
+    "value": "640px"
+   },
+   {
+    "name": "md",
+    "value": "768px"
+   },
+   {
+    "name": "lg",
+    "value": "1024px"
+   },
+   {
+    "name": "xl",
+    "value": "1280px"
+   },
+   {
+    "name": "container",
+    "value": "1408px (88rem)"
+   }
+  ],
+  "materialStops": {
+   "note": "Not palette colours. Gradient stops and texture alphas only; never applied to text or as a fill.",
+   "plate": [
+    "--brass-plate-light",
+    "--brass-plate-base",
+    "--brass-plate-shade",
+    "--brass-plate-edge",
+    "--brass-struck-highlight"
+   ],
+   "lattice": [
+    "--jaali-ink",
+    "--jaali-brass",
+    "--rule-brass-line"
+   ],
+   "graniteSpeckle": [
+    "--granite-speck-light-a",
+    "--granite-speck-light-b",
+    "--granite-speck-dark-a",
+    "--granite-speck-dark-b"
+   ],
+   "shadowStops": [
+    "--shadow-ink-soft",
+    "--shadow-ink-mid",
+    "--shadow-ink-deep",
+    "--shadow-ink-panel-a",
+    "--shadow-ink-panel-b",
+    "--shadow-ink-plate-a",
+    "--shadow-ink-plate-b"
+   ]
+  },
+  "iconSystem": {
+   "source": "authored",
+   "component": "src/components/site/ornament.tsx :: Mark",
+   "stroke": 1.25,
+   "grid": 24,
+   "marks": [
+    "menu",
+    "close",
+    "pin",
+    "clock",
+    "phone",
+    "arrowRight",
+    "arrowDown",
+    "arrowUpRight"
+   ],
+   "note": "No icon font, no emoji, no text-glyph arrows. Marks are shrink-0 by default."
+  },
+  "carriedOutsideSystem": {
+   "path": "src/components/ui/",
+   "reason": "shadcn CLI generated primitives; unimported and unrendered. Not part of the design system.",
+   "contradictions": [
+    "radii above 0.125rem",
+    "0.8rem type step",
+    "lucide-react imports in sheet, accordion, select"
+   ]
+  }
+ },
+ "components": [
+  {
+   "name": "Primary Button",
+   "kind": "button",
+   "refersTo": "button-primary",
+   "description": "The page's committing action. A kumkum-red panel wipes across the ink ground on hover.",
+   "html": "<a class=\"ds-btn-primary\" href=\"#\"><span class=\"ds-btn-primary__wipe\"></span><span class=\"ds-btn-primary__label\">Read the week&rsquo;s register</span></a>",
+   "css": ".ds-btn-primary { position: relative; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; background: #26150d; color: #faf5ec; padding: 1.125rem 2rem; border-radius: 0.125rem; text-decoration: none; font-family: Archivo, system-ui, sans-serif; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; line-height: 1.2; font-synthesis: none; } .ds-btn-primary__wipe { position: absolute; inset: 0; background: #7d1f1b; transform: translateX(-100%); transition: transform 900ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover .ds-btn-primary__wipe, .ds-btn-primary:focus-visible .ds-btn-primary__wipe { transform: translateX(0); } .ds-btn-primary__label { position: relative; } .ds-btn-primary:focus-visible { outline: 2px solid #a8811a; outline-offset: 3px; }"
+  },
+  {
+   "name": "Outline Button",
+   "kind": "button",
+   "refersTo": "button-outline",
+   "description": "The header's franchise action. An ink panel wipes down from above and the label inverts.",
+   "html": "<a class=\"ds-btn-outline\" href=\"#\"><span class=\"ds-btn-outline__wipe\"></span><span class=\"ds-btn-outline__label\">Open a franchise</span></a>",
+   "css": ".ds-btn-outline { position: relative; display: inline-flex; overflow: hidden; border: 1px solid #3a2318; background: transparent; color: #26150d; padding: 0.875rem 1.5rem; border-radius: 0.125rem; text-decoration: none; font-family: Archivo, system-ui, sans-serif; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; transition: color 700ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-outline__wipe { position: absolute; inset: 0; background: #26150d; transform: translateY(-100%); transition: transform 700ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-outline:hover { color: #faf5ec; } .ds-btn-outline:hover .ds-btn-outline__wipe, .ds-btn-outline:focus-visible .ds-btn-outline__wipe { transform: translateY(0); } .ds-btn-outline__label { position: relative; } .ds-btn-outline:focus-visible { outline: 2px solid #a8811a; outline-offset: 3px; }"
+  },
+  {
+   "name": "Brass Underline Link",
+   "kind": "nav",
+   "refersTo": "link-brass",
+   "description": "The system's text link: a brass hairline that grows from the left on hover and focus.",
+   "html": "<a class=\"ds-link-brass\" href=\"#\">Find an outlet</a>",
+   "css": ".ds-link-brass { position: relative; display: inline-block; color: #3a2318; text-decoration: none; font-family: Archivo, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; transition: color 500ms cubic-bezier(0.16,1,0.3,1); } .ds-link-brass::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: -0.18em; height: 1px; background: #c9a227; transform: scaleX(0); transform-origin: left center; transition: transform 620ms cubic-bezier(0.16,1,0.3,1); } .ds-link-brass:hover { color: #1f1109; } .ds-link-brass:hover::after, .ds-link-brass:focus-visible::after { transform: scaleX(1); } .ds-link-brass:focus-visible { outline: 2px solid #a8811a; outline-offset: 3px; }"
+  },
+  {
+   "name": "Ruled Input",
+   "kind": "input",
+   "refersTo": "input-ruled",
+   "description": "A blank on a printed form: label above, single hairline below, no box. The rule turns brass on focus.",
+   "html": "<div class=\"ds-field\"><label class=\"ds-field__label\" for=\"ds-city\">Proposed city<span class=\"ds-field__req\">&bull;</span></label><input class=\"ds-field__input\" id=\"ds-city\" type=\"text\" placeholder=\"Mysuru\"></div>",
+   "css": ".ds-field__label { display: flex; align-items: baseline; gap: 0.375rem; color: #575149; font-family: Archivo, system-ui, sans-serif; font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; } .ds-field__req { color: #9e2b25; } .ds-field__input { width: 100%; margin-top: 0.5rem; border: 0; border-bottom: 1px solid #d8c9ae; background: transparent; padding: 0.5rem 0 0.75rem; color: #26150d; font-family: Alegreya, Georgia, serif; font-size: 1.0625rem; line-height: 1.7; outline: none; transition: border-color 500ms cubic-bezier(0.16,1,0.3,1); } .ds-field__input::placeholder { color: #635d54; } .ds-field__input:focus { border-bottom-color: #c9a227; } .ds-field__input:focus-visible { outline: 2px solid #a8811a; outline-offset: 3px; }"
+  },
+  {
+   "name": "Ruled Register Row",
+   "kind": "custom",
+   "refersTo": "chip-today",
+   "description": "The default list form: a hairline row with a day gutter, a display-size city, a state label, and today marked in kumkum.",
+   "html": "<button class=\"ds-row\" type=\"button\"><span class=\"ds-row__gutter\"><svg viewBox=\"0 0 10 10\" width=\"7\" height=\"7\" aria-hidden=\"true\"><path d=\"M5 0 10 5 5 10 0 5Z\" fill=\"currentColor\"></path></svg><span class=\"ds-row__day\">Wed</span></span><span class=\"ds-row__body\"><span class=\"ds-row__head\"><span class=\"ds-row__city\">Mysuru</span><span class=\"ds-row__state\">Karnataka</span><span class=\"ds-row__chip\">Today</span></span><span class=\"ds-row__gloss\">Ghee-heavy, temple-town sweetness.</span></span></button>",
+   "css": ".ds-row { display: grid; grid-template-columns: 4.5rem 1fr; align-items: center; gap: 1rem; width: 100%; padding: 1.5rem 0; text-align: left; background: transparent; border: 0; border-bottom: 1px solid #d8c9ae; border-radius: 0; cursor: pointer; transition: background-color 650ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover { background: rgba(231,220,200,0.55); } .ds-row__gutter { display: flex; align-items: center; gap: 0.5rem; color: #9e2b25; } .ds-row__day { font-family: Archivo, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-variant-numeric: tabular-nums; color: #9e2b25; } .ds-row__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; } .ds-row__city { font-family: Eczar, Georgia, serif; font-size: 1.85rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: #3a2318; transition: color 500ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row__city { color: #1f1109; } .ds-row__state { font-family: Archivo, system-ui, sans-serif; font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; color: #635d54; } .ds-row__chip { background: #9e2b25; color: #faf5ec; padding: 0.25rem 0.5rem; font-family: Archivo, system-ui, sans-serif; font-size: 0.5rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; } .ds-row__gloss { display: block; margin-top: 0.375rem; max-width: 42ch; font-family: Alegreya, Georgia, serif; font-size: 0.9375rem; line-height: 1.4; color: #575149; } .ds-row:focus-visible { outline: 2px solid #a8811a; outline-offset: 3px; }"
+  },
+  {
+   "name": "Paper Panel",
+   "kind": "card",
+   "refersTo": "card-panel",
+   "description": "The standard container: bone paper with a laid tooth, a dense jaali band on the top edge, and the panel shadow. No border, square corners.",
+   "html": "<div class=\"ds-panel\"><span class=\"ds-panel__jaali\" aria-hidden=\"true\"></span><span class=\"ds-panel__tooth\" aria-hidden=\"true\"></span><div class=\"ds-panel__body\"><p class=\"ds-panel__label\">Wednesday</p><h3 class=\"ds-panel__title\">What the kitchen cooks</h3><p class=\"ds-panel__prose\">The grinding, the podi, the tempering and the sweet all change with the city, and the city changes at dawn.</p></div></div>",
+   "css": ".ds-panel { position: relative; overflow: hidden; background: #faf5ec; border-radius: 0.125rem; box-shadow: 0 1px 2px rgba(31,17,9,0.08), 0 8px 20px rgba(31,17,9,0.1); } .ds-panel__jaali { position: absolute; left: 0; right: 0; top: 0; height: 1.5rem; opacity: 0.45; background-image: linear-gradient(45deg, transparent 45.5%, rgba(58,35,24,0.16) 45.5%, rgba(58,35,24,0.16) 54.5%, transparent 54.5%), linear-gradient(-45deg, transparent 45.5%, rgba(58,35,24,0.16) 45.5%, rgba(58,35,24,0.16) 54.5%, transparent 54.5%); background-size: 18px 18px; } .ds-panel__tooth { position: absolute; inset: 0; pointer-events: none; opacity: 0.32; mix-blend-mode: multiply; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23t)' opacity='0.5'/%3E%3C/svg%3E\"); } .ds-panel__body { position: relative; padding: 3rem 2.5rem 2.75rem; } .ds-panel__label { margin: 0; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(201,162,39,0.55); color: #785c0f; font-family: Archivo, system-ui, sans-serif; font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; } .ds-panel__title { margin: 1.5rem 0 0; font-family: Eczar, Georgia, serif; font-size: 2.4rem; font-weight: 600; line-height: 1.15; letter-spacing: -0.025em; color: #26150d; font-synthesis: none; } .ds-panel__prose { margin: 1.25rem 0 0; max-width: 46ch; font-family: Alegreya, Georgia, serif; font-size: 1.0625rem; line-height: 1.7; color: #575149; }"
+  },
+  {
+   "name": "Brass Seal Plate",
+   "kind": "custom",
+   "refersTo": "brass-plate",
+   "description": "The day's announcement pressed into brass: gradient face, raised top edge, seated shadow, engraved inner frame, struck type.",
+   "html": "<div class=\"ds-plate\"><span class=\"ds-plate__frame\" aria-hidden=\"true\"></span><div class=\"ds-plate__body\"><svg viewBox=\"0 0 14 14\" width=\"8\" height=\"8\" class=\"ds-plate__diamond\" aria-hidden=\"true\"><path d=\"M7 0.5 13.5 7 7 13.5 0.5 7Z\" fill=\"currentColor\"></path></svg><p class=\"ds-plate__day\">Wednesday</p><p class=\"ds-plate__city\">Mysuru</p><span class=\"ds-plate__rule\" aria-hidden=\"true\"></span><p class=\"ds-plate__anchor\">Mysore masala dosa</p></div></div>",
+   "css": ".ds-plate { position: relative; max-width: 17.5rem; padding: 2.25rem; text-align: center; border-radius: 0.125rem; background-color: #c9a227; background-image: linear-gradient(168deg, #cfa938 0%, #c39b26 30%, #ab871a 64%, #c2a03a 100%); box-shadow: inset 0 1px 0 rgba(255,249,224,0.65), inset 0 -1px 0 rgba(63,44,4,0.4), 0 2px 3px rgba(31,17,9,0.3), 0 14px 30px rgba(31,17,9,0.34); } .ds-plate__frame { position: absolute; inset: 7px; border: 1px solid rgba(31,17,9,0.22); pointer-events: none; } .ds-plate__body { position: relative; } .ds-plate__diamond { display: block; margin: 0 auto; color: rgba(31,17,9,0.45); } .ds-plate__day { margin: 1rem 0 0; font-family: Archivo, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; font-variant-numeric: tabular-nums; color: #26150d; text-shadow: 0 1px 0 rgba(255,249,224,0.45); } .ds-plate__city { margin: 0.625rem 0 0; font-family: Eczar, Georgia, serif; font-size: 2.35rem; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: #1f1109; text-shadow: 0 1px 0 rgba(255,249,224,0.45); font-synthesis: none; } .ds-plate__rule { display: block; width: 3rem; height: 1px; margin: 1.25rem auto; background: rgba(31,17,9,0.28); } .ds-plate__anchor { margin: 0; font-family: Alegreya, Georgia, serif; font-size: 0.9375rem; line-height: 1.7; color: #26150d; text-shadow: 0 1px 0 rgba(255,249,224,0.45); }"
+  },
+  {
+   "name": "Provisional Notice",
+   "kind": "custom",
+   "refersTo": "notice-provisional",
+   "description": "How unconfirmed owner data and failed submissions are marked: kumkum label type inside a kumkum hairline box. Never fake the value.",
+   "html": "<p class=\"ds-notice\">Sample outlet entries. Addresses, telephone numbers, hours and opening dates are all pending from the owner.</p>",
+   "css": ".ds-notice { display: inline-block; margin: 0; border: 1px solid rgba(158,43,37,0.45); border-radius: 0.125rem; padding: 0.75rem 1rem; color: #7d1f1b; font-family: Archivo, system-ui, sans-serif; font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.19em; line-height: 1.7; text-transform: uppercase; }"
+  },
+  {
+   "name": "Script Morph",
+   "kind": "custom",
+   "refersTo": "link-brass",
+   "description": "The signature: one slot holding an Indic reading and a Latin reading. Hovering the holder swaps which reading is shown, cross-fading through a 5px blur.",
+   "html": "<span class=\"ds-morph-holder\" tabindex=\"0\"><span class=\"ds-morph\"><span class=\"ds-morph__native\" lang=\"kn\">&#3236;&#3265;&#3248;&#3265;</span><span class=\"ds-morph__latin\" lang=\"en\">Mysuru</span></span></span>",
+   "css": ".ds-morph-holder { cursor: default; font-family: Eczar, Georgia, serif; font-size: 2.35rem; font-weight: 600; letter-spacing: -0.02em; color: #26150d; font-synthesis: none; } .ds-morph { display: inline-grid; grid-template-areas: \"slot\"; vertical-align: baseline; } .ds-morph > * { grid-area: slot; transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), filter 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); } .ds-morph__native { opacity: 1; } .ds-morph__latin { opacity: 0; filter: blur(5px); transform: translateY(0.16em); } .ds-morph-holder:hover .ds-morph__native, .ds-morph-holder:focus-within .ds-morph__native { opacity: 0; filter: blur(5px); transform: translateY(-0.16em); } .ds-morph-holder:hover .ds-morph__latin, .ds-morph-holder:focus-within .ds-morph__latin { opacity: 1; filter: blur(0); transform: none; } .ds-morph-holder:focus-visible { outline: none; } .ds-morph-holder:focus-visible .ds-morph { outline: 2px solid #a8811a; outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-morph > * { transition-duration: 1ms; } }"
+  },
+  {
+   "name": "Masthead Band",
+   "kind": "nav",
+   "refersTo": "masthead-band",
+   "description": "The almanac's date line above the signage band: ink ground, brass day mark, today's city in its own script beside the Latin. Collapses on scroll.",
+   "html": "<div class=\"ds-masthead\"><p class=\"ds-masthead__line\"><span class=\"ds-masthead__mark\" aria-hidden=\"true\"></span><span class=\"ds-masthead__day\">Wednesday</span><span class=\"ds-masthead__mid\">the kitchen cooks</span><span class=\"ds-masthead__city\"><span lang=\"kn\">&#3236;&#3265;&#3248;&#3265;</span><span class=\"ds-masthead__slash\">/</span>Mysuru</span></p></div>",
+   "css": ".ds-masthead { background: #26150d; color: #e7dcc8; overflow: hidden; } .ds-masthead__line { display: flex; align-items: center; gap: 0.625rem; margin: 0; padding: 0.625rem 2rem; font-family: Archivo, system-ui, sans-serif; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; color: #d8c9ae; } .ds-masthead__mark { width: 0.375rem; height: 0.375rem; transform: rotate(45deg); background: #c9a227; } .ds-masthead__day { color: #e7dcc8; } .ds-masthead__mid { color: #c4b294; } .ds-masthead__city { color: #dcbb54; } .ds-masthead__slash { margin: 0 0.375rem; color: #c4b294; }"
+  }
+ ],
+ "narrative": {
+  "northStar": "The Panchangam",
+  "overview": "The whole system is a South Indian daily almanac: a bone paper page with hairline ruling, one entry per day, the day that matters struck in red, and the important announcement pressed into brass. The building supplies the materials rather than a mood board: chocolate signage ink, granite plinths, brass lettering, the diamond jaali screen, the lotus roundel, the temple corbel and the lotus-bud eave course. Everything decorative in this world is structural somewhere in the storefront first.\n\nDensity is editorial, not promotional. Long prose measures (46-62ch), generous section rhythm (6/8/10rem vertical), and ruled registers instead of card grids. The page argues in sentences and hairlines; it never sells in tiles. Colour is nearly absent by volume: bone ground, ink type, granite for anything muted, and two marks - brass for the metal and kumkum red for the day. There is one locked light theme with no dark variant and no toggle; dark passages exist as ink-800 grounds inside the light world, never as an alternate skin.\n\nThe signature gesture is bilingual: a word arrives in its own Indic script and resolves into Latin a beat later, and hovering brings the script back. Motion elsewhere is arrival only - content is legible before any script runs, and reveals add the arrival rather than gate the content. Confirmed rejections: the category-default dark full-bleed food hero with a centred sans headline over a grid of dish cards; kickers and eyebrows above headings; decorative section numbering; gradient text; glass as decoration; icon fonts and emoji.",
+  "keyCharacteristics": [
+   "Bone almanac paper with a laid tooth under every flat fill, so no ground reads as screen",
+   "Effectively square corners (0.125rem) and hairline ruling instead of boxes",
+   "One metal (brass), one festival mark (kumkum red), no second accent",
+   "Three type registers only: Eczar display, Alegreya prose, Archivo label and data",
+   "Every ornament authored as SVG from the building; no glyph, no emoji, no icon font",
+   "Warm ink-tinted shadows with offset and soft blur; never neutral black",
+   "One locked light theme by design"
+  ],
+  "rules": [
+   {
+    "name": "The Single Metal Rule",
+    "body": "Brass is the only metal in this world. No silver, no copper, no second accent hue. If something needs to feel valuable, it becomes brass or it becomes ruled - it does not become a new colour.",
+    "section": "colors"
+   },
+   {
+    "name": "The Brass-700 Floor Rule",
+    "body": "Brass on text below 0.875rem must be brass-700. brass-500 and brass-600 are for marks, hairlines, carets and icons. This is why the brass ramp has five steps instead of three.",
+    "section": "colors"
+   },
+   {
+    "name": "The 4.5:1 Worst-Ground Rule",
+    "body": "Every text-on-ground pair is chosen to clear 4.5:1 against the worst bone ground it can land on (bone-300), not against the lightest. Audit test: pick the darkest bone a component can sit on and re-check the muted tone.",
+    "section": "colors"
+   },
+   {
+    "name": "The Kumkum Marks Rule",
+    "body": "Kumkum red marks the day, the required field, and the error. It never becomes a surface fill larger than a chip, and it never competes with brass for ornament.",
+    "section": "colors"
+   },
+   {
+    "name": "The Locked Light Rule",
+    "body": "One theme. There is no .dark block and no toggle by design. Contrast passages are built as ink-800 grounds inside the light world.",
+    "section": "colors"
+   },
+   {
+    "name": "The Three Register Rule",
+    "body": "Display, prose, label. Every string on the site belongs to exactly one, and an Indic string belongs to its own serif of the same register. There is no fourth voice and no system-UI display face.",
+    "section": "typography"
+   },
+   {
+    "name": "The Own Script Rule",
+    "body": "A city, the brand, and any devotional line carry their own Indic script with a real lang attribute, and both readings stay in the DOM. Script is never a decorative image of language.",
+    "section": "typography"
+   },
+   {
+    "name": "The No Faux Weight Rule",
+    "body": "font-synthesis: none on headings, labels and data. A synthesised bold inside a display line is the one type defect that reads as an error.",
+    "section": "typography"
+   },
+   {
+    "name": "The No Kicker Rule",
+    "body": "Nothing sits above a heading - no eyebrow, no label, no ordinal. Where a small line is needed it goes below the block as a colophon. The only ordinals in the system are the franchise process steps, where the sequence is the information.",
+    "section": "typography"
+   },
+   {
+    "name": "The One Family Per Section Rule",
+    "body": "A section states its layout family in its file header and holds it. Repeating a family back-to-back is the failure this rule exists to prevent.",
+    "section": "layout"
+   },
+   {
+    "name": "The Warm Shadow Rule",
+    "body": "Shadows are tinted from the ink, never neutral black, and always carry both offset and blur. A hard offset shadow with no blur does not exist in this world.",
+    "section": "elevation"
+   },
+   {
+    "name": "The Four Materials Rule",
+    "body": "Leaf, panel, plate, struck. If a new surface needs depth, it takes one of these four or it stays flat on the paper.",
+    "section": "elevation"
+   },
+   {
+    "name": "The Tooth Rule",
+    "body": "Any large flat bone fill gets the paper tooth. A perfectly flat warm fill reads as a screen colour, and this world is a printed page.",
+    "section": "elevation"
+   },
+   {
+    "name": "The Arrival-Only Rule",
+    "body": "Motion adds the arrival; it never gates the content. If a reveal fails, the page is still complete and readable.",
+    "section": "components"
+   }
+  ],
+  "dos": [
+   "Do put the paper tooth under any large bone fill, so no flat warm ground reads as a screen colour.",
+   "Do rule lists as registers - hairline bone-400 rows with a brass-tinted heading rule and a fixed figure gutter - instead of reaching for card grids.",
+   "Do use brass-700 for any brass text below 0.875rem, and keep brass-500/brass-600 on marks, rules, carets and icons.",
+   "Do check every muted tone against the darkest bone ground it can land on (bone-300), not the lightest.",
+   "Do take depth from exactly one of the four materials - leaf, panel, brass plate, struck - and leave everything else flat.",
+   "Do measure prose: 17-26ch for headings and pull statements, 34-46ch for leads, 46-62ch for body.",
+   "Do give a section its own layout family, declared in the file header, and never repeat a family in adjacent sections.",
+   "Do carry both readings of a bilingual word in the DOM with real lang attributes, so meaning never depends on the animation.",
+   "Do mark unconfirmed owner data with the provisional notice material rather than inventing plausible values.",
+   "Do route every transition through --ease-almanac and one of the seven named keyframes."
+  ],
+  "donts": [
+   "Don't add a dark theme, a .dark block, or a theme toggle. Dark passages are ink-800 grounds inside the one locked light theme.",
+   "Don't introduce a second metal or a second accent hue. Brass is the only metal; kumkum only marks.",
+   "Don't let kumkum red become a section ground - it stays on diamonds, chips, bullets, errors and the button hover wipe.",
+   "Don't round corners past the 0.125rem token. No pills, no circular buttons; the only circle is the lotus roundel.",
+   "Don't ship a neutral-black shadow, or a hard offset shadow with no blur. Shadows are ink-tinted with offset and soft blur.",
+   "Don't place a kicker, eyebrow, label or ordinal above a heading. Small lines sit below the block as a colophon.",
+   "Don't number sections decoratively. The franchise process steps are the only ordinals, because there the sequence is the information.",
+   "Don't use gradient text, or glass and blur as decoration. The header's 2px blur exists only to keep type legible over scrolling content on a 97%-opaque band.",
+   "Don't use an icon font, an emoji, or a text glyph as an icon. Ornament is authored SVG in the 1.25-stroke language, drawn from the building.",
+   "Don't let a synthesised weight ship: keep font-synthesis: none on display, label and data type.",
+   "Don't hide content behind a reveal. Authored markup is visible; the arming attribute is added by JS and swept clear on failure."
+  ]
+ }
+}

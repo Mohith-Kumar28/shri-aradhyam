@@ -1,0 +1,632 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+  Shri Aradhyam. One locked light theme: warm bone paper, chocolate ink,
+  granite, brass, kumkum red. No dark variant by design.
+  The world is the panchangam, the South Indian daily almanac.
+*/
+
+@theme inline {
+  /* Ground: almanac paper */
+  --color-bone-50: #fdfaf4;
+  --color-bone-100: #faf5ec;
+  --color-bone-200: #f2eadc;
+  --color-bone-300: #e7dcc8;
+  --color-bone-400: #d8c9ae;
+  --color-bone-500: #c4b294;
+
+  /* Ink: chocolate, from the storefront signage ground */
+  --color-ink-900: #1f1109;
+  --color-ink-800: #26150d;
+  --color-ink-700: #3a2318;
+  --color-ink-600: #4e3325;
+
+  /* Granite: the plinths, and the muted text taken off them. Every tone here
+     that carries text clears 4.5:1 on every bone ground. */
+  --color-granite-700: #3f3c39;
+  --color-granite-600: #4a4744;
+  --color-granite-500: #575149;
+  --color-granite-400: #635d54;
+
+  /* Brass: signage gold, the single metal */
+  --color-brass-700: #785c0f;
+  --color-brass-600: #a8811a;
+  --color-brass-500: #c9a227;
+  --color-brass-400: #dcbb54;
+  --color-brass-300: #ecd9a0;
+
+  /* Kumkum: the almanac's festival red */
+  --color-kumkum-700: #7d1f1b;
+  --color-kumkum-600: #9e2b25;
+  --color-kumkum-500: #b8443c;
+
+  --font-display: var(--font-eczar);
+  --font-body: var(--font-alegreya);
+  --font-label: var(--font-archivo);
+  --font-kn: var(--font-noto-kn);
+  --font-ta: var(--font-noto-ta);
+  --font-te: var(--font-noto-te);
+  --font-ml: var(--font-noto-ml);
+  --font-sans: var(--font-alegreya);
+  --font-heading: var(--font-eczar);
+
+  --ease-almanac: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Semantic roles the shadcn primitives read, mapped onto this world. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --background: #f2eadc;
+  --foreground: #3a2318;
+  --card: #faf5ec;
+  --card-foreground: #3a2318;
+  --popover: #faf5ec;
+  --popover-foreground: #3a2318;
+  --primary: #3a2318;
+  --primary-foreground: #faf5ec;
+  --secondary: #e7dcc8;
+  --secondary-foreground: #3a2318;
+  --muted: #e7dcc8;
+  --muted-foreground: #635d54;
+  --accent: #c9a227;
+  --accent-foreground: #26150d;
+  --destructive: #9e2b25;
+  --border: #d8c9ae;
+  --input: #d8c9ae;
+  --ring: #c9a227;
+  --radius: 0.125rem;
+
+  --rule: #d8c9ae;
+  --rule-strong: #b9a482;
+
+  /*
+    Material stops. These are not palette colours and must never be applied to
+    text or a fill: they are the gradient stops and texture alphas that make
+    brass read as metal, granite as stone and bone as paper. They sit between
+    the palette's steps on purpose, which is why they are named here rather
+    than added to the ramps.
+  */
+  --brass-plate-light: #b9972e;
+  --brass-plate-base: #a98b28;
+  --brass-plate-shade: #8f7418;
+  --brass-plate-edge: #a4861f;
+  --brass-struck-highlight: rgba(255, 249, 224, 0.4);
+
+  --jaali-ink: rgba(58, 35, 24, 0.16);
+  --jaali-brass: rgba(201, 162, 39, 0.3);
+  --rule-brass-line: rgba(201, 162, 39, 0.55);
+
+  --granite-speck-light-a: rgba(255, 255, 255, 0.055);
+  --granite-speck-light-b: rgba(255, 255, 255, 0.04);
+  --granite-speck-dark-a: rgba(0, 0, 0, 0.16);
+  --granite-speck-dark-b: rgba(0, 0, 0, 0.13);
+
+  --shadow-ink-soft: rgba(31, 17, 9, 0.16);
+  --shadow-ink-mid: rgba(31, 17, 9, 0.22);
+  --shadow-ink-deep: rgba(31, 17, 9, 0.26);
+  --shadow-ink-panel-a: rgba(31, 17, 9, 0.08);
+  --shadow-ink-panel-b: rgba(31, 17, 9, 0.1);
+  --shadow-ink-plate-a: rgba(31, 17, 9, 0.32);
+  --shadow-ink-plate-b: rgba(31, 17, 9, 0.36);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bone-200);
+    color: var(--color-ink-700);
+    font-family: var(--font-body), Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-brass-300);
+    color: var(--color-ink-800);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass-600);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+    color: var(--color-ink-800);
+    /* Never let the browser fake a weight. Faux bold on a single word inside a
+       display line is the one type defect that reads as a mistake. */
+    font-synthesis: none;
+  }
+
+  .label,
+  .data {
+    font-synthesis: none;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Materials
+   --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   Depth. Paper laid on stone casts a shadow; a brass plate pressed into paper
+   is debossed. Every shadow here carries an offset and a soft blur, warm tinted
+   from the ink rather than neutral black.
+   --------------------------------------------------------------------------- */
+
+/* A leaf of paper laid over the building. */
+.lift-leaf {
+  box-shadow:
+    0 2px 4px var(--shadow-ink-soft),
+    0 12px 26px var(--shadow-ink-mid),
+    0 34px 70px var(--shadow-ink-deep);
+}
+
+/* A panel resting on paper. */
+.lift-panel {
+  box-shadow:
+    0 1px 2px var(--shadow-ink-panel-a),
+    0 8px 20px var(--shadow-ink-panel-b);
+}
+
+/*
+   A brass plate seated in the ground.
+   Brass, not yellow paint: the tones sit where the signage sits, the surface
+   carries a real brushed grain in the same manner as the paper tooth, and the
+   depth comes from the seated shadow rather than from a CSS bevel.
+*/
+.brass-plate {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--brass-plate-base);
+  background-image: linear-gradient(
+    166deg,
+    var(--brass-plate-light) 0%,
+    var(--brass-plate-base) 38%,
+    var(--brass-plate-shade) 72%,
+    var(--brass-plate-edge) 100%
+  );
+  box-shadow:
+    0 2px 3px var(--shadow-ink-plate-a),
+    0 16px 34px var(--shadow-ink-plate-b);
+}
+
+/* Brushed grain: fine, directional, stretched along the plate. */
+.brass-plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 1.4' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23b)' opacity='0.62'/%3E%3C/svg%3E");
+}
+
+/*
+   Type struck into the plate. Reserved for the display line: at label sizes the
+   highlight reads as haze rather than as a struck edge, so small type on brass
+   stays flat ink.
+*/
+.struck {
+  text-shadow: 0 1px 0 var(--brass-struck-highlight);
+}
+
+
+/* Laid paper tooth. Sits under bone grounds so flat fills never read as screen. */
+.paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23t)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Jaali: the diamond lattice screen from the storefront and the counter fronts. */
+.jaali {
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 45.5%,
+      var(--jaali-line, var(--jaali-ink)) 45.5%,
+      var(--jaali-line, var(--jaali-ink)) 54.5%,
+      transparent 54.5%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 45.5%,
+      var(--jaali-line, var(--jaali-ink)) 45.5%,
+      var(--jaali-line, var(--jaali-ink)) 54.5%,
+      transparent 54.5%
+    );
+  background-size: var(--jaali-size, 30px) var(--jaali-size, 30px);
+}
+
+.jaali-brass {
+  --jaali-line: var(--jaali-brass);
+}
+
+.jaali-dense {
+  --jaali-size: 18px;
+}
+
+/* Hairline rules, the almanac's ruling. */
+.rule-top {
+  border-top: 1px solid var(--rule);
+}
+.rule-bottom {
+  border-bottom: 1px solid var(--rule);
+}
+.rule-brass {
+  border-color: var(--rule-brass-line);
+}
+
+/* Granite: table tops and plinths. */
+.granite {
+  background-color: var(--color-granite-600);
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--granite-speck-light-a) 0 0.6px, transparent 0.7px),
+    radial-gradient(circle at 62% 71%, var(--granite-speck-light-b) 0 0.8px, transparent 0.9px),
+    radial-gradient(circle at 84% 22%, var(--granite-speck-dark-a) 0 0.8px, transparent 0.9px),
+    radial-gradient(circle at 38% 84%, var(--granite-speck-dark-b) 0 0.6px, transparent 0.7px);
+  background-size: 11px 11px, 17px 17px, 13px 13px, 19px 19px;
+}
+
+/* ---------------------------------------------------------------------------
+   Type registers
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .label {
+    font-family: var(--font-label), system-ui, sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .label-brass {
+    color: var(--color-brass-600);
+  }
+
+  .data {
+    font-family: var(--font-label), system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+}
+
+.kn {
+  font-family: var(--font-kn), var(--font-body), serif;
+}
+.ta {
+  font-family: var(--font-ta), var(--font-body), serif;
+}
+.te {
+  font-family: var(--font-te), var(--font-body), serif;
+}
+.ml {
+  font-family: var(--font-ml), var(--font-body), serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Motion. Content is visible by default; reveals only add the arrival.
+   --------------------------------------------------------------------------- */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes wipe-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes seal-press {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) rotate(-14deg);
+    filter: blur(8px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.97) rotate(1.5deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes kolam-draw {
+  from {
+    stroke-dashoffset: var(--dash, 1200);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes lamp {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rail {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Reveal system: elements are visible unless JS has marked them as armed. */
+[data-reveal][data-armed="true"] {
+  opacity: 0;
+}
+
+[data-reveal][data-shown="true"] {
+  opacity: 1;
+  animation: rise 900ms var(--ease-almanac) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="wipe"][data-shown="true"] {
+  animation-name: wipe-up;
+  animation-duration: 1100ms;
+}
+
+[data-reveal="seal"][data-shown="true"] {
+  animation-name: seal-press;
+  animation-duration: 1200ms;
+}
+
+[data-reveal="rule"][data-armed="true"] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-reveal="rule"][data-shown="true"] {
+  animation: rule-draw 1200ms var(--ease-almanac) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.kolam-path {
+  stroke-dasharray: var(--dash, 1200);
+}
+
+[data-shown="true"] .kolam-path {
+  animation: kolam-draw 2600ms var(--ease-almanac) both;
+}
+
+.rail-track {
+  animation: rail 46s linear infinite;
+}
+
+.rail-holder:hover .rail-track,
+.rail-holder:focus-within .rail-track {
+  animation-play-state: paused;
+}
+
+.lamp-glow {
+  animation: lamp 5.5s ease-in-out infinite;
+}
+
+/* Script morph: the Indic reading and the Latin reading share one slot. */
+.morph {
+  display: inline-grid;
+  grid-template-areas: "slot";
+  vertical-align: baseline;
+}
+
+.morph > * {
+  grid-area: slot;
+  transition:
+    opacity 700ms var(--ease-almanac),
+    filter 700ms var(--ease-almanac),
+    transform 700ms var(--ease-almanac);
+}
+
+.morph > .morph-native {
+  opacity: 1;
+}
+
+.morph > .morph-latin {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translate3d(0, 0.16em, 0);
+}
+
+.morph[data-flipped="true"] > .morph-native,
+.morph-holder:hover .morph > .morph-native,
+.morph-holder:focus-within .morph > .morph-native {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translate3d(0, -0.16em, 0);
+}
+
+.morph[data-flipped="true"] > .morph-latin,
+.morph-holder:hover .morph > .morph-latin,
+.morph-holder:focus-within .morph > .morph-latin {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* Brass underline that grows from the left on hover. */
+@layer components {
+  .link-brass {
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.link-brass::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 1px;
+  background-color: var(--color-brass-500);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 620ms var(--ease-almanac);
+}
+
+.link-brass:hover::after,
+.link-brass:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal],
+  [data-reveal][data-armed="true"],
+  [data-reveal][data-shown="true"] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    animation: none !important;
+  }
+
+  .rail-track,
+  .lamp-glow,
+  .kolam-path {
+    animation: none !important;
+  }
+
+  .kolam-path {
+    stroke-dasharray: none;
+  }
+
+  .morph > * {
+    transition-duration: 1ms;
+  }
+
+  /* A word that would have settled into Latin is simply shown in Latin. */
+  .morph[data-mode="settle"] > .morph-native {
+    opacity: 0;
+  }
+
+  .morph[data-mode="settle"] > .morph-latin {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* Once a word has settled into Latin, hovering brings its own script back. */
+.morph-holder:hover .morph[data-flipped="true"] > .morph-native,
+.morph-holder:focus-within .morph[data-flipped="true"] > .morph-native {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+.morph-holder:hover .morph[data-flipped="true"] > .morph-latin,
+.morph-holder:focus-within .morph[data-flipped="true"] > .morph-latin {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translate3d(0, -0.16em, 0);
+}
+
+.morph-holder {
+  cursor: default;
+}
+
+.morph-holder:focus-visible {
+  outline: none;
+}
+
+.morph-holder:focus-visible .morph {
+  outline: 2px solid var(--color-brass-600);
+  outline-offset: 4px;
+}
