@@ -18,6 +18,20 @@
 export const BRAND = {
   name: "Shri Aradhyam",
   nameKannada: "ಶ್ರೀ ಆರಾಧ್ಯಂ",
+  /**
+   * The name written in each of the four states' own scripts, in the order the
+   * brand lists them: Karnataka, Tamil Nadu, Andhra Pradesh, Kerala.
+   *
+   * Tamil is the one to check with a reader rather than trust. Its script has
+   * no aspirated dha, so "Aradhyam" has to be approximated where the other
+   * three can be written straight through, and ஸ்ரீ is the Grantha form.
+   */
+  nameInScripts: [
+    { script: "kn", text: "ಶ್ರೀ ಆರಾಧ್ಯಂ" },
+    { script: "ta", text: "ஸ்ரீ ஆராத்யம்" },
+    { script: "te", text: "శ్రీ ఆరాధ్యం" },
+    { script: "ml", text: "ശ്രീ ആരാധ്യം" },
+  ] as { script: ScriptKey; text: string }[],
   tagline: "One Roof. Four States. Endless Flavours.",
   devotion: "Served with devotion",
   devotionKannada: "ಭಕ್ತಿಯಿಂದ ಸೇವೆ",

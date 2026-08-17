@@ -73,7 +73,11 @@ export function ScriptMorph({
   }, [mode, delay]);
 
   return (
-    <span ref={holder} className={`morph-holder ${className ?? ""}`} tabIndex={0}>
+    <span
+      ref={holder}
+      className={`morph-holder ${className ?? ""}`}
+      tabIndex={0}
+    >
       <span
         className="morph"
         data-mode={mode}

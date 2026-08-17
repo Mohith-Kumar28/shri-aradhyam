@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { NAV, BRAND, OPENING } from "@/lib/site-data";
 import { LotusRoundel, EaveCourse, Mark } from "./ornament";
@@ -14,13 +14,92 @@ export function HeaderShell({
   daysUntilOpening: number;
 }) {
   const [compact, setCompact] = useState(false);
+  const [over, setOver] = useState(false);
   const [open, setOpen] = useState(false);
+  const shell = useRef<HTMLElement>(null);
+
+  /**
+   * The board publishes its own height.
+   *
+   * A hero that wants to run full bleed behind the board has to know how far to
+   * reach up under it, and the board's height is not a constant: the masthead
+   * collapses on scroll and the lettering reflows. Measuring it here and
+   * writing it to the root means nothing downstream has to guess, or go stale
+   * when this component's padding is next edited.
+   */
+  useEffect(() => {
+    const el = shell.current;
+    if (!el) return;
+
+    /**
+     * Only the full height is ever published. The compact height is a
+     * transient the board passes through on the way down, and republishing it
+     * would drag anything anchored to this value along with the scroll.
+     */
+    let last = 0;
+    const publish = () => {
+      if (el.dataset.compact === "true") return;
+      const h = el.getBoundingClientRect().height;
+
+      // The masthead collapses over 700ms, so the observer fires on every frame
+      // of that transition. Writing to the root each time invalidates style for
+      // the whole document sixty times a second, which is felt as a stutter in
+      // whatever is scrolling. Only a real change is worth publishing.
+      if (Math.abs(h - last) < 0.5) return;
+      last = h;
+      document.documentElement.style.setProperty("--header-h", `${h}px`);
+    };
+
+    publish();
+    const observer = new ResizeObserver(publish);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => setCompact(window.scrollY > 56);
-    onScroll();
+    /**
+     * A signage board in bone is right against the page, and wrong against a
+     * hero that is meant to be an unlit hall with one lit doorway in it. So the
+     * board drops its ground and reads in bone for as long as something dark is
+     * passing behind it.
+     *
+     * Measured off the element rather than a remembered viewport multiple, so
+     * it stays correct whatever the hero's height turns out to be.
+     */
+    let dark: Element | null = null;
+    let frame = 0;
+
+    const measure = () => {
+      frame = 0;
+
+      /**
+       * Two thresholds, not one.
+       *
+       * Collapsing the masthead removes 3rem from a header that is in flow, so
+       * everything below it moves up, and the scroll position moves with it. A
+       * single threshold means a slow scroll parked near it gets flipped back
+       * across it by its own collapse, and the board oscillates. The gap
+       * between 80 and 24 is wider than the height it gives up, so it cannot
+       * chase itself back over the line.
+       */
+      setCompact((was) => (was ? window.scrollY > 24 : window.scrollY > 80));
+
+      // Re-queried only when the cached node has left the document, which is
+      // what a client side route change does to it.
+      if (!dark?.isConnected) dark = document.querySelector(".arch-hero");
+      setOver(!!dark && dark.getBoundingClientRect().bottom > 80);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+
+    measure();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -32,12 +111,14 @@ export function HeaderShell({
 
   return (
     <header
+      ref={shell}
       data-compact={compact ? "true" : "false"}
+      data-over={over ? "true" : "false"}
       className="sticky top-0 z-50"
     >
       {/* Masthead line: the announcement, stated the way an almanac states a date. */}
       <div
-        className="overflow-hidden bg-ink-800 text-bone-300 transition-[max-height,opacity] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="masthead overflow-hidden bg-ink-800 text-bone-300 transition-[max-height,opacity] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{
           maxHeight: compact ? 0 : "3rem",
           opacity: compact ? 0 : 1,
@@ -83,7 +164,7 @@ export function HeaderShell({
       </div>
 
       {/* The signage band. */}
-      <div className="relative bg-bone-100/97 backdrop-blur-[2px]">
+      <div className="signage relative bg-bone-100/97 backdrop-blur-[2px]">
         <div
           className="mx-auto flex max-w-[88rem] items-center justify-between gap-6 px-5 transition-[padding] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-8"
           style={{ paddingTop: compact ? "0.7rem" : "1.15rem", paddingBottom: compact ? "0.7rem" : "1.15rem" }}
@@ -118,9 +199,9 @@ export function HeaderShell({
             ))}
             <Link
               href="/franchise#enquiry"
-              className="label group relative overflow-hidden border border-ink-700 px-6 py-3.5 text-[0.625rem] text-ink-800 transition-colors duration-700 hover:text-bone-100"
+              className="btn-frame label group relative overflow-hidden border border-ink-700 px-6 py-3.5 text-[0.625rem] text-ink-800 transition-colors duration-700 hover:text-bone-100"
             >
-              <span className="absolute inset-0 -translate-y-full bg-ink-800 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
+              <span className="btn-fill absolute inset-0 -translate-y-full bg-ink-800 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
               <span className="relative">Open a franchise</span>
             </Link>
           </nav>
@@ -138,7 +219,7 @@ export function HeaderShell({
 
         {/* The awning edge. The header hangs like the storefront eave. */}
         <EaveCourse
-          className="absolute inset-x-0 top-full"
+          className="eave-line absolute inset-x-0 top-full"
           height={compact ? 11 : 15}
           color="#3a2318"
         />

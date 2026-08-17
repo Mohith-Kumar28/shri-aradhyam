@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BRAND, STATES, MENU, OPENING } from "@/lib/site-data";
 import { MenuBrowser } from "@/components/menu/menu-browser";
+import { ThaliInvite } from "@/components/home/thali-invite";
 import { ScriptMorph } from "@/components/site/script-morph";
 import { JaaliBand, Mark, HangingDiya } from "@/components/site/ornament";
 
@@ -72,6 +73,11 @@ export default function MenuPage() {
           </ul>
         </div>
       </section>
+
+      {/* The thali led the home page for a while, which put the highest ticket
+          item in front of a reader who had not yet been told what the house is.
+          Here it opens the board, where a reader is already reading prices. */}
+      <ThaliInvite />
 
       <MenuBrowser />
 

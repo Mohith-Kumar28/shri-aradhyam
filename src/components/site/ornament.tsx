@@ -289,25 +289,64 @@ export function Gopuram({
  * The line is a single path so it can be drawn on scroll in one stroke, the
  * way it is actually drawn on a doorstep.
  */
+/**
+ * A kolam: the figure drawn in rice flour on a South Indian doorstep at dawn.
+ *
+ * Generated rather than hand written. The previous path was authored by eye and
+ * was not actually symmetric, which does not show at watermark opacity but is
+ * all you can see once it is drawn at a size worth looking at: it read as a
+ * lopsided tangle. Eight petals placed at exact intervals cannot be lopsided,
+ * and their crossings are the interlacing that makes a sikku kolam a kolam
+ * rather than a flower.
+ *
+ * Every stroke carries pathLength={1}, so the draw-on animation is a fraction
+ * of the figure rather than a length in user units that has to be guessed at
+ * and re-guessed whenever the geometry changes.
+ */
 export function Kolam({
   className,
   size = 320,
-  dash = 2400,
 }: {
   className?: string;
   size?: number;
-  dash?: number;
 }) {
-  const dots: React.ReactElement[] = [];
-  const counts = [3, 5, 7, 5, 3];
-  counts.forEach((count, row) => {
-    for (let i = 0; i < count; i += 1) {
-      const x = 100 + (i - (count - 1) / 2) * 25;
-      const y = 50 + row * 25;
-      dots.push(
-        <circle key={`${row}-${i}`} cx={x} cy={y} r="1.6" fill="currentColor" opacity="0.5" />,
-      );
-    }
+  const CX = 100;
+  const CY = 100;
+  const PETALS = 8;
+
+  /** One teardrop from the centre out to a tip and back, closed. */
+  const petal = (index: number, radius: number, width: number) => {
+    const t = (index * 2 * Math.PI) / PETALS;
+    const tipX = CX + radius * Math.cos(t);
+    const tipY = CY + radius * Math.sin(t);
+    // The control points sit either side of the axis, which is what opens the
+    // loop out into a petal instead of collapsing it onto a line.
+    const nx = -Math.sin(t) * width;
+    const ny = Math.cos(t) * width;
+    const f = (n: number) => n.toFixed(2);
+    return (
+      `M${CX} ${CY}` +
+      `Q${f(CX + nx)} ${f(CY + ny)} ${f(tipX)} ${f(tipY)}` +
+      `Q${f(CX - nx)} ${f(CY - ny)} ${CX} ${CY}Z`
+    );
+  };
+
+  const bloom = Array.from({ length: PETALS }, (_, i) => petal(i, 72, 46)).join("");
+
+  // Pulli, the dots the line is drawn around. One at the centre, and one in
+  // each gap between the petal tips.
+  const dots = Array.from({ length: PETALS }, (_, i) => {
+    const t = (i * 2 * Math.PI) / PETALS + Math.PI / PETALS;
+    return (
+      <circle
+        key={i}
+        cx={(CX + 79 * Math.cos(t)).toFixed(2)}
+        cy={(CY + 79 * Math.sin(t)).toFixed(2)}
+        r="1.9"
+        fill="currentColor"
+        opacity="0.5"
+      />
+    );
   });
 
   return (
@@ -319,22 +358,20 @@ export function Kolam({
       aria-hidden="true"
     >
       {dots}
-      <g style={{ ["--dash" as string]: dash }}>
-        {/* Outer loop, a rotated square with looped corners. */}
-        <path
+      <circle cx={CX} cy={CY} r="1.9" fill="currentColor" opacity="0.5" />
+
+      <g style={{ ["--dash" as string]: 1 }}>
+        <path className="kolam-path" d={bloom} pathLength={1} {...STROKE} strokeWidth="1.4" />
+        <circle
           className="kolam-path"
-          d="M100 18c9 0 14 5 14 12s-5 12-12 12 34-3 40 3 9 11 9 20-3 14-9 20-40 3-40 3 4 0 12 0 12 5 12 12-5 12-14 12-14-5-14-12 5-12 12-12-34 3-40-3-9-11-9-20 3-14 9-20 40-3 40-3-4 0-12 0-12-5-12-12 5-12 14-12Z"
+          cx={CX}
+          cy={CY}
+          r="26"
+          pathLength={1}
           {...STROKE}
-          strokeWidth="1.4"
-        />
-        {/* Inner rosette. */}
-        <path
-          className="kolam-path"
-          d="M100 66c8 0 14 6 14 14s-6 14-14 14-14-6-14-14 6-14 14-14Zm-26 8c6 6 6 14 0 20m52-20c-6 6-6 14 0 20"
-          {...STROKE}
-          strokeWidth="1.1"
-          opacity="0.8"
-          style={{ ["--dash" as string]: 900, animationDelay: "700ms" }}
+          strokeWidth="1.2"
+          opacity="0.85"
+          style={{ animationDelay: "900ms" }}
         />
       </g>
     </svg>
