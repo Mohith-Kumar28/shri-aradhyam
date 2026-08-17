@@ -30,8 +30,8 @@ export function FranchiseInvite() {
             <p className="mt-7 max-w-[48ch] text-[1.0625rem] leading-relaxed text-bone-400">
               We are opening unit franchises, one outlet at a time, to owners who
               will stand at the counter themselves. You get the drawings, the
-              kitchen, the training and the supply chain. The rotation calendar
-              comes with it, and it is audited like the brand it is.
+              kitchen, the training and the supply chain. The recipe cards come
+              with it, and they are audited like the brand they are.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7">

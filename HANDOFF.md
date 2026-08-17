@@ -1,114 +1,165 @@
 # What to replace with real material
 
-Everything on this list is either a placeholder or authored illustrative content.
-The site is built so each item drops in without touching layout. Nothing here is
-presented to a visitor as confirmed fact: each one renders either as a visible
-TBD token or under an on-page notice.
+Everything on this list is either a placeholder or authored content awaiting your
+confirmation. The site is built so each item drops in without touching layout,
+and nothing here is presented to a visitor as confirmed fact: each one renders
+either as a visible "to be confirmed" token or under an on page notice.
 
 Ordered by how much it holds the site back.
 
-## 1. Photography of the food
+## 1. Menu prices, and a conflict between your two sources
 
-**Nothing on this site shows a dish.** That is the single biggest gap, and it is
-deliberate: no stock or generated food image stands in for a plate this kitchen
-actually cooks, because a visitor would read it as a photograph of your food.
+**This is the one thing to check first, because the whole menu page is built on
+it.** Two of your own documents disagree:
 
-The slot already exists. In `src/lib/site-data.ts`, every entry in `ROTATION`
-accepts an optional `image`:
+| | In store board (TV 1, photographed 13 August 2026) | Brand deck menu page |
+|---|---|---|
+| Plain Dosa | ₹90, same both styles | ₹79 Bengaluru / ₹89 Chennai |
+| Dosa range | ₹90 to ₹140, includes Rawa and Rawa Masala | ₹79 to ₹149, includes Ghee Masala |
+| Vegetable Pulao | ₹90 | ₹139 |
+| Rice bowls | Tomato Rice, Mavinkayi Chithrana, Ghee Pongal, Bisi Bele Bath | Tomato Bath, Gongura Rice, Sambar Rice, Temple Prasadam Rice |
+| Thali | not shown (it is screen 1 of several) | Udupi ₹199, Thanjavur ₹229 |
+| Filter coffee | ₹30 as a beverage | ₹39 as an add on |
 
-```ts
-{
-  dayIndex: 4,
-  city: "Hyderabad",
-  // ...
-  image: {
-    src: "/dishes/hyderabad.webp",
-    alt: "Bagara baingan with sesame gravy, served on a granite table",
-  },
-}
-```
+**What the site currently does**, and it is one edit to change: the board is
+treated as the operating menu for Dosa, Rice Bowls and Beverages; the deck
+supplies the Thali, the add ons and a Signature tier. Where both name the same
+dish at two prices, the board wins.
 
-Put the files in `public/dishes/` and fill in the field. The register detail
-panel renders the photograph automatically. Seven photographs, one per city, is
-the minimum that makes the rotation legible.
+Everything lives in the `MENU` const in `src/lib/site-data.ts`. Correct the
+numbers there, then set `PRICES_CONFIRMED = true` and the notice at the top of
+`/menu` disappears on its own.
 
-Worth shooting at the same time: the counter mid-service, the deity niche with
-its garland, and a full midday plate in courses. Those three would carry the
-"premium" argument further than anything left in CSS.
+## 2. Kerala has no dish on the board
 
-## 2. Outlet addresses, telephone numbers and hours
+Your signage names four states. The board carries Karnataka, Tamil Nadu and
+Andhra Pradesh. Rather than invent a Kerala dish, the site says so: filtering
+`/menu` to Kerala shows a note that Kerala arrives with a City Launch, and the
+Kerala card on the home page says the same.
 
-In `src/lib/site-data.ts`:
+Send a Kerala dish or two and the gap closes by itself.
 
-- Replace the entries in `OUTLETS` with the real outlets.
-- Set `OUTLETS_ARE_PLACEHOLDER = false`. The notice on the home locator and the
-  banner on the Locations page both disappear on their own.
-- Set `HOURS_CONFIRMED = false` to `true` and replace `HOURS_PLACEHOLDER` with
-  the real service hours on each outlet.
-- `CONTACT.phone`, `CONTACT.email`, `CONTACT.franchiseEmail` and
-  `CONTACT.office` are all placeholders.
-- The header masthead currently says "Open all seven days" with no time, and the
-  footer says "Times to be confirmed". Both can carry real hours once confirmed.
+## 3. Outlet details
 
-Seat counts and the "site confirmed" status for Mysuru were removed rather than
-guessed. Add them back only as real figures.
+In `src/lib/site-data.ts`, the `OUTLETS` entry for Kathriguppe still needs:
 
-## 3. Franchise commercials
+- the real street address (`addressLines` currently carries a bracketed placeholder)
+- the telephone number (`CONTACT.phone` is `+91 XXXXX XXXXX`)
+- service hours. Replace `HOURS_PLACEHOLDER` and set `HOURS_CONFIRMED = true`;
+  the ruled blanks and the "to be confirmed" marks on `/locations/kathriguppe`
+  clear themselves.
+- `CONTACT.email`, `CONTACT.franchiseEmail` and `CONTACT.office` are placeholders.
+
+The opening date is set in `OPENING` as 1 September 2026 with the label "First
+week of September 2026". The countdown in the masthead and the hero seal both run
+off it, and `isPreOpening()` retires the pre opening framing the day it passes.
+If the date moves, change it in that one place.
+
+## 4. Photography
+
+**Every dish image on this site is a crop from your brand deck or your menu
+board, not a photograph of plated food.** They are good enough to launch on and
+they are not the real thing.
+
+Files live in `public/dishes/`. Each is referenced from an `image` field in
+`MENU`, `CITY_LAUNCH` or the `PACKAGING` list in `src/app/story/page.tsx`.
+Every one of those fields is **optional**: remove it and the card degrades to a
+ruled register row or a drawn gopuram placeholder, so a real shoot drops in field
+by field and no layout moves.
+
+Worth shooting, in rough order of value:
+
+1. The two thalis on a real leaf. They carry the premium argument.
+2. The dosas, all four styles, on the griddle and plated.
+3. The counter mid service, and the deity niche with its garland.
+4. Filter coffee being pulled between tumbler and davara.
+
+`public/brand/kathriguppe-day.webp` and `kathriguppe-night.webp` are also deck
+renders. The outlet page labels them as renders and says photographs follow once
+the doors open.
+
+## 5. Franchise commercials
 
 In `src/lib/site-data.ts`, every row of `FRANCHISE_TERMS` with
-`confirmed: false` renders as a ruled blank plus a "To be confirmed" mark:
-total investment, franchise fee, carpet area, seating, royalty, payback period,
+`confirmed: false` renders as a ruled blank plus a "To be confirmed" mark: total
+investment, franchise fee, carpet area, seating, royalty, payback period,
 agreement term and setup timeline.
 
 Replace the `value` and set `confirmed: true` on each. The two rows already
 marked `confirmed: true` (the Unit Franchise format and the exclusive catchment)
 are the only commercial facts stated as settled.
 
-The FAQ answers are written so they stay true while the numbers are pending:
-they say the commercial sheet is shared after the location study. If you publish
-the figures on the page, revisit `FRANCHISE_FAQ` so the two do not contradict.
+**Nothing from the investor deck is on the public site.** The investment figure,
+the royalty percentage, the ROI, the six year projection, the enterprise
+valuation and the equity slabs are all absent by decision, along with the
+competitor revenue table. The FAQ answers are written so they stay true while the
+numbers are pending: they say the commercial sheet follows the location study. If
+you publish figures on the page, revisit `FRANCHISE_FAQ` so the two agree.
 
-## 4. The enquiry form has no backend
+There is an automated check for this. See "Truth audit" below.
 
-`src/components/franchise/enquiry-form.tsx` validates the form, then composes
-the enquiry in the visitor's own mail application addressed to
-`CONTACT.franchiseEmail`. It never claims to have sent anything, and a note
-under the form says so.
+## 6. The enquiry form has no backend
+
+`src/components/franchise/enquiry-form.tsx` validates the form, then composes the
+enquiry in the visitor's own mail application addressed to
+`CONTACT.franchiseEmail`. It never claims to have sent anything, and a note under
+the form says so.
 
 To wire a real endpoint: set `MODE` to `"api"` at the top of that file and
-replace the body of `send` with your POST. The idle, sending, handed-off and
+replace the body of `send` with your POST. The idle, sending, handed off and
 failed states already exist and are already styled.
 
-## 5. Menu content to confirm with the kitchen
+## 7. Which City Launch is live
 
-Authored from the real regional repertoire of each city, and plausible, but not
-confirmed as your menu:
+`CITY_LAUNCH` holds Madurai and Godhavari, both taken from your campaign
+artwork. `CURRENT_LAUNCH_ID` is `null`, so the home page presents City Launch as
+the format rather than claiming one is on the counter. Set it to `"madurai"` or
+`"godhavari"` and a kumkum "Now on the counter" chip appears.
 
-- The five dishes and the anchor dish for each of the seven cities in `ROTATION`.
-- The four service shifts and their windows in `DAY_PARTS`. The page currently
-  states these are the intended pattern and are being confirmed.
-- The per-city prose in `note` and the one-line `character` for each day.
+## 8. Still missing, and deliberately never claimed
 
-## 6. Facts the site deliberately never claims
+These were left out because there is no source, and they should only be added as
+real material:
 
-These were left out because there was no source, and they should only be added
-as real material:
-
-- Founding year, founder names, chef names.
-- Outlet count, covers served, any growth figure.
+- Founding year, and any outlet count or covers figure.
 - Customer testimonials, review scores, ratings.
 - Awards, press coverage, certifications beyond the pure vegetarian mark.
+- Swiggy and Zomato listing URLs, and social accounts. `/story` says you will be
+  listed from opening week; it does not link anywhere yet.
 
-If you want any of these on the page, send the real detail and it can be placed.
+Every competitor in this category leans on testimonials, awards and a "since
+19XX" number. This site earns its premium from restraint instead. If you want any
+of the above on the page, send the real detail and it can be placed.
 
 ## Brand truth already on the site
 
-For reference, these are taken from your storefront and your in-store wall copy
-and are treated as settled: the name and its Kannada wordmark, the tagline
-"Five States. One Roof. Endless Flavours.", "Served with devotion", and the
-seven assurances (freshly prepared every day, premium ingredients, authentic
-recipes, no preservatives, no artificial colours, no artificial flavours, one
-hundred percent pure vegetarian).
+Taken from your storefront, your in store wall and your brand deck, and treated
+as settled:
 
-The three architectural renders in `public/brand/` are your images and are used
-as the storefront, the dining floor and the wall.
+- The name, the Kannada wordmark ಶ್ರೀ ಆರಾಧ್ಯಂ, and ಭಕ್ತಿಯಿಂದ ಸೇವೆ.
+- The tagline "One Roof. Four States. Endless Flavours."
+- "Tradition on our plates. Devotion in our hearts."
+- The seven assurances, and the wall paragraph quoted verbatim on `/story`.
+- The four states, and each dish's town.
+- The signage product list: Udupi Meals, Thanjavur Meals, Rice Bowls, Dosa, Coffee.
+- Kathriguppe, Bengaluru, opening the first week of September 2026, with basement
+  parking.
+- The Bengaluru and India roadmap, stated as intentions rather than signed sites.
+- Divyashree B S, Vikas Perumalsamy and Abilash Bellur, with their roles.
+- The four packaging items.
+
+## Truth audit
+
+Two checks worth re running before any deploy, from the repo root after
+`npm run build`:
+
+```bash
+# 1. No investor figure may reach a public page.
+FILES=(.next/server/app/**/*.html)
+grep -oih -E '100cr|valuation|equity|ROI|Lakhs|283\.5|royalty income' "${FILES[@]}" | wc -l   # expect 0
+
+# 2. No em dashes or en dashes anywhere. This is a standing instruction.
+grep -rn '[—–]' src/   # expect no output
+```
+
+Both pass as of this handoff.

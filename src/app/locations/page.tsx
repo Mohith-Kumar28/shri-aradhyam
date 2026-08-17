@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { OUTLETS_ARE_PLACEHOLDER, ASSURANCES } from "@/lib/site-data";
-import { todayCity } from "@/lib/today";
+import { OUTLETS_ARE_PLACEHOLDER, ASSURANCES, OPENING } from "@/lib/site-data";
 import { LocationFinder } from "@/components/locations/location-finder";
+import { Roadmap } from "@/components/locations/roadmap";
 import { JaaliBand, RuleDiamond, AssuranceIcon } from "@/components/site/ornament";
 
 export const metadata: Metadata = {
   title: "Locations | Shri Aradhyam",
   description:
-    "Find a Shri Aradhyam outlet: addresses, hours and telephone numbers, plus the cities where the next kitchens are opening.",
+    "Where to find Shri Aradhyam. The first kitchen opens at Kathriguppe, Bengaluru, with the rest of the city to follow.",
 };
 
-export const revalidate = 300;
+export const revalidate = 3600;
 
 export default function LocationsPage() {
-  const today = todayCity();
-
   return (
     <>
       {/* Page head: the dining floor, held behind a granite band. */}
@@ -37,15 +35,19 @@ export default function LocationsPage() {
 
         <div className="relative mx-auto max-w-[88rem] px-5 pb-24 pt-28 sm:px-8 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-44">
           <h1 className="max-w-[24ch] font-display text-[clamp(2.5rem,6.4vw,4.75rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-bone-100">
-            Find the kitchen.
+            The first kitchen.
           </h1>
-          <p className="mt-7 max-w-[46ch] text-[1.0625rem] leading-relaxed text-bone-400">
-            Every outlet keeps the same hours, the same rotation and the same
-            drawings. Today, in all of them, the kitchen is cooking{" "}
-            <span className={`${today.script} text-brass-400`} lang={today.script}>
-              {today.cityNative}
+          <p className="mt-7 max-w-[48ch] text-[1.0625rem] leading-relaxed text-bone-400">
+            Shri Aradhyam opens at{" "}
+            <span className="kn text-brass-400" lang="kn">
+              {OPENING.outletNative}
             </span>
-            <span className="text-brass-400"> {today.city}</span>.
+            <span className="text-brass-400">
+              {" "}
+              {OPENING.outlet}, {OPENING.city}
+            </span>
+            , in the {OPENING.dateLabel.toLowerCase()}. Every outlet after it is
+            built to the same drawings and cooks from the same recipe cards.
           </p>
         </div>
       </section>
@@ -70,6 +72,8 @@ export default function LocationsPage() {
         </div>
       </section>
 
+      <Roadmap />
+
       {/* What is true in every outlet. */}
       <section className="relative bg-bone-100 py-20 sm:py-24 lg:py-28">
         <div className="paper absolute inset-0" aria-hidden="true" />
@@ -77,7 +81,7 @@ export default function LocationsPage() {
           <RuleDiamond className="mx-auto max-w-md" />
 
           <h2 className="mx-auto mt-12 max-w-[24ch] text-center font-display text-[clamp(1.8rem,3.8vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
-            The same seven promises, in every kitchen.
+            Seven promises, and they travel with every kitchen we open.
           </h2>
 
           <ul className="mt-14 grid gap-x-10 gap-y-0 sm:grid-cols-2 lg:grid-cols-4">

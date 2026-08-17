@@ -1,28 +1,29 @@
 import { Hero } from "@/components/home/hero";
 import { Assurances } from "@/components/home/assurances";
-import { Register } from "@/components/home/register";
-import { Offering } from "@/components/home/offering";
+import { FourStates } from "@/components/home/four-states";
+import { MenuPreview } from "@/components/home/menu-preview";
+import { ThaliInvite } from "@/components/home/thali-invite";
 import { Threshold } from "@/components/home/threshold";
-import { KitchenDay } from "@/components/home/kitchen-day";
-import { FiveStates } from "@/components/home/five-states";
+import { CityLaunch } from "@/components/home/city-launch";
+import { Offering } from "@/components/home/offering";
 import { TheRoom } from "@/components/home/the-room";
 import { LocationsPreview } from "@/components/home/locations-preview";
 import { FranchiseInvite } from "@/components/home/franchise-invite";
-import { istDayIndex } from "@/lib/today";
 
-/** The rotation turns at dawn, so the page refreshes itself every five minutes. */
-export const revalidate = 300;
+/** The countdown moves once a day, so the page refreshes itself hourly. */
+export const revalidate = 3600;
 
 export default function Home() {
   return (
     <>
       <Hero />
       <Assurances />
-      <Register todayIndex={istDayIndex()} />
-      <Offering />
+      <FourStates />
+      <MenuPreview />
+      <ThaliInvite />
       <Threshold />
-      <KitchenDay />
-      <FiveStates />
+      <CityLaunch />
+      <Offering />
       <TheRoom />
       <LocationsPreview />
       <FranchiseInvite />

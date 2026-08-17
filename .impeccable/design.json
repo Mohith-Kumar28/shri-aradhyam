@@ -1,6 +1,6 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-08-13T00:00:00.000Z",
+ "generatedAt": "2026-08-17T00:00:00.000Z",
  "title": "Design System: Shri Aradhyam",
  "extensions": {
   "colorMeta": {
@@ -138,6 +138,22 @@
      "#d07d76",
      "#eec3bf"
     ]
+   },
+   "palm-600": {
+    "role": "secondary",
+    "displayName": "Temple Palm",
+    "canonical": "#24503a",
+    "tonalRamp": [
+     "#0c1a12",
+     "#122616",
+     "#1b3f2c",
+     "#24503a",
+     "#2f6247",
+     "#5b9d78",
+     "#9ccbb2",
+     "#d6ebe0"
+    ],
+    "note": "The brand's own green and the system's second mark, taken from the pure vegetarian badge and the deck's regional headings. Scope is narrow and stated: the pure vegetarian mark, the Karnataka regional key, and an opening status. Never a section ground, never prose. palm-700 is the text floor on bone, palm-400 on ink."
    }
   },
   "typographyMeta": {
@@ -196,6 +212,10 @@
    "seal-display": {
     "displayName": "Seal Display",
     "purpose": "The struck city on the brass plate at 2.35rem. One-off step for the single focal element."
+   },
+   "figure": {
+    "displayName": "Figure",
+    "purpose": "A menu price. Archivo tabular figures at 0.9375rem with 0.06em tracking. The data register's 0.625rem step loses to a 1.35rem dish name, and a price is primary information rather than register furniture, so the register is allowed this one larger step. 0.9375rem is already on the ramp as Body Small, so this widens where the data register may be set rather than adding a size."
    }
   },
   "shadows": [
@@ -347,18 +367,72 @@
     "phone",
     "arrowRight",
     "arrowDown",
-    "arrowUpRight"
+    "arrowUpRight",
+    "cup",
+    "bowl",
+    "dosa",
+    "calendar",
+    "direction",
+    "share"
    ],
    "note": "No icon font, no emoji, no text-glyph arrows. Marks are shrink-0 by default."
   },
   "carriedOutsideSystem": {
-   "path": "src/components/ui/",
-   "reason": "shadcn CLI generated primitives; unimported and unrendered. Not part of the design system.",
-   "contradictions": [
-    "radii above 0.125rem",
-    "0.8rem type step",
-    "lucide-react imports in sheet, accordion, select"
-   ]
+   "path": null,
+   "reason": "Nothing. The ten unimported shadcn primitives in src/components/ui/, src/lib/utils.ts, and the lucide-react, @base-ui/react, class-variance-authority, clsx and tailwind-merge dependencies have all been deleted. components.json is kept so a primitive can be re-added and restyled into this world on demand.",
+   "contradictions": []
+  },
+  "regionalKey": {
+   "purpose": "Colours a dish's provenance by its state so four states read at a glance without a legend and without a fifth hue.",
+   "source": "STATE_INK and STATE_INK_ON_DARK in src/lib/site-data.ts",
+   "map": {
+    "Karnataka": "palm",
+    "Tamil Nadu": "kumkum",
+    "Andhra Pradesh": "brass",
+    "Kerala": "granite"
+   },
+   "scope": "The small provenance line beneath a dish name only."
+  },
+  "ornamentSet": {
+   "component": "src/components/site/ornament.tsx",
+   "stroke": 1.25,
+   "drawings": [
+    "LotusRoundel",
+    "Corbel",
+    "EaveCourse",
+    "JaaliBand",
+    "HangingDiya",
+    "Thoranam",
+    "Gopuram",
+    "Kolam",
+    "AssuranceIcon",
+    "RuleDiamond"
+   ],
+   "admissionTest": "Every ornament is a real object in the building. The diya hangs in the dining room, the thoranam is strung across the awning, the gopuram is printed on the cups and carry bags.",
+   "removed": [
+    {
+     "name": "BananaLeaf",
+     "reason": "The thali photographs already carry the leaf, so a drawn one would have been applied decoration rather than structure."
+    }
+   ],
+   "emblemNote": "LotusRoundel is a lotus cradled in two open hands. The side petals are written at their rotated coordinates rather than wrapped in a transform or a <use>, so a page holding several emblems depends on no shared id."
+  },
+  "revealProtocol": {
+   "provider": "src/components/site/reveal-provider.tsx",
+   "attributes": "Authored content carries data-reveal. The provider adds data-armed=\"true\" (hiding it) only once JS runs, then data-shown=\"true\" to play.",
+   "variants": [
+    "(default) rise",
+    "wipe",
+    "seal",
+    "rule"
+   ],
+   "stagger": "Per element --reveal-delay, 70ms steps in registers.",
+   "rules": [
+    "Only data-shown may end the cycle. The scan selects [data-reveal]:not([data-shown]) and must NOT exclude armed nodes: the effect runs twice in development and again on route change, and a scan that skipped armed nodes leaves every below-the-fold element stranded at opacity 0 behind a disconnected observer.",
+    "A MutationObserver re-runs the scan so subtrees mounted later by client components still get armed, observed and shown.",
+    "The failsafe sweep runs on scroll, resize, load and a 1200ms settle. Scroll matters: a card parked off screen horizontally in a snap rail is vertically in view but never intersects, so without it the card stays invisible until the rail is dragged."
+   ],
+   "auditTest": "Scroll a page to the bottom, then evaluate document.querySelectorAll('[data-reveal][data-armed=\"true\"]').length. It must be 0 on every page at every width."
   }
  },
  "components": [

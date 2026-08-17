@@ -42,6 +42,18 @@
   --color-kumkum-600: #9e2b25;
   --color-kumkum-500: #b8443c;
 
+  /* Palm: the brand's temple green, taken from the signage pure vegetarian
+     mark and from the deck's own regional headings. The second mark, not a
+     second metal. Scope is narrow and stated in DESIGN.md: the pure vegetarian
+     mark, the Karnataka regional key, and an opening status. It is never a
+     section ground. palm-700 is the floor for text below 0.875rem. */
+  --color-palm-700: #1b3f2c;
+  --color-palm-600: #24503a;
+  --color-palm-500: #2f6247;
+  /* The step for palm on an ink ground. Lighter than it looks like it should
+     be: at #4a8567 it lands at 4.1:1 on ink-800 and fails the floor. */
+  --color-palm-400: #5b9d78;
+
   --font-display: var(--font-eczar);
   --font-body: var(--font-alegreya);
   --font-label: var(--font-archivo);

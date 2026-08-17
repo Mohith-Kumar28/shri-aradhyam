@@ -17,7 +17,15 @@ const STROKE = {
   strokeLinejoin: "round" as const,
 };
 
-/* The signage emblem: a lotus inside a filled roundel. */
+/**
+ * The signage emblem: a lotus cradled in two open hands, inside a filled
+ * roundel.
+ *
+ * The hands are the emblem. An earlier drawing here had petals over a plain
+ * rule, which reads as a lotus on a shelf rather than as an offering being
+ * held up, and it is not the mark on the building. The petals are drawn as
+ * solid shapes rather than outlines so the emblem holds at 24px in the header.
+ */
 export function LotusRoundel({
   className,
   size = 40,
@@ -32,24 +40,23 @@ export function LotusRoundel({
       height={size}
       className={className}
       role="img"
-      aria-label="Shri Aradhyam lotus emblem"
+      aria-label="Shri Aradhyam emblem: a lotus held in two open hands"
     >
       <circle cx="24" cy="24" r="23" fill="currentColor" />
-      <g
-        fill="none"
-        stroke="var(--color-bone-100)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {/* centre petal */}
-        <path d="M24 33c0-6.4 0-9.6 0-16 3.4 3.2 5.1 6.4 5.1 9.6S27.4 31.4 24 33Z" />
-        <path d="M24 33c0-6.4 0-9.6 0-16-3.4 3.2-5.1 6.4-5.1 9.6S20.6 31.4 24 33Z" />
-        {/* outer petals */}
-        <path d="M24 33c-4.6-4.5-8-6.2-11.9-6.4 1 4.1 4.2 6.7 11.9 6.4Z" />
-        <path d="M24 33c4.6-4.5 8-6.2 11.9-6.4-1 4.1-4.2 6.7-11.9 6.4Z" />
-        {/* stem base */}
-        <path d="M15.5 34.6h17" />
+      {/* The bloom: one upright petal with a pair leaning off it at 34
+          degrees. The side petals are written out at their rotated
+          coordinates rather than wrapped in a transform, so a page holding
+          several emblems never depends on a shared id or a transform origin. */}
+      <g fill="var(--color-bone-100)">
+        <path d="M24 7.2C26.4 11.8 27.6 15.5 27.6 18.3C27.6 20.6 26.4 22.6 24 24.1C21.6 22.6 20.4 20.6 20.4 18.3C20.4 15.5 21.6 11.8 24 7.2Z" />
+        <path d="M14.38 10.14C18.94 12.61 22.01 15.01 23.57 17.33C24.86 19.24 24.98 21.57 23.83 24.15C21 24.25 18.89 23.26 17.6 21.36C16.04 19.03 14.96 15.3 14.38 10.14Z" />
+        <path d="M33.62 10.14C33.04 15.3 31.96 19.03 30.4 21.36C29.11 23.26 27 24.25 24.17 24.15C23.02 21.57 23.14 19.24 24.43 17.33C25.99 15.01 29.06 12.61 33.62 10.14Z" />
+      </g>
+      {/* Two open palms cupped beneath it, holding the bloom up rather than
+          standing it on a shelf. */}
+      <g fill="var(--color-bone-100)">
+        <path d="M11.6 27.2c-.9 5.1.5 9.1 4.1 11.9 2.3 1.8 5.1 2.8 8.3 3.1v-3.3c-2.6-.3-4.8-1.1-6.5-2.5-2.7-2.2-3.8-5.5-3.2-9.7Z" />
+        <path d="M36.4 27.2c.9 5.1-.5 9.1-4.1 11.9-2.3 1.8-5.1 2.8-8.3 3.1v-3.3c2.6-.3 4.8-1.1 6.5-2.5 2.7-2.2 3.8-5.5 3.2-9.7Z" />
       </g>
     </svg>
   );
@@ -146,6 +153,134 @@ export function JaaliBand({
         backgroundPosition: "center",
       }}
     />
+  );
+}
+
+/**
+ * The hanging brass oil lamp that hangs at the entrance and along the dining
+ * wall. Drawn as a full drop, chain included, so it can be hung from the top
+ * edge of a dark band the way it hangs from a beam.
+ *
+ * The flame carries `lamp-glow`, the breathing keyframe that has been declared
+ * in globals.css since the first build and never had anything to animate. It
+ * is stopped by the existing prefers-reduced-motion block.
+ */
+export function HangingDiya({
+  className,
+  height = 96,
+  flame = true,
+}: {
+  className?: string;
+  height?: number;
+  flame?: boolean;
+}) {
+  return (
+    <svg
+      viewBox="0 0 32 96"
+      height={height}
+      width={(height / 96) * 32}
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Chain, its links, and the three arms that carry the bowl. */}
+      <g {...STROKE}>
+        <path d="M16 0v33" />
+        <circle cx="16" cy="11" r="2.1" />
+        <circle cx="16" cy="21" r="2.1" />
+        <path d="M16 35 6.8 44.4M16 35l9.2 9.4M16 35v9.4" />
+      </g>
+      {/* The oil bowl, with a flared lip either side and a drop finial. */}
+      <g fill="currentColor">
+        <path d="M2.6 44.6h26.8c0 7.6-2.7 12.5-7.1 14.6-1.9.9-4 1.3-6.3 1.3s-4.4-.4-6.3-1.3c-4.4-2.1-7.1-7-7.1-14.6Z" />
+        <path d="M2.6 44.6c-2.5.4-3.8 1-3.8 1.8s1.3 1.4 3.8 1.8Zm26.8 0c2.5.4 3.8 1 3.8 1.8s-1.3 1.4-3.8 1.8Z" />
+        <path d="M16 61c1.5 0 2.5 1.1 2.5 3S17 68.4 16 70.8c-1-2.4-2.5-4.9-2.5-6.8s1-3 2.5-3Z" />
+      </g>
+      {/* The flame, rising off the left lip. */}
+      {flame ? (
+        <path
+          className="lamp-glow"
+          fill="currentColor"
+          d="M1.6 43.9c-1.8-2.5-2.4-4.9-1.8-7 .5 1.3 1.1 2.2 1.9 2.7-.4-3.1.4-5.6 2.3-7.6-.3 2.5.2 4.5 1.4 6 1.1 1.5 1.4 2.9.7 4.2-.5 1-1.6 1.5-3.3 1.8-.4 0-.8-.1-1.2-.1Z"
+        />
+      ) : null}
+    </svg>
+  );
+}
+
+/**
+ * The thoranam: the mango leaf and marigold garland strung across the awning
+ * in every render of the storefront.
+ *
+ * Tiled as a background at a fixed size, for the same reason as the eave
+ * course: a stretched swag turns each leaf into a smear.
+ */
+export function Thoranam({
+  className,
+  height = 30,
+  color = "#c9a227",
+  leaf = "#a8811a",
+}: {
+  className?: string;
+  height?: number;
+  color?: string;
+  leaf?: string;
+}) {
+  const tile = encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30" fill="none"><path d="M0 2Q30 24 60 2T120 2" stroke="${color}" stroke-width="1.25" stroke-linecap="round"/><g fill="${leaf}"><path d="M9 7.61C11.3 9.71 11.3 12.65 9 14.61C6.7 12.65 6.7 9.71 9 7.61ZM18 11.24C20.3 14.09 20.3 18.08 18 20.74C15.7 18.08 15.7 14.09 18 11.24ZM30 13C32.3 16.45 32.3 21.28 30 24.5C27.7 21.28 27.7 16.45 30 13ZM42 11.24C44.3 14.09 44.3 18.08 42 20.74C39.7 18.08 39.7 14.09 42 11.24ZM51 7.61C53.3 9.71 53.3 12.65 51 14.61C48.7 12.65 48.7 9.71 51 7.61ZM69 7.61C71.3 9.71 71.3 12.65 69 14.61C66.7 12.65 66.7 9.71 69 7.61ZM78 11.24C80.3 14.09 80.3 18.08 78 20.74C75.7 18.08 75.7 14.09 78 11.24ZM90 13C92.3 16.45 92.3 21.28 90 24.5C87.7 21.28 87.7 16.45 90 13ZM102 11.24C104.3 14.09 104.3 18.08 102 20.74C99.7 18.08 99.7 14.09 102 11.24ZM111 7.61C113.3 9.71 113.3 12.65 111 14.61C108.7 12.65 108.7 9.71 111 7.61Z"/></g><g fill="${color}"><circle cx="0" cy="2" r="1.6"/><circle cx="60" cy="2" r="1.6"/><circle cx="120" cy="2" r="1.6"/></g></svg>`,
+  );
+
+  return (
+    <div
+      aria-hidden="true"
+      className={className}
+      style={{
+        height,
+        backgroundImage: `url("data:image/svg+xml,${tile}")`,
+        backgroundRepeat: "repeat-x",
+        backgroundSize: `120px ${height}px`,
+        backgroundPosition: "left top",
+      }}
+    />
+  );
+}
+
+/**
+ * The gopuram the brand already prints on its cups, its carry bags and its
+ * menu board. Used as a low opacity watermark behind a section heading, never
+ * as a foreground graphic.
+ */
+export function Gopuram({
+  className,
+  size = 220,
+}: {
+  className?: string;
+  size?: number;
+}) {
+  return (
+    <svg
+      viewBox="0 0 64 74"
+      width={size}
+      height={(size / 64) * 74}
+      className={className}
+      aria-hidden="true"
+    >
+      <g {...STROKE}>
+        {/* Kalasha finial. */}
+        <path d="M32 2c1.6 0 2.6 1.2 2.6 2.6S33.6 7 32 7.6C30.4 7 29.4 6 29.4 4.6S30.4 2 32 2Z" />
+        <path d="M32 7.6V11M26 11h12" />
+        {/* Five receding tiers. */}
+        <path d="M24 18h16l-2-7H26Z" />
+        <path d="M21 27h22l-3-9H24Z" />
+        <path d="M17 37h30l-4-10H21Z" />
+        <path d="M12 49h40l-5-12H17Z" />
+        <path d="M7 63h50l-5-14H12Z" />
+        <path d="M4 72h56v-9H4Z" />
+        {/* The shrine door. */}
+        <path d="M28 72v-8c0-2.2 1.8-4 4-4s4 1.8 4 4v8" />
+        {/* Pilasters, one course per tier. */}
+        <path d="M28 21v-3M32 21v-3M36 21v-3M25 30v-3M32 30v-3M39 30v-3M22 40v-3M32 40v-3M42 40v-3M18 52v-3M32 52v-3M46 52v-3" />
+      </g>
+    </svg>
   );
 }
 
@@ -338,6 +473,52 @@ const MARKS: Record<string, React.ReactElement> = {
     <>
       <path d="M6 18 18 6" {...STROKE} />
       <path d="M9 6h9v9" {...STROKE} />
+    </>
+  ),
+  // A tumbler and davara, the vessel filter coffee actually arrives in.
+  cup: (
+    <>
+      <path d="M8.5 7h7l-.8 9.5a2.7 2.7 0 0 1-2.7 2.5 2.7 2.7 0 0 1-2.7-2.5Z" {...STROKE} />
+      <path d="M5 21h14" {...STROKE} />
+      <path d="M8.2 10.5h7.6" {...STROKE} />
+    </>
+  ),
+  // A rice bowl on its footed base.
+  bowl: (
+    <>
+      <path d="M3.5 10h17c0 5-3.8 8.5-8.5 8.5S3.5 15 3.5 10Z" {...STROKE} />
+      <path d="M9 21h6" {...STROKE} />
+      <path d="M12 18.5V21" {...STROKE} />
+    </>
+  ),
+  // A rolled dosa on a plate.
+  dosa: (
+    <>
+      <path d="M3 17.5c0-3.4 3.6-9 9-9s9 5.6 9 9" {...STROKE} />
+      <path d="M2 17.5h20" {...STROKE} />
+      <path d="M8.5 17.5c0-3 1.6-6.4 3.5-6.4s3.5 3.4 3.5 6.4" {...STROKE} />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="3.5" y="5.5" width="17" height="15" {...STROKE} />
+      <path d="M3.5 10h17M8 3.5v4M16 3.5v4" {...STROKE} />
+    </>
+  ),
+  // Directions: the world's diamond, set travelling.
+  direction: (
+    <>
+      <path d="M12 3.5 20.5 12 12 20.5 3.5 12Z" {...STROKE} />
+      <path d="M9 13v-2.2a1 1 0 0 1 1-1h4.5" {...STROKE} />
+      <path d="M12.8 7.6 15.4 9.8 12.8 12" {...STROKE} />
+    </>
+  ),
+  share: (
+    <>
+      <circle cx="17.5" cy="6" r="2.6" {...STROKE} />
+      <circle cx="6.5" cy="12" r="2.6" {...STROKE} />
+      <circle cx="17.5" cy="18" r="2.6" {...STROKE} />
+      <path d="m8.8 10.8 6.4-3.5M8.8 13.2l6.4 3.5" {...STROKE} />
     </>
   ),
 };

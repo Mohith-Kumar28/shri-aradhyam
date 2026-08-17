@@ -10,6 +10,22 @@ import { JaaliBand } from "@/components/site/ornament";
 
 const PLATES = [
   {
+    src: "/brand/kathriguppe-night.webp",
+    alt: "The Kathriguppe outlet lit at night: brass signage glowing under a stone eave, garlanded columns and a lamp course along the awning",
+    title: "The threshold",
+    caption:
+      "Kathriguppe after dark. The signage lights, the thoranam hangs across the awning, and the lamp course runs the length of the eave.",
+    aspect: "aspect-16/10",
+  },
+  {
+    src: "/brand/kathriguppe-day.webp",
+    alt: "The Kathriguppe outlet by day: stone columns, the Kannada and Latin lockup on the fascia and a sign listing the menu sections",
+    title: "The elevation",
+    caption:
+      "By daylight, with the board outside naming what is inside: Udupi meals, Thanjavur meals, rice bowls, dosa, coffee.",
+    aspect: "aspect-16/10",
+  },
+  {
     src: "/brand/storefront.webp",
     alt: "The storefront at street level: a stone eave over brass signage, jaali screens flanking the entrance and a granite stair up to the door",
     title: "The eave",

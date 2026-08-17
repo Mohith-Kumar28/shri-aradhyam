@@ -1,29 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRAND } from "@/lib/site-data";
-import { todayCity, istDateLine } from "@/lib/today";
+import { BRAND, OPENING } from "@/lib/site-data";
+import { daysUntilOpening, isPreOpening } from "@/lib/today";
 import { ScriptMorph } from "@/components/site/script-morph";
 import { LotusRoundel, Mark } from "@/components/site/ornament";
 
 /**
  * Layout family: full bleed photograph with an inset almanac leaf.
  *
- * The building carries the atmosphere, the leaf carries the argument, and
- * today's city is pressed over the join as a brass seal.
+ * The building carries the atmosphere, the leaf carries the argument, and the
+ * announcement is pressed over the join as a brass seal.
  */
 export function Hero() {
-  const today = todayCity();
-  const date = istDateLine();
+  const preOpening = isPreOpening();
+  const days = daysUntilOpening();
 
   return (
     <section className="relative isolate overflow-hidden bg-ink-800">
       <Image
-        src="/brand/storefront.webp"
-        alt="The Shri Aradhyam storefront, brass signage under a stone eave with jaali screens either side of the entrance"
+        src="/brand/kathriguppe-night.webp"
+        alt="The Kathriguppe storefront lit at night, brass signage under a stone eave with garlanded columns and jaali screens"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[50%_38%]"
+        className="object-cover object-[50%_44%]"
       />
 
       {/* Scrim: the leaf has to sit on stone, not on a photograph. */}
@@ -61,33 +61,25 @@ export function Hero() {
               </h1>
 
               <p className="mt-6 font-display text-[clamp(1.4rem,3vw,2.15rem)] font-normal leading-[1.24] tracking-[-0.02em] text-ink-700">
-                Today the kitchen cooks{" "}
-                <span className="text-kumkum-600">
-                  <ScriptMorph
-                    native={today.cityNative}
-                    latin={today.city}
-                    script={today.script}
-                    mode="settle"
-                    delay={2300}
-                  />
-                </span>
-                .
+                Four states of South India, under{" "}
+                <span className="text-kumkum-600">one roof</span>.
               </p>
 
               <p className="mt-6 max-w-[46ch] text-[1.0625rem] leading-relaxed text-granite-500">
-                One city a day, across five states. Its dishes are ground, steamed
-                and fried that morning, and finished by night.
+                Karnataka, Tamil Nadu, Andhra Pradesh and Kerala, each dish
+                carrying the town it is claimed from. Ground and steamed that
+                morning, and never held over to the next day.
               </p>
 
               {/* Actions sit on a ruled baseline, like entries on a page, with
                   the brand's own line closing the row. */}
               <div className="rule-top mt-10 flex flex-col gap-4 pt-8 sm:flex-row sm:items-center sm:gap-6">
                 <Link
-                  href="#register"
+                  href="/menu"
                   className="label group relative inline-flex items-center justify-center overflow-hidden bg-ink-800 px-8 py-4.5 text-[0.625rem] text-bone-100"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-kumkum-700 transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0" />
-                  <span className="relative">Read the week&rsquo;s register</span>
+                  <span className="relative">Read the menu</span>
                 </Link>
                 <Link
                   href="/locations"
@@ -119,7 +111,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* The seal: today's city struck into a brass plate. */}
+          {/* The seal: the opening struck into a brass plate. */}
           <div className="lg:col-span-4 xl:col-span-5 lg:pb-6">
             <div
               className="brass-plate relative ml-auto w-full max-w-[19rem] px-9 py-9 text-center lg:max-w-[17.5rem]"
@@ -147,18 +139,18 @@ export function Hero() {
                     <path d="M7 0.5 13.5 7 7 13.5 0.5 7Z" fill="currentColor" />
                   </svg>
                   <p className="data text-[0.625rem] uppercase tracking-[0.22em] text-ink-800">
-                    {today.day}
+                    {preOpening ? "Opening" : "Now open"}
                   </p>
                 </div>
 
                 <p
-                  className={`${today.script} struck mt-7 font-display text-[2.35rem] leading-tight text-ink-900`}
-                  lang={today.script}
+                  className="kn struck mt-7 font-display text-[2.35rem] leading-tight text-ink-900"
+                  lang="kn"
                 >
-                  {today.cityNative}
+                  {OPENING.outletNative}
                 </p>
                 <p className="font-display text-xl tracking-[-0.02em] text-ink-800">
-                  {today.city}
+                  {OPENING.outlet}, {OPENING.city}
                 </p>
 
                 <span
@@ -167,11 +159,13 @@ export function Hero() {
                 />
 
                 <p className="text-[0.9375rem] leading-relaxed text-ink-800">
-                  {today.anchor}
+                  {OPENING.dateLabel}
                 </p>
-                <p className="data mt-5 text-[0.625rem] tracking-[0.14em] text-ink-800">
-                  {date}
-                </p>
+                {preOpening && days > 0 ? (
+                  <p className="data mt-5 text-[0.625rem] tracking-[0.14em] text-ink-800">
+                    {days} {days === 1 ? "day" : "days"} to go
+                  </p>
+                ) : null}
               </div>
             </div>
           </div>

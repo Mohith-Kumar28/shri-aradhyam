@@ -1,6 +1,6 @@
 ---
 name: Shri Aradhyam
-description: A South Indian daily almanac rendered as a website: bone paper, chocolate ink, granite plinths, one brass metal.
+description: A South Indian almanac rendered as a website: bone paper, chocolate ink, granite plinths, one brass metal, and two marks.
 colors:
   bone-50: "#fdfaf4"
   bone-100: "#faf5ec"
@@ -27,6 +27,10 @@ colors:
   kumkum-700: "#7d1f1b"
   kumkum-600: "#9e2b25"
   kumkum-500: "#b8443c"
+  palm-700: "#1b3f2c"
+  palm-600: "#24503a"
+  palm-500: "#2f6247"
+  palm-400: "#5b9d78"
   rule: "#d8c9ae"
   rule-strong: "#b9a482"
 typography:
@@ -215,7 +219,7 @@ The signature gesture is bilingual: a word arrives in its own Indic script and r
 - Bone almanac paper with a laid tooth under every flat fill, so no ground reads as screen
 - Brass with a brushed grain, sitting at real signage tones rather than as saturated yellow paint
 - Effectively square corners (0.125rem) and hairline ruling instead of boxes
-- One metal (brass), one festival mark (kumkum red), no second accent
+- One metal (brass) and two marks (kumkum red, palm green), no third accent
 - Three type registers only: Eczar display, Alegreya prose, Archivo label and data
 - Every ornament and every interface mark authored as SVG in one 1.25 stroke language
 - Warm ink-tinted shadows with offset and soft blur; never neutral black, never a CSS bevel
@@ -235,6 +239,10 @@ A four-role warm palette (paper, ink, stone, metal) with a single red reserved f
 ### Secondary
 - **Kumkum Red** (`kumkum-600`): the festival mark. Today's diamond in the register, the "Today" chip, the required-field bullet, field-error text and hairline. It marks; it is never a section ground.
 - **Deep Kumkum** (`kumkum-700`): the wipe that fills a primary button on hover, and the text of a provisional notice.
+
+**Temple Palm** (`palm-700`, `palm-600`, `palm-500`): the brand's own green, and the second mark. It is taken from the storefront's pure vegetarian badge and from the deck, which sets the Bengaluru style chip in green against a maroon Chennai style chip. Its scope is stated and narrow: the pure vegetarian mark, the Karnataka and Bengaluru regional key, and an opening or "now open" status. It never becomes a section ground and never carries prose.
+
+**Lamp Palm** (`palm-400`): the palm step for an ink ground. It is noticeably lighter than it looks like it should be, because `#4a8567` lands at 4.1:1 on `ink-800` and fails the floor; `#5b9d78` clears it at 5.5:1.
 
 ### Neutral
 - **Almanac Bone** (`bone-200`): the default page ground and body background.
@@ -259,7 +267,11 @@ A separate token layer, declared in `:root` under the comment `Material stops`. 
 **The No Literal Colour Rule.** No CSS rule in `globals.css` contains a literal hex or `rgba()`. Colours live in `@theme` (palette) or in `:root` under Material stops (materials); rules reference tokens only. The two `data:` URI textures are the sole exception, since an SVG filter cannot read a custom property. Audit test: grep the stylesheet's rules for `#` or `rgba(` and expect nothing.
 
 ### Named Rules
-**The Single Metal Rule.** Brass is the only metal in this world. No silver, no copper, no second accent hue. If something needs to feel valuable, it becomes brass or it becomes ruled, it does not become a new colour.
+**The Single Metal Rule.** Brass is the only metal in this world. No silver, no copper. If something needs to feel valuable, it becomes brass or it becomes ruled, it does not become a new colour.
+
+**The Two Marks Rule.** *Amended from an earlier "no second accent" rule, deliberately and on evidence.* There are exactly two marks: kumkum red and palm green. Both were already in the brand before this site existed, and the deck uses green as consistently as it uses maroon. Kumkum marks the immediate and the wrong: today, a required field, an error, an unconfirmed value. Palm marks the living and the regional: the pure vegetarian badge, Karnataka, an opening date. Neither is ever a ground larger than a chip, and there is no third.
+
+**The Regional Key Rule.** A dish's provenance is coloured by its state and nothing else is: Karnataka to palm, Tamil Nadu to kumkum, Andhra Pradesh to brass, Kerala to granite. It is applied only to the small provenance line under a dish name, which is what lets four states read at a glance without a legend and without a fifth hue. The map lives in `STATE_INK` and `STATE_INK_ON_DARK` in `src/lib/site-data.ts`, so a card never hand picks a colour.
 
 **The Two Brasses Rule.** Brass exists twice: as a flat token (`brass-300` to `brass-700`) for rules, marks and type, and as a plate material (the raking gradient plus brushed grain) for the seal. Never fill a surface with the flat token and call it metal, and never take type colour off the plate tones.
 
@@ -267,7 +279,9 @@ A separate token layer, declared in `:root` under the comment `Material stops`. 
 
 **The 4.5:1 Worst-Ground Rule.** Every text-on-ground pair is chosen to clear 4.5:1 against the worst bone ground it can land on (`bone-300`), not against the lightest. Audit test: pick the darkest bone a component can sit on and re-check the muted tone.
 
-**The Kumkum Marks Rule.** Kumkum red marks the day, the required field, and the error. It never becomes a surface fill larger than a chip, and it never competes with brass for ornament.
+**The Kumkum Marks Rule.** Kumkum red marks the required field, the error, the unconfirmed value and the current campaign. It never becomes a surface fill larger than a chip, and it never competes with brass for ornament. The same rule governs palm without change.
+
+**The Brass-700 Floor Rule applies to palm too.** Palm on text below 0.875rem is `palm-700` on bone and `palm-400` on ink. `palm-500` and `palm-600` are for marks and larger type.
 
 **The Locked Light Rule.** One theme. There is no `.dark` block and no toggle by design. Contrast passages are built as `ink-800` grounds inside the light world.
 
@@ -292,7 +306,8 @@ A separate token layer, declared in `:root` under the comment `Material stops`. 
 - **Body** (400, 1.0625rem, 1.7): all prose, held to a measure of 46 to 62ch.
 - **Body Small** (400, 0.9375rem, 1.625): register row glosses, captions, secondary notes.
 - **Label** (Archivo 600, 0.19em, uppercase): a two-step register, both steps live. 0.6875rem is the class default, used where a label stands alone; 0.625rem is the working step used by nav, buttons, column headings, ruled captions and margin glosses. There is no third step, nothing in this system sets uppercase 0.19em type below 0.625rem.
-- **Data** (Archivo, tabular figures, 0.14 to 0.22em, uppercase, 0.625rem): days, dates, telephone numbers, anything that should align in a column.
+- **Data** (Archivo, tabular figures, 0.14 to 0.22em, uppercase, 0.625rem): dates, telephone numbers, counts, anything that should align in a column.
+- **Figure** (Archivo, tabular figures, 0.06em, 0.9375rem): a menu price. The data register at its 0.625rem step loses to a 1.35rem dish name, and a price is primary information rather than register furniture, so the register is allowed this one larger step. 0.9375rem is already on the ramp (it is Body Small), so this widens where the data register may be set rather than adding a size.
 
 ### Named Rules
 **The Three Register Rule.** Display, prose, label. Every string on the site belongs to exactly one, and an Indic string belongs to its own serif of the same register. There is no fourth voice and no system-UI display face.
@@ -355,7 +370,9 @@ Effectively square-cornered: the radius token is `0.125rem` (2px), and the deriv
 
 The recurring geometry is the diamond: a 45°-rotated square as the day marker, the required-field bullet, the checkbox tick, the select caret, the rule-diamond divider, the head of the location pin, and, tiled at 30px (18px dense), the jaali lattice band that edges panels, forms and full-bleed sections. Borders are hairlines: 1px `bone-400` for structure, `rgba(201,162,39,0.55)` for a brass-tinted register heading rule, `rgba(31,17,9,0.25)` for a rule engraved into brass. Inputs are ruled blanks with a single bottom border, no box. The focus ring is a 2px `brass-600` outline at 3px offset with a 1px radius, applied globally.
 
-All drawing is authored SVG in a single stroke language, 1.25 stroke width (1.4 for interface rules), round caps and joins, `currentColor`, across both families: the ornament set (LotusRoundel, Corbel, EaveCourse, JaaliBand, Kolam, AssuranceIcon, RuleDiamond) and the interface marks (see Components). Tiled ornament is repeated at a fixed pixel size rather than stretched, because a stretched bud is a smear and this is carved stone. The header hangs its eave course as a real silhouette below the signage band.
+All drawing is authored SVG in a single stroke language, 1.25 stroke width (1.4 for interface rules), round caps and joins, `currentColor`, across both families: the ornament set (LotusRoundel, Corbel, EaveCourse, JaaliBand, HangingDiya, Thoranam, Gopuram, Kolam, AssuranceIcon, RuleDiamond) and the interface marks (see Components).
+
+Every ornament is a real object in the building, which is the test for admitting one. The hanging brass oil lamp hangs in the dining room; the thoranam of mango leaf and marigold is strung across the awning in every render; the gopuram is printed on the cups, the carry bags and the menu board. A banana leaf silhouette was drawn and then **removed**, because the thali photographs already carry the leaf and a second one would have been applied decoration. Tiled ornament is repeated at a fixed pixel size rather than stretched, because a stretched bud is a smear and this is carved stone. The header hangs its eave course as a real silhouette below the signage band.
 
 ## Components
 
@@ -393,8 +410,39 @@ One component, `Mark`, holds the whole set: `menu`, `close`, `pin`, `clock`, `ph
 ### Brass Seal Plate (signature)
 The day's announcement as sheet brass seated in the page: the plate gradient with its brushed grain, the seated shadow, and an engraved inner frame inset 7px in `ink-900/22`. It opens with a ruled top row, the diamond mark at one end, the day in the data register engraved at the other, closed by an `ink-900/25` hairline, so the day is register furniture beside the city rather than a label stacked above it. Below the rule: the city in its own Indic script at 2.35rem display, `.struck`; the Latin city in display at `text-xl`, flat; a centred 3rem hairline; the anchor dish in body-small; and the IST date line in the data register. Only the Indic display line is struck.
 
+### Price Row (the menu's spine)
+The leader ruled row off the printed board: the dish name in the Entry step, a run of dots, and the figure in the Figure step. The dots are a **dotted bottom border on a flexible span**, not a string of periods, so they never wrap, never reach a screen reader, and always meet the price exactly. The leader is `granite-400/55` on bone and `bone-500/60` on ink: a structural hairline tone such as `bone-400` disappears entirely at this weight and the row reads as one faint line instead of as dots.
+
+### Dish Card
+A `bone-100` panel with the paper tooth and the Panel shadow, a `4/3` photograph, then the Price Row, the Indic name where there is one, the provenance colophon in its regional ink, and an italic Body Small line. The provenance sits **below** the name, never above it, because the No Kicker Rule outranks the printed board's own habit of stacking the city over the dish.
+
+Signature items take a brass chip in the label register at the panel's top right corner. That is a second chip variant beside the kumkum one: brass because a signature is a permanent property of the dish, and kumkum stays reserved for the immediate and the wrong.
+
+**Every image is optional.** With no `image`, the card falls back to a jaali ground carrying a low contrast Gopuram at the same aspect, so the grid never breaks a row and a real food shoot is purely additive.
+
+### Menu Section Rail
+A sticky sub header under the signage band carrying the board's sections, marked by scroll spy rather than by the last click, and underlined with the brass `scaleX` growth used on the locations filter. Beneath it, on its own ruled row, the four state filter: `aria-pressed` buttons in each state's regional ink, which is the tagline made navigable. Filtering **dims** non matching items rather than removing them, so the page never reflows under the reader.
+
 ### Provisional Notice
 Owner data that has not landed yet is marked, never faked: a label-register line in kumkum-700 inside a 1px `kumkum-600/45` hairline box at `0.75rem 1rem`. The same material carries a failed form submission. Reuse it for any honest "not yet confirmed" statement.
+
+### Lotus Roundel (the emblem)
+A lotus **cradled in two open hands**, inside a filled roundel. The bloom is one upright petal with a pair leaning off it at 34 degrees, drawn as solid bone shapes rather than outlines so the mark holds at 24px in the header; the palms are two mirrored crescents cupped beneath it, separated from the bloom by a dark gap.
+
+The side petals are written out at their **rotated coordinates** rather than wrapped in a `transform` or a `<use>`. A `<use href>` needs an id, and a page can hold several emblems at once, so baked coordinates avoid both a duplicate id and a dependence on transform origin.
+
+An earlier drawing here had petals sitting on a plain horizontal rule and no hands at all, which reads as a lotus on a shelf rather than an offering being held up, and it is not the mark on the building. **The hands are the emblem.**
+
+### Hanging Diya (signature)
+The brass oil lamp on its chain, drawn as a full drop: chain, two links, three arms, the flared oil bowl, a drop finial, and one flame off the left lip. Hung from the top edge of a dark band the way it hangs from a beam, so the chain reads as structure rather than as a stalk.
+
+The flame carries `.lamp-glow`. **This is what finally uses the `lamp` keyframe**, which had been declared in `globals.css` since the first build with nothing attached to it. The existing `prefers-reduced-motion` block stops it with no new rule.
+
+### Thoranam
+The mango leaf and marigold garland from the awning, as two quadratic swags across a 120px tile with leaves hung along the curve and marigolds at the attachment points. Tiled at a fixed background size for the same reason as the eave course: a stretched swag turns each leaf into a smear.
+
+### Gopuram
+The temple tower the brand already prints on its packaging, as six receding tiers under a kalasha finial with a pilaster course per tier. Two uses only, both at very low contrast: a watermark behind a section heading at `ink-700/[0.06]`, and the placeholder that holds a dish card's image slot when there is no photograph yet.
 
 ### Script Morph (signature)
 One `inline-grid` slot holding two readings of the same word: the Indic script and the Latin. In `settle` mode the word arrives in its own script and, once 40% visible, resolves to Latin after a per-instance delay (900 to 2300ms, staggered so the wordmark settles before the city); hovering or focusing the holder brings the script back. In `hover` mode the script rests and the Latin appears on demand. Each transition is 700ms on the shared ease, cross-fading with a 5px blur and a 0.16em vertical drift. Both readings stay in the DOM with correct `lang` attributes, and the holder is focusable with the brass focus ring drawn around the slot.
@@ -405,17 +453,35 @@ Two bands. A masthead band (ink-800, bone-300 label type, 3rem tall) states the 
 ### Motion System
 One shared ease (`--ease-almanac`, `cubic-bezier(0.16, 1, 0.3, 1)`) and seven named keyframes: `rise` (900ms, the default reveal: 26px up, blur 6px → 0), `wipe-up` (1100ms, clip-path reveal for large leaves), `rule-draw` (1200ms, `scaleX` from the left for register rows and hairlines), `seal-press` (1200ms, the brass plate landing from 1.5× and -14°), `kolam-draw` (2600ms stroke-dashoffset), `lamp` (5.5s breathing glow) and `rail` (46s linear marquee, paused on hover or focus-within).
 
-Reveals use a three-attribute protocol: authored content carries `data-reveal`, the provider adds `data-armed="true"` (hiding it) only once JS is running, then `data-shown="true"` to play. Content is therefore visible without JS, and a failsafe sweep shows anything left armed. Staggers are per-element `--reveal-delay` (70ms steps in registers). A full `prefers-reduced-motion` block flattens every reveal, stops the rail, lamp and kolam, cuts morph transitions to 1ms, and locks a settling morph to its Latin reading.
+Reveals use a three-attribute protocol: authored content carries `data-reveal`, the provider adds `data-armed="true"` (hiding it) only once JS is running, then `data-shown="true"` to play. Content is therefore visible without JS, and a failsafe sweep shows anything left armed. Staggers are per-element `--reveal-delay` (70ms steps in registers).
+
+**The Only Shown Ends It Rule.** The provider's scan selects `[data-reveal]:not([data-shown])` and deliberately does **not** exclude already armed elements. The effect can run more than once against the same DOM: React invokes it twice in development, and a route change re-runs it. A scan that skipped armed nodes would find nothing to observe on the second run and would leave every below the fold element stranded at opacity 0 behind a disconnected observer. Re-observing an already observed node is a no-op, so scanning wide is safe, and only `data-shown` is allowed to end the cycle. This was a real regression, caught by scrolling each page to the bottom and counting what was still armed; it is the single easiest way to break this system.
+
+**The Late Subtree Rule.** The scan is also driven by a `MutationObserver` on `document.body`, debounced through `requestAnimationFrame`. Client components mount their subtrees after the provider's effect has already run, so anything `/menu` renders would otherwise be armed by the first pass and never observed. Attribute writes do not trigger it (the observer watches `childList` only), so `show()` cannot feed itself.
+
+**The Sweep On Scroll Rule.** The failsafe sweep runs on scroll as well as on resize, load and a 1200ms settle, throttled through `requestAnimationFrame`. This is what covers content the observer cannot reach: a card parked off screen *horizontally* inside a snap rail is vertically in view but never intersects the viewport, so without a scroll driven sweep it sits at opacity 0 until the reader happens to drag the rail. Showing it from the sweep still plays the arrival, because the stagger lives in each element's `--reveal-delay` rather than in when it was shown.
+
+**Audit test.** Scroll a page to the bottom, then evaluate `document.querySelectorAll('[data-reveal][data-armed="true"]').length`. **It must be 0**, on every page and at every width. It is 0 across all six routes at 1440px and 390px as of this document. A full `prefers-reduced-motion` block flattens every reveal, stops the rail, lamp and kolam, cuts morph transitions to 1ms, and locks a settling morph to its Latin reading.
 
 **The Arrival-Only Rule.** Motion adds the arrival; it never gates the content. If a reveal fails, the page is still complete and readable.
 
 ## Carried, and outside the system
 
-`src/components/ui/` holds ten shadcn CLI generated primitives (accordion, badge, button, input, label, select, separator, sheet, tabs, textarea). **Nothing outside that directory imports any of them and no route renders one.** The world's own primitives were authored instead: ruled form fields on bone, the diamond-marker FAQ register, the `Mark` icon set, the filter tabs on a brass baseline.
+Nothing. This section previously recorded ten shadcn CLI primitives in
+`src/components/ui/` that no route imported, and which contradicted the system in
+three ways (rounded radii above the token, a type step on no ramp, and the last
+`lucide-react` imports in the repo).
 
-They are recorded here rather than canonized, because they contradict the system in three ways: rounded radii above `0.125rem`, a `0.8rem` type step that is on no ramp here, and the last three `lucide-react` imports in the repo (`sheet`, `accordion`, `select`). None of it ships in a bundle, since nothing imports it.
+**They have been deleted,** along with `src/lib/utils.ts` and the
+`lucide-react`, `@base-ui/react`, `class-variance-authority`, `clsx` and
+`tailwind-merge` dependencies. The world's own primitives were already authored in
+their place: ruled form fields on bone, the diamond marker FAQ register, the
+`Mark` icon set, the filter buttons on a brass baseline, and the hand built
+mobile sheet.
 
-If a shadcn primitive is ever adopted, it is restyled into this world first: square corners, hairline borders, the label register, and no borrowed chevrons. `components.json` is configured, so any primitive can be re-added on demand and the directory can equally be deleted without loss.
+`components.json` is kept, so a primitive can be re-added on demand. If one ever
+is, it gets restyled into this world first: square corners, hairline borders, the
+label register, and no borrowed chevrons.
 
 ## Do's and Don'ts
 
@@ -423,7 +489,10 @@ If a shadcn primitive is ever adopted, it is restyled into this world first: squ
 - **Do** put the paper tooth under any large bone fill and the brushed grain on any brass surface, so no flat fill reads as a screen colour.
 - **Do** take metal surfaces from the plate material (166° gradient plus grain plus seated shadow) and metal lines and type from the flat brass token. They are two different things.
 - **Do** rule lists as registers, hairline `bone-400` rows with a brass-tinted heading rule and a fixed figure gutter, instead of reaching for card grids.
-- **Do** use `brass-700` for any brass text below 0.875rem, and keep `brass-500`/`brass-600` on marks, rules, carets and interface strokes.
+- **Do** use `brass-700` for any brass text below 0.875rem, and keep `brass-500`/`brass-600` on marks, rules, carets and interface strokes. The same floor applies to palm: `palm-700` on bone, `palm-400` on ink.
+- **Do** colour a dish's provenance from `STATE_INK`, never by hand, so the regional key stays a key.
+- **Do** put a measure in the ch of the type it holds. A `max-w-[30ch]` on a body sized wrapper is measured in body ch and breaks a 3.6rem display line after three words; the constraint belongs on the heading itself.
+- **Do** leave a dish `image` optional and let the card fall back to the gopuram placeholder, so real photography is additive.
 - **Do** keep the label register to its two live steps, 0.6875rem and 0.625rem.
 - **Do** declare any new component class inside `@layer components`, so size and colour utilities on the element still win.
 - **Do** check every muted tone against the darkest bone ground it can land on (`bone-300`), not the lightest.
@@ -439,7 +508,7 @@ If a shadcn primitive is ever adopted, it is restyled into this world first: squ
 
 ### Don't:
 - **Don't** add a dark theme, a `.dark` block, or a theme toggle. Dark passages are `ink-800` grounds inside the one locked light theme.
-- **Don't** introduce a second metal or a second accent hue. Brass is the only metal; kumkum only marks.
+- **Don't** introduce a second metal or a third mark. Brass is the only metal; kumkum and palm only mark, and never as a ground larger than a chip.
 - **Don't** let brass drift to saturated yellow. The plate tones are deliberately darker and less saturated than gold paint.
 - **Don't** let kumkum red become a section ground, it stays on diamonds, chips, bullets, errors and the button hover wipe.
 - **Don't** round corners past the `0.125rem` token. No pills, no circular buttons; the only circle is the lotus roundel.
@@ -452,3 +521,5 @@ If a shadcn primitive is ever adopted, it is restyled into this world first: squ
 - **Don't** import a third-party icon set, use an icon font or an emoji, or let a text glyph such as `→` stand in for an icon.
 - **Don't** let a synthesised weight ship: keep `font-synthesis: none` on display, label and data type.
 - **Don't** hide content behind a reveal. Authored markup is visible; the arming attribute is added by JS and swept clear on failure.
+- **Don't** narrow the reveal scan to exclude already armed elements. Only `data-shown` may end the cycle; see The Only Shown Ends It Rule.
+- **Don't** stack a label, a city or an eyebrow above a heading, even when the printed menu board does exactly that. Provenance goes below the dish name.

@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { OUTLETS, type Outlet } from "@/lib/site-data";
+import Link from "next/link";
+import { OUTLETS, OPENING, type Outlet } from "@/lib/site-data";
 import { ScriptMorph } from "@/components/site/script-morph";
 import { Mark } from "@/components/site/ornament";
 
@@ -24,15 +25,21 @@ export function LocationFinder() {
     [state],
   );
 
-  const open = shown.filter((o) => o.status === "open");
-  const opening = shown.filter((o) => o.status === "opening");
+  /* A row earns the full treatment by being a real outlet we can name and
+     point at, whether it is trading or has a date. Anything still unnamed
+     falls back to the compact list below. */
+  const listed = shown.filter((o) => o.status === "open" || o.flagship);
+  const opening = shown.filter((o) => !listed.includes(o));
+
+  /* A state filter over one outlet is a control that cannot do anything. It
+     comes back on its own once there are enough outlets to sort. */
+  const showFilter = OUTLETS.length > 3 && states.length > 2;
 
   return (
     <div>
-      {/* Filter */}
+      {showFilter ? (
       <div
-        className="flex flex-wrap items-end gap-x-8 gap-y-3 border-b pb-4"
-        style={{ borderColor: "rgba(201,162,39,0.5)" }}
+        className="rule-brass flex flex-wrap items-end gap-x-8 gap-y-3 pb-4"
         role="group"
         aria-label="Filter outlets by state"
       >
@@ -59,21 +66,22 @@ export function LocationFinder() {
           );
         })}
         <p className="data w-full text-[0.6875rem] text-granite-400 sm:ml-auto sm:w-auto">
-          {open.length} open
+          {listed.length} listed
           {opening.length > 0 ? `, ${opening.length} on the way` : ""}
         </p>
       </div>
+      ) : null}
 
-      {open.length === 0 && opening.length === 0 && (
+      {listed.length === 0 && opening.length === 0 && (
         <p className="py-16 text-center text-[1.0625rem] text-granite-500">
           No outlet in this state yet. The nearest kitchen is listed under
           Karnataka.
         </p>
       )}
 
-      {/* Open outlets */}
+      {/* The outlets we can name */}
       <ul>
-        {open.map((outlet, i) => (
+        {listed.map((outlet, i) => (
           <OutletRow key={outlet.id} outlet={outlet} index={i} />
         ))}
       </ul>
@@ -82,7 +90,7 @@ export function LocationFinder() {
       {opening.length > 0 && (
         <div className="mt-16">
           <p className="label rule-bottom rule-brass pb-3 text-[0.625rem] text-granite-400">
-            Sites confirmed and under discussion
+            Also on the way
           </p>
           <ul className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3">
             {opening.map((outlet) => (
@@ -141,6 +149,13 @@ function OutletRow({ outlet, index }: { outlet: Outlet; index: number }) {
         {outlet.seats && (
           <p className="mt-3 text-[0.9375rem] text-granite-500">{outlet.seats}</p>
         )}
+        <Link
+          href={`/locations/${outlet.slug}`}
+          className="label link-brass mt-5 inline-flex items-center gap-2.5 text-[0.625rem] text-ink-700"
+        >
+          This outlet
+          <Mark name="arrowRight" size={13} className="text-brass-600" />
+        </Link>
       </div>
 
       {/* Address */}
@@ -169,11 +184,28 @@ function OutletRow({ outlet, index }: { outlet: Outlet; index: number }) {
 
       {/* Hours and phone */}
       <div className="lg:col-span-4">
-        <p className="label flex items-center gap-2 text-[0.625rem] text-granite-400">
-          <Mark name="clock" size={13} className="text-brass-600" />
-          Hours
-        </p>
-        <p className="data mt-3 text-[1.0625rem] text-ink-700">{outlet.hours}</p>
+        {outlet.status === "opening" ? (
+          <>
+            <p className="label flex items-center gap-2 text-[0.625rem] text-granite-400">
+              <Mark name="calendar" size={13} className="text-brass-600" />
+              Opening
+            </p>
+            <p className="mt-3 font-display text-[1.35rem] font-semibold leading-snug tracking-[-0.02em] text-palm-700">
+              {OPENING.dateLabel}
+            </p>
+            <p className="label mt-4 text-[0.625rem] text-kumkum-700">
+              Service hours to be confirmed
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="label flex items-center gap-2 text-[0.625rem] text-granite-400">
+              <Mark name="clock" size={13} className="text-brass-600" />
+              Hours
+            </p>
+            <p className="data mt-3 text-[1.0625rem] text-ink-700">{outlet.hours}</p>
+          </>
+        )}
 
         {outlet.phone && (
           <>

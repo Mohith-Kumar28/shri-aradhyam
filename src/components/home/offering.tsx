@@ -72,14 +72,15 @@ export function Offering() {
 
               <div className="rule-top rule-bottom py-7">
                 <h3 className="font-display text-[1.35rem] leading-snug tracking-[-0.02em] text-ink-700">
-                  So the kitchen refuses to settle in one place.
+                  And every dish still answers to a place.
                 </h3>
                 <p className="mt-3 text-[1.0625rem] leading-[1.78] text-granite-500">
-                  Five states cook the same grain and the same lentil into
-                  entirely different food, and a menu that serves all of it every
-                  day serves none of it properly. Each morning the kitchen
-                  belongs to one city, cooks that city&rsquo;s repertoire the way
-                  that city cooks it, and lets it go by night.
+                  Four states cook the same grain and the same lentil into
+                  entirely different food. So a bowl is not simply rice: it is
+                  Mysore&rsquo;s chithrana, or Thanjavur&rsquo;s ghee pongal, or
+                  the Godhavari delta&rsquo;s gongura. The town stays on the
+                  menu beside the dish, because it is the reason the dish tastes
+                  the way it does.
                 </p>
               </div>
             </div>

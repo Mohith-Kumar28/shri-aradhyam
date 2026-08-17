@@ -1,15 +1,15 @@
-import { todayCity } from "@/lib/today";
+import { daysUntilOpening, isPreOpening } from "@/lib/today";
 import { HeaderShell } from "./header-shell";
 
+/**
+ * The date arithmetic stays on the server so the masthead cannot disagree with
+ * the hero, and so a visitor's own clock never decides what the kitchen says.
+ */
 export function SiteHeader() {
-  const today = todayCity();
-
   return (
     <HeaderShell
-      todayCity={today.city}
-      todayNative={today.cityNative}
-      todayScript={today.script}
-      todayDay={today.day}
+      preOpening={isPreOpening()}
+      daysUntilOpening={daysUntilOpening()}
     />
   );
 }

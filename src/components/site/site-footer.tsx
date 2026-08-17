@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND, CONTACT, NAV, STATES } from "@/lib/site-data";
+import { BRAND, CONTACT, NAV, STATES, OPENING } from "@/lib/site-data";
 import { LotusRoundel, JaaliBand, Corbel } from "./ornament";
 
 /**
@@ -66,7 +66,7 @@ export function SiteFooter() {
 
             <div>
               <p className="label rule-bottom border-bone-500/30 pb-3 text-[0.625rem] text-bone-500">
-                Five states
+                Four states
               </p>
               <ul className="mt-5 space-y-3.5">
                 {STATES.map((state) => (
@@ -85,11 +85,11 @@ export function SiteFooter() {
         {/* Contact, ruled like a register footer */}
         <div className="rule-top mt-20 grid gap-8 border-bone-500/25 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="label text-[0.625rem] text-bone-500">Kitchen hours</p>
+            <p className="label text-[0.625rem] text-bone-500">Opening</p>
             <p className="mt-2.5 text-[0.9375rem] text-bone-200">
-              All seven days
+              {OPENING.outlet}, {OPENING.city}
             </p>
-            <p className="mt-1 text-sm text-bone-500">Times to be confirmed</p>
+            <p className="mt-1 text-sm text-bone-500">{OPENING.dateLabel}</p>
           </div>
           <div>
             <p className="label text-[0.625rem] text-bone-500">Enquiries</p>

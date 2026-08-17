@@ -2,20 +2,16 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { NAV, BRAND, type ScriptKey } from "@/lib/site-data";
+import { NAV, BRAND, OPENING } from "@/lib/site-data";
 import { LotusRoundel, EaveCourse, Mark } from "./ornament";
 import { ScriptMorph } from "./script-morph";
 
 export function HeaderShell({
-  todayCity,
-  todayNative,
-  todayScript,
-  todayDay,
+  preOpening,
+  daysUntilOpening,
 }: {
-  todayCity: string;
-  todayNative: string;
-  todayScript: ScriptKey;
-  todayDay: string;
+  preOpening: boolean;
+  daysUntilOpening: number;
 }) {
   const [compact, setCompact] = useState(false);
   const [open, setOpen] = useState(false);
@@ -39,7 +35,7 @@ export function HeaderShell({
       data-compact={compact ? "true" : "false"}
       className="sticky top-0 z-50"
     >
-      {/* Masthead line: what is cooking today, the way an almanac states its date. */}
+      {/* Masthead line: the announcement, stated the way an almanac states a date. */}
       <div
         className="overflow-hidden bg-ink-800 text-bone-300 transition-[max-height,opacity] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{
@@ -50,18 +46,38 @@ export function HeaderShell({
         <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-4 px-5 py-2.5 sm:px-8">
           <p className="label flex items-center gap-2.5 text-[0.625rem] text-bone-400">
             <span className="inline-block h-1.5 w-1.5 rotate-45 bg-brass-500" />
-            <span className="text-bone-300">{todayDay}</span>
-            <span className="hidden text-bone-500 sm:inline">the kitchen cooks</span>
-            <span className="text-brass-400">
-              <span className={todayScript} lang={todayScript}>
-                {todayNative}
-              </span>
-              <span className="mx-1.5 text-bone-500">/</span>
-              {todayCity}
-            </span>
+            {preOpening ? (
+              <>
+                <span className="text-bone-300">Opening</span>
+                <span className="text-brass-400">
+                  <span className="kn" lang="kn">
+                    {OPENING.outletNative}
+                  </span>
+                  <span className="mx-1.5 text-bone-500">/</span>
+                  {OPENING.outlet}, {OPENING.city}
+                </span>
+                <span className="hidden text-bone-500 sm:inline">
+                  {OPENING.dateLabel}
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="text-bone-300">Now open</span>
+                <span className="text-brass-400">
+                  {OPENING.outlet}, {OPENING.city}
+                </span>
+              </>
+            )}
           </p>
           <p className="label hidden text-[0.625rem] text-bone-500 md:block">
-            Open all seven days &nbsp;&middot;&nbsp; Pure vegetarian
+            {preOpening && daysUntilOpening > 0 ? (
+              <>
+                <span className="data text-bone-400">{daysUntilOpening}</span>
+                {daysUntilOpening === 1 ? " day to go" : " days to go"}
+                &nbsp;&middot;&nbsp;
+              </>
+            ) : null}
+            Pure vegetarian
           </p>
         </div>
       </div>
@@ -85,7 +101,7 @@ export function HeaderShell({
                 />
               </span>
               <span className="label mt-1.5 hidden text-[0.625rem] text-granite-500 sm:block">
-                Five states &middot; One roof
+                Four states &middot; One roof
               </span>
             </span>
           </Link>
@@ -159,7 +175,8 @@ export function HeaderShell({
             </div>
 
             <p className="label mt-10 text-[0.625rem] text-brass-700">
-              {todayDay} &middot; {todayCity}
+              {preOpening ? "Opening" : "Now open"} &middot; {OPENING.outlet},{" "}
+              {OPENING.city}
             </p>
 
             <nav className="mt-6 flex flex-col" aria-label="Mobile">

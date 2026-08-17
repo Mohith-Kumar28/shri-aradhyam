@@ -9,6 +9,9 @@ import {
   FRANCHISE_FAQ,
   CONTACT,
   TBD,
+  TEAM,
+  ROADMAP,
+  OPENING,
 } from "@/lib/site-data";
 import { EnquiryForm } from "@/components/franchise/enquiry-form";
 import { FaqRegister } from "@/components/franchise/faq-register";
@@ -20,8 +23,10 @@ import {
   Mark,
 } from "@/components/site/ornament";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
-  title: "Unit Franchise | Shri Aradhyam",
+  title: "Unit Franchise",
   description:
     "Open a Shri Aradhyam unit franchise: the format, what comes with the unit, what we look for in a partner, the process from enquiry to opening, and the enquiry form.",
 };
@@ -53,10 +58,10 @@ export default function FranchisePage() {
                 A unit franchise, one outlet at a time.
               </h1>
               <p className="mt-7 max-w-[52ch] text-[1.0625rem] leading-relaxed text-bone-400">
-                Shri Aradhyam is a pure vegetarian South Indian format built on a
-                rotation that no competitor can copy without rebuilding their
-                kitchen. We are opening franchise owned and franchise operated
-                units to partners who will run them personally.
+                Shri Aradhyam is a pure vegetarian South Indian format that puts
+                four states on one board and runs on written recipe cards rather
+                than on a head chef. We are opening franchise owned and franchise
+                operated units to partners who will run them personally.
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7">
                 <Link
@@ -178,15 +183,17 @@ export default function FranchisePage() {
             <div className="space-y-7 text-[1.0625rem] leading-[1.78] text-bone-400 lg:col-span-6 lg:col-start-7">
               <p>
                 Most South Indian formats compete on the same twelve dishes, so
-                they end up competing on price and on speed. A rotation changes
-                the question. A guest who came on Tuesday has a reason to come
-                back on Friday, because Friday is a different kitchen.
+                they end up competing on price and on speed. Four states on one
+                board changes the question. A guest who came for a Bengaluru
+                benne dosa has a reason to come back for a Thanjavur meals, and
+                neither is a compromise version of the other.
               </p>
               <p>
-                That is harder to run, which is the point. It needs a written
-                calendar, trained hands and a supply chain that can put Byadagi
-                chilli and gongura leaf in the same week. We have built all
-                three, and a franchisee inherits them rather than inventing them.
+                That is harder to run, which is the point. It needs written
+                recipe cards, trained hands and a supply chain that can put
+                Byadagi chilli and gongura leaf on the same delivery. We have
+                built all three, and a franchisee inherits them rather than
+                inventing them.
               </p>
               <p>
                 The kitchen is pure vegetarian without exception, which keeps the
@@ -266,8 +273,8 @@ export default function FranchisePage() {
               From enquiry to opening.
             </h2>
             <p className="max-w-[34ch] text-[1.0625rem] leading-relaxed text-granite-500">
-              Six steps. We are on site for the launch week and the first full
-              rotation cycle.
+              Six steps. We are on site for launch week and stay through the
+              first full month of service.
             </p>
           </div>
 
@@ -295,6 +302,95 @@ export default function FranchisePage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+
+      {/* Who you would be partnering with. Named, because the deck names them. */}
+      <section className="relative overflow-hidden bg-bone-100 py-24 sm:py-28">
+        <div className="paper absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
+          <div className="grid gap-8 lg:grid-cols-12">
+            <h2 className="max-w-[22ch] font-display text-[clamp(2rem,4.2vw,3.2rem)] font-semibold leading-[1.06] tracking-[-0.03em] lg:col-span-6">
+              Founder led, and built by operators.
+            </h2>
+            <p className="text-[1.0625rem] leading-relaxed text-granite-500 lg:col-span-4 lg:col-start-9 lg:pt-3">
+              You would be partnering with people who run kitchens, not with a
+              licensing desk.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-x-10 lg:grid-cols-3">
+            {TEAM.map((person, i) => (
+              <article
+                key={person.name}
+                data-reveal="rule"
+                style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
+                className="rule-top py-8"
+              >
+                <h3 className="font-display text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-ink-800">
+                  {person.name}
+                </h3>
+                <p className="label mt-2.5 text-[0.625rem] text-brass-700">
+                  {person.role}
+                </p>
+                <p className="mt-5 text-[0.9375rem] leading-relaxed text-granite-500">
+                  {person.lines[person.lines.length - 1]}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The pipeline, as territory rather than as a growth claim. */}
+      <section className="relative overflow-hidden bg-ink-800 py-24 sm:py-28">
+        <div aria-hidden="true" className="jaali jaali-brass absolute inset-0 opacity-[0.13]" />
+        <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
+          <div className="grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <h2 className="max-w-[20ch] font-display text-[clamp(2rem,4.2vw,3.2rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-bone-100">
+                {ROADMAP.headline}
+              </h2>
+              <p className="kn mt-4 max-w-[26ch] text-[1.35rem] leading-snug text-brass-400" lang="kn">
+                {ROADMAP.headlineNative}
+              </p>
+            </div>
+            <p className="text-[1.0625rem] leading-relaxed text-bone-400 lg:col-span-5 lg:col-start-8 lg:pt-3">
+              Where we intend to open. These are catchments, not signed sites,
+              and an exclusive radius is written into your agreement. Only{" "}
+              {OPENING.outlet} carries a date.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-x-10 gap-y-10 lg:grid-cols-2">
+            <div>
+              <p className="label rule-brass pb-3 text-[0.625rem] text-brass-400">
+                Bengaluru first
+              </p>
+              <ul className="mt-2 flex flex-wrap gap-x-7 gap-y-3">
+                {ROADMAP.bengaluru.map((place) => (
+                  <li key={place} className="flex items-baseline gap-2.5">
+                    <span aria-hidden="true" className="h-1 w-1 rotate-45 bg-brass-500" />
+                    <span className="text-[1.0625rem] text-bone-300">{place}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="label rule-brass pb-3 text-[0.625rem] text-brass-400">
+                India next
+              </p>
+              <ul className="mt-2 flex flex-wrap gap-x-7 gap-y-3">
+                {ROADMAP.india.map((place) => (
+                  <li key={place} className="flex items-baseline gap-2.5">
+                    <span aria-hidden="true" className="h-1 w-1 rotate-45 bg-brass-500" />
+                    <span className="text-[1.0625rem] text-bone-300">{place}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
