@@ -570,9 +570,15 @@
 
   position: relative;
 
-  /* Roughly a screen and a half of travel. Long enough that the approach is a
-     walk rather than a jump cut, short enough that nobody feels held. */
-  height: 220vh;
+  /**
+   * Two screens of travel.
+   *
+   * Longer than the walk alone needs, because the name is read five times on
+   * the way through and each reading has to hold long enough to be read. At
+   * the old height each script got about fifteen vertical percent of scroll,
+   * which went past faster than anyone could take a script they do not read.
+   */
+  height: 300vh;
   background: var(--color-ink-900);
 
   /* The hall runs up behind the signage board rather than starting under it.
@@ -851,9 +857,9 @@ header[data-over="true"] .eave-line {
   grid-template-areas: "slot";
   vertical-align: baseline;
 
-  /* Held back until the name itself is legible, and finished well before the
-     end of the walk so English has the arrival to itself. */
-  --c: calc(clamp(0, calc((var(--p) - 0.24) / 0.5), 1) * var(--n));
+  /* Held back until the name itself is legible, and finished before the end of
+     the walk so English has the arrival to itself. */
+  --c: calc(clamp(0, calc((var(--p) - 0.2) / 0.6), 1) * var(--n));
 }
 
 .script-cycle > * {
@@ -864,12 +870,35 @@ header[data-over="true"] .eave-line {
      one lift away upward while the next rises into place. */
   --d: calc(var(--c) - var(--i));
 
-  /* The 2.2 gives each reading a plateau either side of its own index instead
-     of a single sharp instant, so a script is legible for a beat rather than
-     glimpsed exactly once in passing. */
-  opacity: clamp(0, calc((1 - abs(var(--d))) * 2.2), 1);
-  filter: blur(calc(min(1, abs(var(--d))) * 5px));
-  transform: translate3d(0, calc(var(--d) * -0.13em), 0);
+  /* Absolute distance. max(d, -d) rather than abs(), and the paired clamps
+     below rather than sign(), because those two functions are far younger than
+     the rest of this file needs to be and a dropped declaration here would
+     take the whole crossing with it. */
+  --a: max(var(--d), calc(-1 * var(--d)));
+
+  /**
+   * How far into its own crossing this reading is, 0 to 1.
+   *
+   * The dead zone up to 0.3 is the point: inside it a script is fully opaque,
+   * perfectly sharp and completely still, so it can actually be read. Only
+   * outside it does anything happen. Ramping straight from the centre, as this
+   * did at first, means a word is never quite sharp except for a single
+   * instant, and four scripts go by without one of them ever being legible.
+   */
+  --x: clamp(0, calc((var(--a) - 0.3) / 0.4), 1);
+
+  /* The same value carrying its sign, so a reading being left behind lifts
+     away upward and the one arriving rises from below. The two clamps are
+     mutually exclusive: whichever way `--d` points, the other is zero. */
+  --m: calc(
+    clamp(0, calc((var(--d) - 0.3) / 0.4), 1) - clamp(0, calc((-1 * var(--d) - 0.3) / 0.4), 1)
+  );
+
+  /* Neighbours cross at exactly half each, because their distances always sum
+     to one. That is a dissolve rather than two words stacked at full strength. */
+  opacity: calc(1 - var(--x));
+  filter: blur(calc(var(--x) * 4px));
+  transform: translate3d(0, calc(var(--m) * -0.22em), 0);
 
   /* No transition on purpose. A duration on a property rewritten every frame
      does not smooth a scroll driven crossing, it lags behind and smears it.
@@ -912,7 +941,7 @@ header[data-over="true"] .eave-line {
     --t-line: calc((var(--p) - 0.44) / 0.2);
     --t-act: calc((var(--p) - 0.64) / 0.2);
     --t-mark: calc((var(--p) - 0.76) / 0.18);
-    height: 230vh;
+    height: 280vh;
   }
 
   .arch-content {
