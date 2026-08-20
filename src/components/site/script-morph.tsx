@@ -17,6 +17,9 @@ const LANG: Record<ScriptKey, string> = {
  * its own script and then resolves into Latin a beat later, which is the whole
  * argument of the brand in one gesture. Hovering brings the script back.
  * In "hover" mode the script stays and the Latin reading is on demand.
+ * In "cycle" mode the two readings trade places on a slow interval, so the
+ * signage says the name in both languages the way the building does. It holds
+ * each reading long enough to be read, and stops for reduced motion.
  *
  * Both readings stay in the DOM with correct lang attributes, so the meaning
  * never depends on the animation.
@@ -27,6 +30,7 @@ export function ScriptMorph({
   script,
   mode = "settle",
   delay = 1100,
+  interval = 10_000,
   className,
   nativeClassName,
   latinClassName,
@@ -34,14 +38,33 @@ export function ScriptMorph({
   native: string;
   latin: string;
   script: ScriptKey;
-  mode?: "settle" | "hover";
+  mode?: "settle" | "hover" | "cycle";
   delay?: number;
+  /** Cycle mode only: how long each reading is held, in milliseconds. */
+  interval?: number;
   className?: string;
   nativeClassName?: string;
   latinClassName?: string;
 }) {
   const holder = useRef<HTMLSpanElement>(null);
-  const [flipped, setFlipped] = useState(false);
+
+  /* Cycle mode opens on the Latin reading: it is the one every visitor can
+     read, and the script arriving after it is the gesture worth having. */
+  const [flipped, setFlipped] = useState(mode === "cycle");
+
+  useEffect(() => {
+    if (mode !== "cycle") return;
+
+    // Nothing here is load bearing, so an opt out simply leaves the Latin
+    // reading standing.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = window.setInterval(
+      () => setFlipped((was) => !was),
+      Math.max(2000, interval),
+    );
+    return () => window.clearInterval(timer);
+  }, [mode, interval]);
 
   useEffect(() => {
     if (mode !== "settle") return;
@@ -76,7 +99,7 @@ export function ScriptMorph({
     <span
       ref={holder}
       className={`morph-holder ${className ?? ""}`}
-      tabIndex={0}
+      tabIndex={mode === "hover" ? 0 : undefined}
     >
       <span
         className="morph"

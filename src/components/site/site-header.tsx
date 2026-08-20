@@ -8,6 +8,12 @@ import { EaveCourse, LotusRoundel, Mark } from "./ornament";
 import { ScriptMorph } from "./script-morph";
 
 /**
+ * How long each language holds on the board before the other takes over. One
+ * constant, shared with the colophon so the two never read differently.
+ */
+export const SWAP = 10_000;
+
+/**
  * The signage board.
  *
  * Two bands, as on the building: an ink masthead carrying the announcement, and
@@ -147,7 +153,7 @@ export function SiteHeader({
         >
           <Link href="/" className="group flex items-center gap-3.5">
             <LotusRoundel
-              className="shrink-0 text-ink-700 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[-8deg]"
+              className="shrink-0 text-ink-700 transition-opacity duration-500 group-hover:opacity-80"
               size={compact ? 34 : 40}
             />
             <span className="flex flex-col leading-none">
@@ -156,12 +162,19 @@ export function SiteHeader({
                   native={BRAND.nameKannada}
                   latin={BRAND.name}
                   script="kn"
-                  mode="settle"
-                  delay={1500}
+                  mode="cycle"
+                  interval={SWAP}
                 />
               </span>
               <span className="label mt-1.5 hidden text-[0.5625rem] text-granite-500 sm:block">
-                {BRAND.devotion}
+                <ScriptMorph
+                  native={BRAND.devotionKannada}
+                  latin={BRAND.devotion}
+                  script="kn"
+                  mode="cycle"
+                  interval={SWAP}
+                  nativeClassName="normal-case tracking-normal"
+                />
               </span>
             </span>
           </Link>

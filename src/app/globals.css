@@ -703,23 +703,25 @@ header[data-over="true"] .eave-line {
   }
 }
 
-/* Once a word has settled into Latin, hovering brings its own script back. */
-.morph-holder:hover .morph[data-flipped="true"] > .morph-native,
-.morph-holder:focus-within .morph[data-flipped="true"] > .morph-native {
+/* Once a *settling* word has landed in Latin, hovering brings its own script
+   back. Scoped to settle mode on purpose: a cycling word is already saying
+   both, and swapping it under the cursor as well reads as a fault. */
+.morph-holder:hover .morph[data-mode="settle"][data-flipped="true"] > .morph-native,
+.morph-holder:focus-within .morph[data-mode="settle"][data-flipped="true"] > .morph-native {
   opacity: 1;
   filter: blur(0);
   transform: none;
 }
 
-.morph-holder:hover .morph[data-flipped="true"] > .morph-latin,
-.morph-holder:focus-within .morph[data-flipped="true"] > .morph-latin {
+.morph-holder:hover .morph[data-mode="settle"][data-flipped="true"] > .morph-latin,
+.morph-holder:focus-within .morph[data-mode="settle"][data-flipped="true"] > .morph-latin {
   opacity: 0;
   filter: blur(5px);
   transform: translate3d(0, -0.16em, 0);
 }
 
 .morph-holder {
-  cursor: default;
+  cursor: inherit;
 }
 
 .morph-holder:focus-visible {

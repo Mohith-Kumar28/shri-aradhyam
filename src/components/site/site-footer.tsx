@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BRAND, CONTACT, LOCATIONS, NAV, OPENING } from "@/lib/site-data";
 import { Corbel, JaaliBand, LotusRoundel } from "./ornament";
+import { ScriptMorph } from "./script-morph";
+import { SWAP } from "./site-header";
 
 /**
  * The colophon. A printer's imprint rather than a sitemap dump: who cooks,
@@ -18,11 +20,14 @@ export function SiteFooter() {
             <div className="flex items-center gap-4">
               <LotusRoundel className="text-brass-500" size={44} />
               <div className="leading-tight">
-                <p className="kn font-display text-2xl text-bone-100" lang="kn">
-                  {BRAND.nameKannada}
-                </p>
-                <p className="font-display text-xl tracking-[-0.02em] text-bone-200">
-                  {BRAND.name}
+                <p className="font-display text-2xl tracking-[-0.02em] text-bone-100">
+                  <ScriptMorph
+                    native={BRAND.nameKannada}
+                    latin={BRAND.name}
+                    script="kn"
+                    mode="cycle"
+                    interval={SWAP}
+                  />
                 </p>
               </div>
             </div>
@@ -36,11 +41,13 @@ export function SiteFooter() {
             </p>
 
             <p className="mt-8 text-sm text-bone-500">
-              <span className="kn" lang="kn">
-                {BRAND.devotionKannada}
-              </span>
-              <span className="mx-2 text-granite-400">/</span>
-              {BRAND.devotion}
+              <ScriptMorph
+                native={BRAND.devotionKannada}
+                latin={BRAND.devotion}
+                script="kn"
+                mode="cycle"
+                interval={SWAP}
+              />
             </p>
           </div>
 
