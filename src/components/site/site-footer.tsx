@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { BRAND, CONTACT, NAV, STATES, OPENING } from "@/lib/site-data";
-import { LotusRoundel, JaaliBand, Corbel } from "./ornament";
+import { BRAND, CONTACT, LOCATIONS, NAV, OPENING } from "@/lib/site-data";
+import { Corbel, JaaliBand, LotusRoundel } from "./ornament";
 
 /**
- * The colophon. An almanac closes by saying who printed it and where, so the
- * footer is a printer's imprint rather than a sitemap dump.
+ * The colophon. A printer's imprint rather than a sitemap dump: who cooks,
+ * where, in which four states' scripts, and how to reach the house.
  */
 export function SiteFooter() {
   return (
@@ -12,7 +12,7 @@ export function SiteFooter() {
       <JaaliBand className="absolute inset-x-0 top-0 opacity-25" height={40} />
 
       <div className="relative mx-auto max-w-[88rem] px-5 pb-14 pt-24 sm:px-8">
-        <div className="grid gap-16 lg:grid-cols-[1.15fr_1fr_1fr]">
+        <div className="grid gap-16 lg:grid-cols-[1.3fr_1fr]">
           {/* Imprint */}
           <div>
             <div className="flex items-center gap-4">
@@ -45,7 +45,7 @@ export function SiteFooter() {
           </div>
 
           {/* Pages and states */}
-          <div className="grid gap-12 sm:grid-cols-2 lg:contents">
+          <div className="lg:justify-self-end">
             <nav aria-label="Footer">
               <p className="label rule-bottom border-bone-500/30 pb-3 text-[0.625rem] text-bone-500">
                 Pages
@@ -64,32 +64,28 @@ export function SiteFooter() {
               </ul>
             </nav>
 
-            <div>
-              <p className="label rule-bottom border-bone-500/30 pb-3 text-[0.625rem] text-bone-500">
-                Four states
-              </p>
-              <ul className="mt-5 space-y-3.5">
-                {STATES.map((state) => (
-                  <li key={state.name} className="text-[0.9375rem] text-bone-300">
-                    <span className={`${state.script} text-brass-400`} lang={state.script}>
-                      {state.native}
-                    </span>
-                    <span className="ml-2.5 text-bone-400">{state.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
 
-        {/* Contact, ruled like a register footer */}
+        {/* The register footer: opening, outlets, and the one mailbox. */}
         <div className="rule-top mt-20 grid gap-8 border-bone-500/25 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="label text-[0.625rem] text-bone-500">Opening</p>
             <p className="mt-2.5 text-[0.9375rem] text-bone-200">
+              <span className="kn" lang="kn">
+                {OPENING.outletNative}
+              </span>
+              <span className="mx-1.5 text-bone-500">/</span>
               {OPENING.outlet}, {OPENING.city}
             </p>
             <p className="mt-1 text-sm text-bone-500">{OPENING.dateLabel}</p>
+          </div>
+          <div>
+            <p className="label text-[0.625rem] text-bone-500">Next</p>
+            <p className="mt-2.5 text-[0.9375rem] text-bone-200">
+              {LOCATIONS[1].name}, {OPENING.city}
+            </p>
+            <p className="mt-1 text-sm text-bone-500">{LOCATIONS[1].status}</p>
           </div>
           <div>
             <p className="label text-[0.625rem] text-bone-500">Enquiries</p>
@@ -101,33 +97,19 @@ export function SiteFooter() {
             </a>
           </div>
           <div>
-            <p className="label text-[0.625rem] text-bone-500">Franchise</p>
-            <a
-              href={`mailto:${CONTACT.franchiseEmail}`}
-              className="link-brass mt-2.5 block text-[0.9375rem] text-bone-200"
-            >
-              {CONTACT.franchiseEmail}
-            </a>
-          </div>
-          <div>
-            <p className="label text-[0.625rem] text-bone-500">Office</p>
-            <address className="mt-2.5 text-sm not-italic leading-relaxed text-bone-400">
-              {CONTACT.office.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </address>
+            <p className="label text-[0.625rem] text-bone-500">On the board</p>
+            <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-bone-400">
+              {BRAND.signage.join(" · ")}
+            </p>
           </div>
         </div>
 
         <div className="rule-top mt-12 flex flex-col gap-4 border-bone-500/25 pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="label text-[0.625rem] text-bone-500">
-            &copy; {new Date().getFullYear()} {BRAND.name} &nbsp;&middot;&nbsp; One hundred percent pure vegetarian
+            &copy; {new Date().getFullYear()} {BRAND.name}
+            &nbsp;&middot;&nbsp; One hundred percent pure vegetarian
           </p>
-          <p className="label text-[0.625rem] text-bone-500">
-            Bengaluru, Karnataka
-          </p>
+          <p className="label text-[0.625rem] text-bone-500">{CONTACT.city}</p>
         </div>
       </div>
 

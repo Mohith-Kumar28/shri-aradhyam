@@ -1,118 +1,256 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { BRAND, STATES, MENU, OPENING } from "@/lib/site-data";
-import { MenuBrowser } from "@/components/menu/menu-browser";
-import { ThaliInvite } from "@/components/home/thali-invite";
-import { ScriptMorph } from "@/components/site/script-morph";
-import { JaaliBand, Mark, HangingDiya } from "@/components/site/ornament";
+import {
+  BEVERAGES,
+  BRAND,
+  DOSA,
+  MENU_FOOTER,
+  RICE_BOWLS,
+} from "@/lib/site-data";
+import {
+  Corbel,
+  EaveCourse,
+  JaaliBand,
+  Kolam,
+  LotusRoundel,
+  RuleDiamond,
+} from "@/components/site/ornament";
 
 export const metadata: Metadata = {
   title: "Menu",
   description:
-    "Dosa from Bengaluru and Chennai, rice bowls from four states, Udupi and Thanjavur meals, and filter coffee from Chikkamagaluru. Prices, photographs and each dish's own town.",
+    "Dosa from two cities, rice bowls from many regions, and traditional South Indian beverages. Served with devotion.",
 };
 
-export const revalidate = 3600;
+/** The plate that a group label is struck on. */
+const PLATE = {
+  palm: "bg-palm-700 text-bone-100",
+  kumkum: "bg-kumkum-700 text-bone-100",
+  brass: "bg-brass-600 text-ink-900",
+} as const;
 
+/**
+ * The board, as it hangs in the restaurant: one printed sheet on a stone
+ * ground, four columns, read all at once. No filters, no cards, no prices — a
+ * board does not ask you to click anything.
+ */
 export default function MenuPage() {
   return (
-    <>
-      {/* Page head: the dining floor, held well back behind the type. */}
-      <section className="relative isolate overflow-hidden bg-ink-800">
-        <Image
-          src="/brand/dining-floor.webp"
-          alt=""
-          aria-hidden="true"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[45%_58%] opacity-45"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(104deg,rgba(31,17,9,0.94)_0%,rgba(31,17,9,0.78)_46%,rgba(31,17,9,0.55)_100%)]"
-        />
-        <HangingDiya
-          height={104}
-          className="absolute right-[8%] top-0 hidden text-brass-400/80 lg:block"
-        />
-        <JaaliBand className="absolute inset-x-0 bottom-0 opacity-25" height={40} />
+    <section className="relative overflow-hidden bg-ink-800 py-14 sm:py-20">
+      <JaaliBand className="absolute inset-x-0 top-0 opacity-25" height={40} />
+      <div
+        aria-hidden="true"
+        className="jaali jaali-brass absolute inset-y-0 left-0 w-[12vw] opacity-[0.16]"
+      />
+      <div
+        aria-hidden="true"
+        className="jaali jaali-brass absolute inset-y-0 right-0 w-[12vw] opacity-[0.16]"
+      />
 
-        <div className="relative mx-auto max-w-[88rem] px-5 pb-24 pt-24 sm:px-8 sm:pb-28 sm:pt-32 lg:pb-32 lg:pt-40">
-          <h1 className="max-w-[20ch] font-display text-[clamp(2.5rem,6.4vw,4.75rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-bone-100">
-            <ScriptMorph
-              native="ಊಟ"
-              latin="The Menu"
-              script="kn"
-              mode="settle"
-              delay={1200}
-            />
-          </h1>
+      <div className="relative mx-auto max-w-[84rem] px-4 sm:px-8">
+        {/* The sheet, laid on the stone. */}
+        <div className="paper lift-leaf relative bg-bone-100">
+          <EaveCourse className="absolute inset-x-0 top-0" height={13} color="#3a2318" />
 
-          <p className="mt-7 max-w-[50ch] text-[1.0625rem] leading-relaxed text-bone-400">
-            {BRAND.tagline} Every dish below carries the town it is claimed
-            from, because the town is the reason it tastes the way it does.
-          </p>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-3 border border-brass-600/25"
+          />
 
-          {/* The four states on one ruled row, each in its own script. */}
-          <ul className="rule-top mt-12 flex flex-wrap gap-x-10 gap-y-4 border-bone-500/30 pt-7">
-            {STATES.map((state) => (
-              <li key={state.name} className="leading-tight">
-                <span
-                  className={`${state.script} block text-[1.35rem] text-brass-400`}
-                  lang={state.script}
-                >
-                  {state.native}
-                </span>
-                <span className="label mt-1.5 block text-[0.625rem] text-bone-500">
-                  {state.name}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+          {/* The drawings the board carries in its corners, and a kolam under
+              the middle of the sheet. */}
+          <Image
+            src="/art/gopuram.webp"
+            alt=""
+            aria-hidden="true"
+            width={308}
+            height={632}
+            className="drawn pointer-events-none absolute left-5 top-10 hidden w-[5.5rem] opacity-60 lg:block"
+          />
+          <Image
+            src="/art/tharavad.webp"
+            alt=""
+            aria-hidden="true"
+            width={820}
+            height={896}
+            className="drawn pointer-events-none absolute right-5 top-10 hidden w-[9rem] opacity-55 lg:block"
+          />
+          <Kolam
+            className="pointer-events-none absolute bottom-16 left-1/2 hidden w-[18rem] -translate-x-1/2 text-ink-700/[0.07] lg:block"
+            size={300}
+          />
 
-      {/* The thali led the home page for a while, which put the highest ticket
-          item in front of a reader who had not yet been told what the house is.
-          Here it opens the board, where a reader is already reading prices. */}
-      <ThaliInvite />
-
-      <MenuBrowser />
-
-      {/* Close: what the menu cannot tell you. */}
-      <section className="relative overflow-hidden bg-bone-300 py-20 sm:py-24">
-        <div className="paper absolute inset-0" aria-hidden="true" />
-        <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <h2 className="max-w-[20ch] font-display text-[clamp(1.8rem,3.6vw,2.7rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-ink-800">
-                The board is not the whole kitchen.
-              </h2>
-            </div>
-            <div className="lg:col-span-5 lg:col-start-8">
-              <p className="text-[1.0625rem] leading-relaxed text-granite-500">
-                A City Launch opens one city&rsquo;s repertoire at a time,
-                cooked the way that city cooks it and run for a season. It is
-                how Kerala reaches the counter, and how Madurai and the
-                Godhavari delta already have.
+          <div className="relative px-5 py-14 sm:px-10 sm:py-16">
+            {/* Masthead */}
+            <header className="relative text-center">
+              <LotusRoundel className="mx-auto text-ink-700" size={32} />
+              <p className="kn mt-4 font-display text-lg text-ink-700" lang="kn">
+                {BRAND.nameKannada}
               </p>
-              <p className="mt-6 text-[0.9375rem] leading-relaxed text-granite-500">
-                {MENU.length} sections, served at {OPENING.outlet},{" "}
-                {OPENING.city} from {OPENING.dateLabel.toLowerCase()}.
+              <h1 className="mt-1 font-display text-[2.25rem] font-semibold tracking-[-0.02em] text-ink-900 sm:text-[3rem]">
+                {BRAND.name}
+              </h1>
+              <p className="label mt-4 text-[0.5625rem] text-brass-700">
+                {BRAND.devotion}
               </p>
-              <Link
-                href="/locations"
-                className="label link-brass mt-8 inline-flex items-center gap-2.5 text-[0.625rem] text-ink-700"
-              >
-                Find the kitchen
-                <Mark name="arrowRight" size={14} className="text-brass-600" />
-              </Link>
+              <RuleDiamond className="mx-auto mt-6 w-[min(22rem,80%)]" />
+            </header>
+
+            {/* The sheet's four columns. */}
+            <div className="relative mt-12 grid gap-12 md:grid-cols-2 md:gap-x-10 lg:grid-cols-12 lg:gap-x-8">
+              {/* Dosa */}
+              <div className="lg:col-span-3">
+                <ColumnHead title={DOSA.title} note={DOSA.note} />
+                <div className="mt-8 space-y-8">
+                  {DOSA.groups.map((group) => (
+                    <div key={group.label}>
+                      <p
+                        className={`label inline-block px-3.5 py-2 text-[0.5625rem] ${PLATE[group.accent]}`}
+                      >
+                        {group.label}
+                      </p>
+                      <ul className="mt-4">
+                        {group.items.map((item) => (
+                          <li
+                            key={item}
+                            className="rule-bottom py-2.5 text-[1.0625rem] text-ink-700 last:border-b-0"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* The plates, standing in the middle of the sheet as they do on
+                  the board. Every dish they show is named in a column. */}
+              <div className="space-y-3 md:order-last lg:order-none lg:col-span-3 lg:border-l lg:border-bone-400/70 lg:pl-8">
+                {[
+                  {
+                    src: "/dishes/dosa-masala.webp",
+                    alt: "Masala dosa served with chutney and sambar on a banana leaf",
+                  },
+                  {
+                    src: "/dishes/dosa-pesarattu.webp",
+                    alt: "Pesarattu, the green gram crepe, with coconut chutney",
+                  },
+                ].map((plate) => (
+                  <div key={plate.src} className="relative">
+                    <Image
+                      src={plate.src}
+                      alt={plate.alt}
+                      width={900}
+                      height={900}
+                      sizes="(max-width: 1024px) 100vw, 25vw"
+                      className="aspect-square w-full object-cover"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 border border-brass-600/35"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Rice bowls */}
+              <div className="lg:col-span-3 lg:border-l lg:border-bone-400/70 lg:pl-8">
+                <ColumnHead title={RICE_BOWLS.title} note={RICE_BOWLS.note} />
+                <ul className="mt-8">
+                  {RICE_BOWLS.items.map((item) => (
+                    <li key={item.name} className="rule-bottom py-4 last:border-b-0">
+                      <p className="label text-[0.5625rem] text-brass-700">
+                        {item.place}
+                      </p>
+                      <p className="mt-1.5 text-[1.0625rem] text-ink-700">
+                        {item.name}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 border border-bone-400 bg-bone-200/70 px-5 py-5">
+                  <p
+                    className={`label inline-block px-3 py-1.5 text-[0.5625rem] ${PLATE.kumkum}`}
+                  >
+                    {RICE_BOWLS.combo.label}
+                  </p>
+                  <p className="mt-3 font-display text-xl text-ink-800">
+                    {RICE_BOWLS.combo.name}
+                  </p>
+                  <p className="mt-1 text-[0.9375rem] text-granite-500">
+                    {RICE_BOWLS.combo.detail}
+                  </p>
+                </div>
+              </div>
+
+              {/* Beverages */}
+              <div className="lg:col-span-3 lg:border-l lg:border-bone-400/70 lg:pl-8">
+                <ColumnHead title={BEVERAGES.title} note={BEVERAGES.note} />
+                <ul className="mt-8">
+                  {BEVERAGES.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rule-bottom py-2.5 text-[1.0625rem] text-ink-700 last:border-b-0"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="relative mt-8">
+                  <Image
+                    src="/dishes/coffee-filter.webp"
+                    alt="Filter coffee poured into a steel tumbler and dabara"
+                    width={900}
+                    height={900}
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="aspect-square w-full object-cover"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 border border-brass-600/35"
+                  />
+                </div>
+              </div>
             </div>
+
+            {/* The closing line, as it runs along the foot of the board. */}
+            <footer className="relative mt-14 text-center">
+              <RuleDiamond className="mx-auto w-[min(26rem,86%)]" />
+              <p className="label mt-6 text-[0.625rem] text-ink-700">{MENU_FOOTER}</p>
+              <p className="mt-3 text-[0.9375rem] text-granite-500">
+                <span className="kn" lang="kn">
+                  {BRAND.devotionKannada}
+                </span>
+              </p>
+            </footer>
+          </div>
+
+          {/* Corbels under the sheet, as under the awning. */}
+          <div
+            className="relative flex justify-between px-3 text-ink-800/25"
+            aria-hidden="true"
+          >
+            <Corbel className="h-7 w-4" />
+            <Corbel className="h-7 w-4" flip />
           </div>
         </div>
-      </section>
-    </>
+
+      
+      </div>
+
+    </section>
+  );
+}
+
+function ColumnHead({ title, note }: { title: string; note: string }) {
+  return (
+    <div>
+      <h2 className="display-caps text-[1.75rem] font-medium text-ink-900 sm:text-[2rem]">
+        {title}
+      </h2>
+      <p className="mt-2 text-[0.9375rem] italic text-granite-500">{note}</p>
+    </div>
   );
 }

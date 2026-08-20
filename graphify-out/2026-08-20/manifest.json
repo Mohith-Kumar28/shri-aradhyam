@@ -585,8 +585,8 @@
     "semantic_hash": ""
   },
   "src/app/menu/page.tsx": {
-    "mtime": 1787249983.9872663,
-    "ast_hash": "41c8f14d43fa96270a7c707396d8cc0f",
+    "mtime": 1787249169.5862052,
+    "ast_hash": "e34c58ec40bdae07f9131243207bfa6a",
     "semantic_hash": ""
   },
   "src/app/not-found.tsx": {
@@ -620,13 +620,13 @@
     "semantic_hash": ""
   },
   "src/components/site/ornament.tsx": {
-    "mtime": 1787249856.4081063,
-    "ast_hash": "7dd4d28240c68a10f3d525a0dc8488a0",
+    "mtime": 1787248588.2026455,
+    "ast_hash": "e04e52162df43b8a3aab7bc4ca170352",
     "semantic_hash": ""
   },
   "src/components/site/site-footer.tsx": {
-    "mtime": 1787249939.7874885,
-    "ast_hash": "7e263c9f25937bc4a66ded1d6b91cef3",
+    "mtime": 1787248824.8547294,
+    "ast_hash": "7d97728fcaeb3b2bc1eaeed7a865953d",
     "semantic_hash": ""
   },
   "src/components/site/site-header.tsx": {
@@ -1040,8 +1040,8 @@
     "semantic_hash": ""
   },
   "src/components/home/hero.tsx": {
-    "mtime": 1787249568.2713325,
-    "ast_hash": "28d3ffd4ebe212cfc11b0262c3168936",
+    "mtime": 1787248943.1490285,
+    "ast_hash": "135636d69c4791b1734c014c9a2ecc0f",
     "semantic_hash": ""
   },
   "src/components/home/invite.tsx": {
@@ -1050,13 +1050,13 @@
     "semantic_hash": ""
   },
   "src/components/home/the-room.tsx": {
-    "mtime": 1787249939.787792,
-    "ast_hash": "635dbd9ee6fd19c2b30f89eab7e2a710",
+    "mtime": 1787248743.444381,
+    "ast_hash": "c80f130373e26e460b2897e09093ee0b",
     "semantic_hash": ""
   },
   "src/components/home/traditions.tsx": {
-    "mtime": 1787249895.7670333,
-    "ast_hash": "ab8daa924a4953249db6534e8070f1b7",
+    "mtime": 1787249008.8937802,
+    "ast_hash": "f2955dc20787bbb8322fc67f727996ed",
     "semantic_hash": ""
   },
   "src/components/site/reveal-provider.tsx": {

@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { BRAND, OPENING } from "@/lib/site-data";
+import { BRAND, LOCATIONS } from "@/lib/site-data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -92,10 +92,10 @@ export default function OpengraphImage() {
           }}
         >
           <div style={{ display: "flex" }}>
-            {OPENING.outlet}, {OPENING.city}
+            {LOCATIONS[0].name}, Bengaluru
           </div>
-          <div style={{ display: "flex", color: "#9e2b25" }}>
-            {OPENING.dateLabel}
+          <div style={{ display: "flex", color: "#785c0f" }}>
+            {LOCATIONS[0].status}
           </div>
         </div>
       </div>

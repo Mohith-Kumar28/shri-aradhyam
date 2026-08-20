@@ -507,233 +507,6 @@
   animation: lamp 5.5s ease-in-out infinite;
 }
 
-/* ---------------------------------------------------------------------------
-   The arch. The page opens on a torana standing in an unlit hall, and the
-   reader walks through it.
-
-   One number drives the whole passage: `--p`, the section's scroll progress,
-   written by the hero on each frame. Everything else is derived here in CSS so
-   the script only ever touches a single custom property.
-
-   The arch is a cutout, so no masking is involved. The aperture sits over the
-   same near black as the surround, which means content placed behind the arch
-   reads as being *inside* it without any clip path pretending to be one. The
-   illusion of depth comes from rate, not geometry: the arch grows far faster
-   than the room behind it, which is what a doorway does as you walk at it.
-   --------------------------------------------------------------------------- */
-
-.arch-hero {
-  --p: 0;
-
-  /* Squared for the push (a doorway rushes at you), and its mirror for the
-     arrivals, which should decelerate instead. */
-  --p2: calc(var(--p) * var(--p));
-  --inv: calc(1 - var(--p));
-  --settle: calc(1 - var(--inv) * var(--inv));
-
-  /* The torana stands on the floor of the frame rather than floating in the
-     middle of it, and it is tall enough that the crown is cut off at the top.
-     That is the point: a doorway you are already close to, not a photograph of
-     a doorway. The base is pinned by construction, so changing the height
-     alone keeps the feet on the ground.
-
-     0.28 is the asset's own geometry: its aperture centre sits at 72% of its
-     height, so 28% of it hangs below that anchor. */
-  --arch-h: 126dvh;
-  --arch-y: calc(100% - 0.28 * var(--arch-h));
-
-  /* Starting this close, the pillars are near the edges of the frame already,
-     so it takes far less travel to walk out through them. */
-  --arch-grow: 1.7;
-
-  /* The words sit high in the opening, not at its centre: the aperture now
-     runs all the way to the floor, and type at its middle would read as type
-     at the bottom of the screen. */
-  --content-y: 61%;
-
-  /**
-   * Where the reader is looking, right now.
-   *
-   * The words start high in the opening and walk to the middle of the frame,
-   * which means they do NOT stay at the arch's own anchor. Every piece of
-   * shading that exists to keep them readable has to travel with them: pin the
-   * shade to the stone instead and it ends up a hundred and fifty pixels below
-   * the line it was drawn to protect, which is exactly where it was.
-   */
-  --focus-y: calc(var(--content-y) * (1 - var(--settle)) + 50% * var(--settle));
-
-  /* When the aperture is wide enough to hold a line of type. */
-  --t-name: calc((var(--p) - 0.06) / 0.14);
-  --t-line: calc((var(--p) - 0.3) / 0.2);
-  --t-act: calc((var(--p) - 0.6) / 0.22);
-  --t-mark: calc((var(--p) - 0.72) / 0.2);
-
-  position: relative;
-
-  /**
-   * Two screens of travel.
-   *
-   * Longer than the walk alone needs, because the name is read five times on
-   * the way through and each reading has to hold long enough to be read. At
-   * the old height each script got about fifteen vertical percent of scroll,
-   * which went past faster than anyone could take a script they do not read.
-   */
-  height: 300vh;
-  background: var(--color-ink-900);
-
-  /* The hall runs up behind the signage board rather than starting under it.
-     Without this the board floats on the page's bone ground, which is the one
-     bright thing on a screen whose whole argument is a single lit doorway.
-     The board measures and publishes its own height; the fallback is only ever
-     used for the frames before hydration, and is close enough not to shift. */
-  margin-top: calc(var(--header-h, 6.9rem) * -1);
-
-  /* Pulled under a sticky header means overlapping it, and two positioned
-     siblings otherwise paint in source order, which would put the hall over
-     the board instead of behind it. */
-  z-index: 0;
-}
-
-.arch-stage {
-  position: sticky;
-  top: 0;
-  height: 100dvh;
-  overflow: hidden;
-  isolation: isolate;
-
-  /* A pool of lamplight on the floor, always on. Without it the torana is an
-     object cut out and laid on black; with it, it is standing somewhere. */
-  background:
-    radial-gradient(
-      120% 40% at 50% 96%,
-      rgba(122, 84, 30, 0.3) 0%,
-      rgba(31, 17, 9, 0) 70%
-    ),
-    var(--color-ink-900);
-}
-
-/* The room. It trails the arch badly on purpose: 1.16 to 1.0 against the
-   arch's 1 to 4.6 is the entire parallax. */
-.arch-room {
-  position: absolute;
-  inset: 0;
-  transform: scale(calc(1.16 - 0.16 * var(--settle)));
-  opacity: clamp(0, calc((var(--p) - 0.42) / 0.46), 1);
-  will-change: transform, opacity;
-}
-
-.arch-scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    /* A pool for the type to sit in, so the room stays a room and does not
-       start competing with the words standing in front of it. */
-    radial-gradient(
-      78% 66% at 50% var(--focus-y),
-      rgba(24, 13, 7, 0.52) 0%,
-      rgba(24, 13, 7, 0) 82%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(24, 13, 7, 0.95) 0%,
-      rgba(24, 13, 7, 0.86) 46%,
-      rgba(24, 13, 7, 0.95) 100%
-    );
-
-  /* Barely lifts, and lands dark. The room is the place you have arrived in,
-     not the thing you are meant to be reading. The flat stop carries most of
-     the weight now: the pool alone left the edges of the frame bright, which
-     is where the photograph was still climbing through the type. */
-  opacity: calc(1 - 0.06 * var(--settle));
-}
-
-/* The board has no ground of its own while it is over the hall, so the hall
-   provides one: a fall of shadow at the top of the stage, deep enough to hold
-   the lettering off whatever is passing underneath it. Mid passage that is a
-   sunlit marble pillar, which the nav would otherwise disappear into. */
-.arch-veil {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 24vh;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 11, 6, 0.6) 0%,
-    rgba(20, 11, 6, 0.34) 46%,
-    rgba(20, 11, 6, 0) 100%
-  );
-  pointer-events: none;
-}
-
-/* Lamplight down the passage, pinned to the vanishing point. It arrives long
-   before the room does, so the opening reads as somewhere rather than a hole. */
-.arch-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    62% 46% at 50% var(--focus-y),
-    rgba(201, 162, 39, 0.34) 0%,
-    rgba(125, 31, 27, 0.14) 42%,
-    rgba(31, 17, 9, 0) 76%
-  );
-  /* Up early and mostly out by the end. Light at the far end of a passage is
-     the reason to walk down it; once you are standing in the room it is just a
-     warm smear sitting on top of the photograph and under the type. */
-  opacity: calc(
-    clamp(0, var(--p) / 0.38, 1) * clamp(0, (1.15 - var(--p)) / 0.5, 1)
-  );
-}
-
-/* Shade in the opening, behind the words.
- *
- * At the start there is nothing but dark behind them, and at the end the room's
- * own scrim holds them. In between is the exposed stretch: the room has barely
- * arrived, and the words are standing against sunlit marble. So this peaks in
- * the middle and is gone at both ends, which is what the parabola is for.
- */
-.arch-pool {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    46% 32% at 50% var(--focus-y),
-    rgba(24, 13, 7, 0.74) 0%,
-    rgba(24, 13, 7, 0) 72%
-  );
-  opacity: calc(2.2 * var(--p) * (1 - var(--p)));
-  pointer-events: none;
-}
-
-.arch-frame {
-  position: absolute;
-  left: 50%;
-  top: var(--arch-y);
-  height: var(--arch-h);
-  width: auto;
-  max-width: none;
-
-  /* The aperture's centre, measured off the asset's alpha: it opens at 44% of
-     the height and runs to the base, and is centred across. Scaling about that
-     point is what keeps the doorway still while the stone rushes past. */
-  transform-origin: 50% 72%;
-  transform: translate(-50%, -72%)
-    scale(calc(1 + var(--arch-grow) * var(--p2)));
-
-  /* Gone by the time upscaling would show, but not so early that the last of
-     the travel is spent on a screen where nothing is left to happen. */
-  opacity: clamp(0, calc((0.96 - var(--p)) / 0.22), 1);
-  will-change: transform, opacity;
-
-  /* The stone paints over the words, which is what puts them inside it. At the
-     end of the passage it is invisible but still four viewports wide, and an
-     invisible element still swallows clicks, so it must never take any. */
-  pointer-events: none;
-}
-
-.arch-room,
-.arch-glow,
-.arch-cue {
-  pointer-events: none;
-}
-
 /* The signage board while an unlit hall is passing behind it. A board in bone
    would be the brightest thing on a screen whose whole argument is that one
    doorway is the only lit thing on it, so the ground drops away and the
@@ -816,151 +589,6 @@ header[data-over="true"] .signage .btn-fill {
 header[data-over="true"] .eave-line {
   opacity: 0;
 }
-
-.arch-content {
-  position: absolute;
-  left: 50%;
-
-  /* Starts high in the opening, walks to the middle of the frame as the stone
-     leaves it. */
-  top: var(--focus-y);
-  width: min(90vw, 46rem);
-  transform: translate(-50%, -50%);
-
-  /* Type is grown by font-size, never by transform, so it re-rasterises sharp
-     at every step instead of blurring its way up. */
-  font-size: calc((0.58 + 0.42 * var(--settle)) * 1rem);
-  text-align: center;
-}
-
-.arch-in-name {
-  opacity: clamp(0, var(--t-name), 1);
-  transform: translate3d(0, calc((1 - clamp(0, var(--t-name), 1)) * 1.4em), 0);
-}
-
-/* The name crosses from its own script into Latin at a point on the walk, not
-   after a number of milliseconds. Everything else in this section is a function
-   of `--p`; the one piece that was on a timer was the one piece that misfired.
-   The crossing sits at the middle of the passage, where the reader is between
-   the pillars and has nothing else to watch. */
-/* ---------------------------------------------------------------------------
-   The name, read four ways and then in English.
-
-   All readings share one grid cell. `--c` is a continuous position along the
-   list driven by the scroll, and each reading colours itself purely from how
-   far it is from that position, so adding or removing a script is a data
-   change and nothing here needs to know how many there are.
-   --------------------------------------------------------------------------- */
-
-.script-cycle {
-  display: inline-grid;
-  grid-template-areas: "slot";
-  vertical-align: baseline;
-
-  /* Held back until the name itself is legible, and finished before the end of
-     the walk so English has the arrival to itself. */
-  --c: calc(clamp(0, calc((var(--p) - 0.2) / 0.6), 1) * var(--n));
-}
-
-.script-cycle > * {
-  grid-area: slot;
-
-  /* Signed distance from the current position: negative for readings already
-     passed, positive for those still to come. Keeping the sign is what lets
-     one lift away upward while the next rises into place. */
-  --d: calc(var(--c) - var(--i));
-
-  /* Absolute distance. max(d, -d) rather than abs(), and the paired clamps
-     below rather than sign(), because those two functions are far younger than
-     the rest of this file needs to be and a dropped declaration here would
-     take the whole crossing with it. */
-  --a: max(var(--d), calc(-1 * var(--d)));
-
-  /**
-   * How far into its own crossing this reading is, 0 to 1.
-   *
-   * The dead zone up to 0.3 is the point: inside it a script is fully opaque,
-   * perfectly sharp and completely still, so it can actually be read. Only
-   * outside it does anything happen. Ramping straight from the centre, as this
-   * did at first, means a word is never quite sharp except for a single
-   * instant, and four scripts go by without one of them ever being legible.
-   */
-  --x: clamp(0, calc((var(--a) - 0.3) / 0.4), 1);
-
-  /* The same value carrying its sign, so a reading being left behind lifts
-     away upward and the one arriving rises from below. The two clamps are
-     mutually exclusive: whichever way `--d` points, the other is zero. */
-  --m: calc(
-    clamp(0, calc((var(--d) - 0.3) / 0.4), 1) - clamp(0, calc((-1 * var(--d) - 0.3) / 0.4), 1)
-  );
-
-  /* Neighbours cross at exactly half each, because their distances always sum
-     to one. That is a dissolve rather than two words stacked at full strength. */
-  opacity: calc(1 - var(--x));
-  filter: blur(calc(var(--x) * 4px));
-  transform: translate3d(0, calc(var(--m) * -0.22em), 0);
-
-  /* No transition on purpose. A duration on a property rewritten every frame
-     does not smooth a scroll driven crossing, it lags behind and smears it.
-     The scroll is the easing. */
-  transition: none;
-}
-
-.arch-in-line {
-  opacity: clamp(0, var(--t-line), 1);
-  transform: translate3d(0, calc((1 - clamp(0, var(--t-line), 1)) * 1.2em), 0);
-}
-
-.arch-in-act {
-  opacity: clamp(0, var(--t-act), 1);
-  transform: translate3d(0, calc((1 - clamp(0, var(--t-act), 1)) * 1em), 0);
-}
-
-.arch-in-mark {
-  opacity: clamp(0, var(--t-mark), 1);
-}
-
-/* The invitation to move, which withdraws the moment it is taken. */
-.arch-cue {
-  opacity: clamp(0, calc((0.1 - var(--p)) / 0.1), 1);
-}
-
-/* A portrait viewport cannot hold the whole torana and a legible aperture at
-   once, so the arch starts nearer, travels less, and the type waits until the
-   opening has actually widened. */
-@media (max-width: 767px) {
-  .arch-hero {
-    /* Portrait cannot show a wide torana whole and still leave an opening big
-       enough to read in. It shows the opening instead: the pillars are off
-       both sides from the start, which is what standing at a doorway rather
-       than looking at one actually looks like. */
-    --arch-h: 104dvh;
-    --arch-grow: 1.3;
-    --content-y: 70%;
-    --t-name: calc((var(--p) - 0.24) / 0.2);
-    --t-line: calc((var(--p) - 0.44) / 0.2);
-    --t-act: calc((var(--p) - 0.64) / 0.2);
-    --t-mark: calc((var(--p) - 0.76) / 0.18);
-    height: 280vh;
-  }
-
-  .arch-content {
-    width: 88vw;
-    font-size: calc((0.5 + 0.5 * var(--settle)) * 1rem);
-  }
-
-  /* A portrait opening is narrower than the words that have to stand in it, so
-     mid passage the ends of the name land on the pillars either side. The
-     shade has to reach wider and deeper here than it does on a wide screen. */
-  .arch-pool {
-    background: radial-gradient(
-      74% 34% at 50% var(--focus-y),
-      rgba(24, 13, 7, 0.86) 0%,
-      rgba(24, 13, 7, 0) 74%
-    );
-  }
-}
-
 
 /* Script morph: the Indic reading and the Latin reading share one slot. */
 .morph {
@@ -1055,14 +683,6 @@ header[data-over="true"] .eave-line {
     animation: none !important;
   }
 
-  /* The passage is a journey, and a journey is exactly what was opted out of.
-     The arch is held at the same open frame the no-script reader gets, which
-     is a complete hero rather than a degraded one. */
-  .arch-hero {
-    --p: 0.62 !important;
-    height: 100dvh !important;
-  }
-
   .kolam-path {
     stroke-dasharray: none;
   }
@@ -1071,19 +691,7 @@ header[data-over="true"] .eave-line {
     transition-duration: 1ms;
   }
 
-  /* A word that would have settled into Latin is simply shown in Latin, and a
-     name that would have been read in four scripts is shown in the one the
-     reader can be assumed to read. Neither is a journey worth insisting on. */
-  .script-cycle > * {
-    opacity: 0 !important;
-    filter: none !important;
-    transform: none !important;
-  }
-
-  .script-cycle > :last-child {
-    opacity: 1 !important;
-  }
-
+  /* A word that would have settled into Latin is simply shown in Latin. */
   .morph[data-mode="settle"] > .morph-native {
     opacity: 0;
   }
@@ -1121,4 +729,25 @@ header[data-over="true"] .eave-line {
 .morph-holder:focus-visible .morph {
   outline: 2px solid var(--color-brass-600);
   outline-offset: 4px;
+}
+
+
+/* ---------------------------------------------------------------------------
+   The wall's own drawings, keyed off the photograph of it. Multiply keeps the
+   sepia sitting in the plaster rather than on top of it.
+   --------------------------------------------------------------------------- */
+
+.drawn {
+  mix-blend-mode: multiply;
+  user-select: none;
+}
+
+@layer components {
+  /* Display caps, as the wall paints its headings. */
+  .display-caps {
+    font-family: var(--font-display), Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 0.012em;
+    line-height: 1.12;
+  }
 }

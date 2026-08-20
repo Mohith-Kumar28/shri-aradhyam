@@ -245,46 +245,6 @@ export function Thoranam({
 }
 
 /**
- * The gopuram the brand already prints on its cups, its carry bags and its
- * menu board. Used as a low opacity watermark behind a section heading, never
- * as a foreground graphic.
- */
-export function Gopuram({
-  className,
-  size = 220,
-}: {
-  className?: string;
-  size?: number;
-}) {
-  return (
-    <svg
-      viewBox="0 0 64 74"
-      width={size}
-      height={(size / 64) * 74}
-      className={className}
-      aria-hidden="true"
-    >
-      <g {...STROKE}>
-        {/* Kalasha finial. */}
-        <path d="M32 2c1.6 0 2.6 1.2 2.6 2.6S33.6 7 32 7.6C30.4 7 29.4 6 29.4 4.6S30.4 2 32 2Z" />
-        <path d="M32 7.6V11M26 11h12" />
-        {/* Five receding tiers. */}
-        <path d="M24 18h16l-2-7H26Z" />
-        <path d="M21 27h22l-3-9H24Z" />
-        <path d="M17 37h30l-4-10H21Z" />
-        <path d="M12 49h40l-5-12H17Z" />
-        <path d="M7 63h50l-5-14H12Z" />
-        <path d="M4 72h56v-9H4Z" />
-        {/* The shrine door. */}
-        <path d="M28 72v-8c0-2.2 1.8-4 4-4s4 1.8 4 4v8" />
-        {/* Pilasters, one course per tier. */}
-        <path d="M28 21v-3M32 21v-3M36 21v-3M25 30v-3M32 30v-3M39 30v-3M22 40v-3M32 40v-3M42 40v-3M18 52v-3M32 52v-3M46 52v-3" />
-      </g>
-    </svg>
-  );
-}
-
-/**
  * A pulli kolam: dots first, then one continuous line looping around them.
  * The line is a single path so it can be drawn on scroll in one stroke, the
  * way it is actually drawn on a doorstep.
@@ -594,5 +554,26 @@ export function RuleDiamond({ className }: { className?: string }) {
         <span className="h-px flex-1 bg-brass-500/45" />
       </div>
     </div>
+  );
+}
+
+/* A single brass diamond, the mark the wall sets between two lines. */
+export function Diamond({
+  size = 9,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      viewBox="0 0 14 14"
+      width={size}
+      height={size}
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M7 0.5 13.5 7 7 13.5 0.5 7Z" fill="currentColor" />
+    </svg>
   );
 }

@@ -1,124 +1,176 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { OUTLETS_ARE_PLACEHOLDER, ASSURANCES, OPENING } from "@/lib/site-data";
-import { LocationFinder } from "@/components/locations/location-finder";
-import { Roadmap } from "@/components/locations/roadmap";
-import { JaaliBand, RuleDiamond, AssuranceIcon } from "@/components/site/ornament";
+import { CONTACT, LOCATIONS, OPENING } from "@/lib/site-data";
+import {
+  Corbel,
+  Diamond,
+  EaveCourse,
+  JaaliBand,
+  Mark,
+  RuleDiamond,
+  Thoranam,
+} from "@/components/site/ornament";
 
 export const metadata: Metadata = {
-  title: "Locations | Shri Aradhyam",
+  title: "Locations",
   description:
-    "Where to find Shri Aradhyam. The first kitchen opens at Kathriguppe, Bengaluru, with the rest of the city to follow.",
+    "Shri Aradhyam is opening at Banashankari, Bengaluru, with Sarjapur to follow.",
 };
 
-export const revalidate = 3600;
-
+/** Two entries. An address and a date is all a visitor needs. */
 export default function LocationsPage() {
+  const [first, next] = LOCATIONS;
+
   return (
     <>
-      {/* Page head: the dining floor, held behind a granite band. */}
-      <section className="relative isolate overflow-hidden bg-ink-800">
-        <Image
-          src="/brand/dining-floor.webp"
-          alt="The Shri Aradhyam dining floor with granite tables, live counters and a lit deity niche"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[45%_55%]"
-        />
+      <section
+        className="hero-dark relative isolate overflow-hidden bg-ink-900"
+        style={{ marginTop: "calc(var(--header-h, 6.9rem) * -1)", zIndex: 0 }}
+      >
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(100deg,rgba(31,17,9,0.93)_0%,rgba(31,17,9,0.7)_48%,rgba(31,17,9,0.4)_100%)]"
+          className="jaali jaali-brass absolute inset-0 opacity-[0.16]"
         />
-        <JaaliBand className="absolute inset-x-0 bottom-0 opacity-25" height={40} />
+        <div style={{ height: "var(--header-h, 6.9rem)" }} aria-hidden="true" />
+        <Thoranam className="relative opacity-75" height={28} />
 
-        <div className="relative mx-auto max-w-[88rem] px-5 pb-24 pt-28 sm:px-8 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-44">
-          <h1 className="max-w-[24ch] font-display text-[clamp(2.5rem,6.4vw,4.75rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-bone-100">
-            The first kitchen.
+        <div className="relative mx-auto max-w-[88rem] px-5 pb-20 pt-14 sm:px-8 sm:pb-24 sm:pt-16">
+          <h1 className="display-caps text-[clamp(2rem,4.6vw,3.4rem)] font-semibold text-bone-100">
+            Locations
           </h1>
-          <p className="mt-7 max-w-[48ch] text-[1.0625rem] leading-relaxed text-bone-400">
-            Shri Aradhyam opens at{" "}
-            <span className="kn text-brass-400" lang="kn">
-              {OPENING.outletNative}
-            </span>
-            <span className="text-brass-400">
-              {" "}
-              {OPENING.outlet}, {OPENING.city}
-            </span>
-            , in the {OPENING.dateLabel.toLowerCase()}. Every outlet after it is
-            built to the same drawings and cooks from the same recipe cards.
+          <p className="mt-6 max-w-[40ch] text-[1.0625rem] leading-relaxed text-bone-400">
+            Namma Bengaluru first. The kitchen opens at Banashankari, and
+            Sarjapur follows.
           </p>
         </div>
+
+        <EaveCourse
+          className="absolute inset-x-0 bottom-0"
+          height={16}
+          color="#f2eadc"
+          flip
+        />
       </section>
 
-      {OUTLETS_ARE_PLACEHOLDER && (
-        <div className="border-b border-kumkum-600/35 bg-kumkum-600/8">
-          <div className="mx-auto max-w-[88rem] px-5 py-4 sm:px-8">
-            <p className="label text-[0.625rem] leading-relaxed text-kumkum-700">
-              Every outlet detail on this page is sample data: addresses,
-              telephone numbers, hours, seating and opening dates are all
-              pending from the owner.
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* The finder */}
-      <section className="relative bg-bone-200 py-20 sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden bg-bone-200 py-20 sm:py-24">
         <div className="paper absolute inset-0" aria-hidden="true" />
+
         <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          <LocationFinder />
-        </div>
-      </section>
-
-      <Roadmap />
-
-      {/* What is true in every outlet. */}
-      <section className="relative bg-bone-100 py-20 sm:py-24 lg:py-28">
-        <div className="paper absolute inset-0" aria-hidden="true" />
-        <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          <RuleDiamond className="mx-auto max-w-md" />
-
-          <h2 className="mx-auto mt-12 max-w-[24ch] text-center font-display text-[clamp(1.8rem,3.8vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
-            Seven promises, and they travel with every kitchen we open.
-          </h2>
-
-          <ul className="mt-14 grid gap-x-10 gap-y-0 sm:grid-cols-2 lg:grid-cols-4">
-            {ASSURANCES.map((item, i) => (
-              <li
-                key={item.en}
-                data-reveal
-                style={{ ["--reveal-delay" as string]: `${i * 70}ms` }}
-                className="rule-bottom flex items-center gap-4 py-5"
-              >
-                <AssuranceIcon
-                  name={item.icon}
-                  size={26}
-                  className="shrink-0 text-brass-600"
-                />
-                <span className="leading-tight">
-                  <span className="kn block text-[1.0625rem] text-ink-800" lang="kn">
-                    {item.kn}
-                  </span>
-                  <span className="label mt-1.5 block text-[0.625rem] text-granite-500">
-                    {item.en}
-                  </span>
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-16 text-center">
-            <Link
-              href="/franchise#enquiry"
-              className="label group relative inline-flex items-center justify-center overflow-hidden border border-ink-700 px-8 py-4.5 text-[0.625rem] text-ink-800 transition-colors duration-700 hover:text-bone-100"
+          <div className="grid gap-8 lg:grid-cols-12">
+            {/* The first outlet, on the dark ground, with the elevation. */}
+            <article
+              data-reveal
+              className="relative overflow-hidden bg-ink-800 lg:col-span-7"
             >
-              <span className="absolute inset-0 -translate-y-full bg-ink-800 transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
-              <span className="relative">Bring one to your city</span>
-            </Link>
+              <div
+                aria-hidden="true"
+                className="jaali jaali-brass absolute inset-0 opacity-[0.16]"
+              />
+              {first.image ? (
+                <div className="relative aspect-16/9">
+                  <Image
+                    src={first.image.src}
+                    alt={first.image.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    preload
+                    className="object-cover"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 border border-brass-500/25"
+                  />
+                </div>
+              ) : null}
+
+              <div className="relative px-8 py-10 sm:px-11 sm:py-12">
+                <p className="label text-[0.5625rem] text-brass-400">
+                  {first.status}
+                </p>
+                <h2 className="mt-5 font-display text-[clamp(1.9rem,3.6vw,2.6rem)] font-semibold tracking-[-0.025em] text-bone-100">
+                  <span className="kn block text-[1.2rem] font-normal text-brass-300" lang="kn">
+                    {first.native}
+                  </span>
+                  {first.name}
+                </h2>
+
+                <RuleDiamond className="mt-7 max-w-[18rem]" />
+
+                <address className="mt-7 max-w-[34ch] text-[1.0625rem] not-italic leading-relaxed text-bone-300">
+                  {first.address}
+                </address>
+
+                <ul className="mt-8 space-y-2.5">
+                  {["Basement parking", "Pure vegetarian kitchen"].map((note) => (
+                    <li
+                      key={note}
+                      className="flex items-baseline gap-4 text-[0.9375rem] text-bone-400"
+                    >
+                      <Diamond className="mt-2 shrink-0 text-brass-500" size={6} />
+                      {note}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/menu"
+                  className="label link-brass mt-9 inline-flex items-center gap-2.5 text-[0.625rem] text-bone-200"
+                >
+                  See the menu
+                  <Mark name="arrowRight" size={13} className="text-brass-400" />
+                </Link>
+              </div>
+            </article>
+
+            {/* The next one, on paper, with nothing invented. */}
+            <article
+              data-reveal
+              style={{ ["--reveal-delay" as string]: "120ms" }}
+              className="relative overflow-hidden bg-bone-100 lg:col-span-4 lg:col-start-9 lg:mt-16"
+            >
+              <div aria-hidden="true" className="jaali absolute inset-0 opacity-[0.22]" />
+              <div className="relative px-8 py-10 sm:px-10 sm:py-12">
+                <p className="label text-[0.5625rem] text-kumkum-700">{next.status}</p>
+                <h2 className="mt-5 font-display text-[clamp(1.7rem,3vw,2.2rem)] font-semibold tracking-[-0.025em] text-ink-800">
+                  <span className="kn block text-[1.1rem] font-normal text-granite-500" lang="kn">
+                    {next.native}
+                  </span>
+                  {next.name}
+                </h2>
+
+                <RuleDiamond className="mt-7 max-w-[12rem]" />
+
+                <p className="mt-7 text-[1.0625rem] leading-relaxed text-granite-500">
+                  The second kitchen. The address will be published here once the
+                  site is signed.
+                </p>
+
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="label link-brass mt-9 inline-flex items-center gap-2.5 text-[0.625rem] text-ink-700"
+                >
+                  Ask us about it
+                  <Mark name="arrowRight" size={13} className="text-brass-600" />
+                </a>
+              </div>
+
+              <div
+                className="relative flex justify-between px-3 text-ink-800/20"
+                aria-hidden="true"
+              >
+                <Corbel className="h-7 w-4" />
+                <Corbel className="h-7 w-4" flip />
+              </div>
+            </article>
           </div>
+
+          <p className="label mt-14 text-center text-[0.5625rem] text-granite-400">
+            {OPENING.dateLabel} &nbsp;&middot;&nbsp; {CONTACT.city}
+          </p>
         </div>
+
+        <JaaliBand className="relative mt-16 opacity-30" height={26} color="#3a2318" />
       </section>
     </>
   );
