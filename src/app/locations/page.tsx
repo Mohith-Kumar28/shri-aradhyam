@@ -11,12 +11,21 @@ import {
   RuleDiamond,
   Thoranam,
 } from "@/components/site/ornament";
+import { JsonLd } from "@/components/site/json-ld";
+import { breadcrumbSchema, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Locations",
+  path: "/locations",
   description:
-    "Shri Aradhyam is opening at Banashankari, Bengaluru, with Sarjapur to follow.",
-};
+    "Shri Aradhyam opens on Outer Ring Road at Kathreguppe, Banashankari 3rd Stage, Bengaluru, the last week of September — with Sarjapur to follow.",
+  keywords: [
+    "South Indian restaurant Banashankari",
+    "restaurant Outer Ring Road Kathreguppe",
+    "veg restaurant Banashankari 3rd Stage",
+    "restaurant Sarjapur Road Bengaluru",
+  ],
+});
 
 /** Two entries. An address and a date is all a visitor needs. */
 export default function LocationsPage() {
@@ -24,6 +33,7 @@ export default function LocationsPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Locations", path: "/locations" }])} />
       <section
         className="hero-dark relative isolate overflow-hidden bg-ink-900"
         style={{ marginTop: "calc(var(--header-h, 6.9rem) * -1)", zIndex: 0 }}
@@ -113,13 +123,22 @@ export default function LocationsPage() {
                   ))}
                 </ul>
 
-                <Link
-                  href="/menu"
-                  className="label link-brass mt-9 inline-flex w-fit items-center gap-2.5 pt-1 text-[0.625rem] text-bone-200"
-                >
-                  See the menu
-                  <Mark name="arrowRight" size={13} className="text-brass-400" />
-                </Link>
+                <div className="mt-9 flex flex-wrap items-center gap-x-9 gap-y-4">
+                  <Link
+                    href="/locations/banashankari"
+                    className="label link-brass inline-flex w-fit items-center gap-2.5 pt-1 text-[0.625rem] text-bone-200"
+                  >
+                    About this outlet
+                    <Mark name="arrowRight" size={13} className="text-brass-400" />
+                  </Link>
+                  <Link
+                    href="/menu"
+                    className="label link-brass inline-flex w-fit items-center gap-2.5 pt-1 text-[0.625rem] text-bone-200"
+                  >
+                    See the menu
+                    <Mark name="arrowRight" size={13} className="text-brass-400" />
+                  </Link>
+                </div>
               </div>
             </article>
 

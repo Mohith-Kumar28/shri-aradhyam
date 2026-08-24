@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND, CONTACT, LOCATIONS, NAV, OPENING } from "@/lib/site-data";
+import { BRAND, CONTACT, LOCATIONS, NAV, NAV_MORE, OPENING } from "@/lib/site-data";
 import { Corbel, JaaliBand, LotusRoundel } from "./ornament";
 import { ScriptMorph } from "./script-morph";
 import { SWAP } from "./site-header";
@@ -53,22 +53,29 @@ export function SiteFooter() {
 
           {/* Pages and states */}
           <div className="lg:justify-self-end">
-            <nav aria-label="Footer">
-              <p className="label rule-bottom border-bone-500/30 pb-3 text-[0.625rem] text-bone-500">
-                Pages
-              </p>
-              <ul className="mt-5 space-y-3.5">
-                {NAV.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="link-brass text-[0.9375rem] text-bone-300 transition-colors duration-500 hover:text-bone-100"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <nav aria-label="Footer" className="grid gap-12 sm:grid-cols-2">
+              {[
+                { heading: "Pages", links: NAV },
+                { heading: "More", links: NAV_MORE },
+              ].map((column) => (
+                <div key={column.heading}>
+                  <p className="label rule-bottom border-bone-500/30 pb-3 text-[0.625rem] text-bone-500">
+                    {column.heading}
+                  </p>
+                  <ul className="mt-5 space-y-3.5">
+                    {column.links.map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          className="link-brass text-[0.9375rem] text-bone-300 transition-colors duration-500 hover:text-bone-100"
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </nav>
 
           </div>

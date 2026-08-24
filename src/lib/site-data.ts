@@ -40,6 +40,18 @@ export const NAV = [
   { href: "/partner", label: "Partner With Us" },
 ] as const;
 
+/**
+ * Pages the header does not carry but the footer should: the long regional
+ * read, the outlet's own page, and the questions. Kept out of NAV so the
+ * masthead stays six items wide, and listed here so they are still linked from
+ * every page on the site.
+ */
+export const NAV_MORE = [
+  { href: "/traditions", label: "The Regions" },
+  { href: "/locations/banashankari", label: "Banashankari" },
+  { href: "/faq", label: "Questions" },
+] as const;
+
 export const CONTACT = {
   email: "hello@shriaradhyam.com",
   city: "Bengaluru, Karnataka",
@@ -397,4 +409,176 @@ export const GALLERY: GalleryTile[] = [
 export const PARTNER = {
   heading: "Partner with us",
   line: "We are opening more Shri Aradhyam kitchens across Bengaluru. If you would like to partner with us, write to us and we will get back to you.",
+} as const;
+
+/* ---------------------------------------------------------------------------
+   Editorial copy.
+
+   Everything above this line is transcribed — from the board, the walls, the
+   signage. Everything below it is written: long-form copy for the pages that
+   exist so a search engine has something to read and a first-time visitor has
+   something to be persuaded by. It is descriptive of real regional cooking and
+   of facts already stated elsewhere on this site, and it invents no hours, no
+   prices and no phone number.
+   --------------------------------------------------------------------------- */
+
+/**
+ * The regions, at length. The short `line` in REGIONS is what the home page
+ * has room for; this is what the traditions page has room for.
+ */
+export const REGION_NOTES: {
+  /** Matches REGIONS[].name, so the two are read as one record. */
+  region: string;
+  heading: string;
+  paragraphs: string[];
+  /** The specific things this region is known for, named plainly. */
+  markers: { name: string; note: string }[];
+}[] = [
+  {
+    region: "Bengaluru",
+    heading: "The city's own taste",
+    paragraphs: [
+      "Bengaluru has a palate of its own, and it is not the palate of anywhere else in the south. It likes its dosa soft in the middle and lacquered at the edge, it likes butter on the griddle rather than oil, and it will forgive a great many things before it forgives a thin, under-brewed coffee.",
+      "The city's benne dosa is the clearest case. Butter goes on the griddle before the batter does and again after, so the crust fries rather than toasts and the underside comes up the colour of dark honey. It is served with a potato palya and a coconut chutney that is ground fine and kept white — not the coarse, chilli-flecked chutney of the coast.",
+      "Bisi bele bath belongs to the same table. Rice, toor dal and vegetables cooked into one pot with a masala that carries cinnamon, clove and dry copra, finished with ghee and a handful of fried cashew. It is not a khichdi and it is not a pulao; it is its own dish, and Karnataka is precise about it.",
+    ],
+    markers: [
+      { name: "Benne dosa", note: "Butter on the griddle before and after the batter." },
+      { name: "Bisi bele bath", note: "Rice, toor dal and vegetables in one pot, finished with ghee." },
+      { name: "Filter coffee", note: "Decoction drawn slowly, met with hot milk, pulled between two tumblers." },
+    ],
+  },
+  {
+    region: "Udupi and Mysuru",
+    heading: "The temple kitchen's restraint",
+    paragraphs: [
+      "Udupi cooking came out of a temple kitchen, and it still behaves like one. It is vegetarian by definition rather than by choice, it leans on coconut and jaggery rather than on chilli, and it treats restraint as a technique rather than as an absence. A great Udupi sambar is sweet, sour and hot in that order, and none of the three is allowed to shout.",
+      "A meals plate from this tradition is a sequence, not a spread. Rice at the centre, and around it a palya, a kootu, a sambar, a rasam, a majjige huli and a payasa — each eaten with the rice in turn rather than all at once. The order is the recipe.",
+      "Mysuru sits half a day's road away and cooks a little richer. Mavinkayi chithrana — raw mango grated into tempered rice with turmeric, peanut and curry leaf — is the dish that carries the difference: sharper, brighter, and unmistakably from a season rather than from a menu.",
+    ],
+    markers: [
+      { name: "Udupi meals", note: "Rice at the centre, and the sequence of small vessels around it." },
+      { name: "Mavinkayi chithrana", note: "Raw mango grated into tempered rice, peanut and curry leaf." },
+      { name: "Coconut chutney", note: "Ground fine, kept white, tempered with mustard and curry leaf." },
+    ],
+  },
+  {
+    region: "Madurai to Thanjavur",
+    heading: "Sesame oil, pepper and tamarind",
+    paragraphs: [
+      "Travel east into Tamil Nadu and the fat changes. Sesame oil replaces coconut, and with it the whole register of the food shifts — nuttier, heavier, and more willing to carry heat. Black pepper does work here that chilli does elsewhere, and tamarind runs underneath almost everything as a sour spine.",
+      "Thanjavur is delta country, and delta country means rice and means ghee. Ghee pongal is the dish that proves it: raw rice and moong dal cooked soft together, then finished with ghee, whole black pepper, cumin, ginger and cashew. It is temple food, festival food and breakfast, and the same recipe serves all three.",
+      "The Chennai style dosa is the other half of this tradition — thinner than Bengaluru's, crisper, more evenly browned, and made to be eaten with sambar rather than in spite of it. Two cities, one batter, and two entirely different ideas of what a dosa is for.",
+    ],
+    markers: [
+      { name: "Ghee pongal", note: "Rice and moong dal, black pepper, cumin, ginger and cashew." },
+      { name: "Chennai style dosa", note: "Thinner and crisper, made to be eaten with sambar." },
+      { name: "Tomato rice", note: "Coimbatore's, sour and tempered rather than sweet." },
+    ],
+  },
+  {
+    region: "Andhra and Telangana",
+    heading: "Nothing hidden, nothing softened",
+    paragraphs: [
+      "Andhra food does not hedge. The Guntur chilli that defines it is grown a few hours from the coast and used without apology, and the region's cooking is built to carry it — sour, salty and hot all at full strength, with rice as the only thing standing between you and it.",
+      "Pesarattu is the region's great breakfast. Whole green gram, soaked and ground the same morning with green chilli, ginger and cumin, then spread thin on the griddle. It is not a dosa with the batter changed: there is no rice in it and no fermentation, so it tastes green and fresh in a way a dosa never does. Guntur pesarattu takes the same crepe and puts the chilli back in.",
+      "Gongura — sorrel leaf — is the other marker. It is sour in a way tamarind is not: leafier, sharper, almost metallic, and once you have eaten it properly you can find it blindfolded. Telangana cooks it drier and hotter than the coast does, and both are correct.",
+    ],
+    markers: [
+      { name: "Pesarattu", note: "Green gram ground that morning. No rice, no fermentation." },
+      { name: "Guntur pesarattu", note: "The same crepe with the Guntur chilli left in." },
+      { name: "Gongura", note: "Sorrel leaf — sour in a way tamarind is not." },
+    ],
+  },
+  {
+    region: "Kerala",
+    heading: "Two pressings of coconut milk",
+    paragraphs: [
+      "Kerala cooks the quietest food in the south, and the most technical. Coconut is not an ingredient here so much as a method: the first pressing of the grated flesh is thick and goes in at the end, the second is thin and goes in at the start, and a cook who confuses the two has made a different dish.",
+      "Appam is fermented rice batter with coconut milk in it, cooked in a curved pan so the centre stays soft and spongy while the rim goes lace-thin and crisp. Puttu is the opposite discipline — rice flour and grated coconut steamed in a cylinder, no oil anywhere near it, eaten with kadala or with banana and jaggery.",
+      "It is the tradition that most rewards patience and the one that travels least well, which is precisely why it is worth carrying carefully. Kerala is the next of the five to arrive at Shri Aradhyam.",
+    ],
+    markers: [
+      { name: "Appam", note: "Soft in the centre, lace-thin at the rim." },
+      { name: "Puttu", note: "Rice flour and coconut steamed in a cylinder. No oil." },
+      { name: "Coconut milk", note: "First pressing at the end, second at the start." },
+    ],
+  },
+];
+
+/**
+ * The questions a first-time visitor actually asks, and the answers this house
+ * can give today. No hours and no phone number: the outlet has not opened, and
+ * an answer invented here would be a wrong answer printed in a search result.
+ */
+export const FAQ: { q: string; a: string }[] = [
+  {
+    q: "Where is Shri Aradhyam?",
+    a: "The first Shri Aradhyam is at 221, Outer Ring Road, opposite KEB, Kathreguppe, Banashankari 3rd Stage, Banashankari, Bengaluru, Karnataka 560085. A second outlet at Sarjapur is opening after it.",
+  },
+  {
+    q: "When does Shri Aradhyam open?",
+    a: "The Banashankari outlet opens in the last week of September 2026. The Sarjapur outlet is opening soon after.",
+  },
+  {
+    q: "Is Shri Aradhyam pure vegetarian?",
+    a: "Yes. Shri Aradhyam is one hundred percent pure vegetarian, and it is vegetarian by definition rather than as an option on a larger menu. The kitchen also commits to no preservatives, no artificial colours and no artificial flavours.",
+  },
+  {
+    q: "What kind of South Indian food does Shri Aradhyam serve?",
+    a: "Regional South Indian vegetarian food, kept regional. Udupi and Thanjavur meals, dosa in both the Bengaluru and the Chennai style, special dosas including benne dosa and Andhra pesarattu, five regional rice bowls, and traditional beverages led by Chikkamagaluru filter coffee.",
+  },
+  {
+    q: "Which regions of South India are on the menu?",
+    a: "Five: Bengaluru; Udupi and Mysuru; Madurai through Coimbatore to Thanjavur; Andhra and Telangana; and Kerala. Each dish is cooked the way the place it comes from cooks it, rather than flattened into one generic South Indian style.",
+  },
+  {
+    q: "What does the name Shri Aradhyam mean?",
+    a: "Aradhyam is the one who is worshipped. A plate carried to your table is an offering before it is a meal — which is why the house line is 'Served with devotion', and why the shrine stands inside the door before the counters do.",
+  },
+  {
+    q: "Does Shri Aradhyam serve filter coffee?",
+    a: "Yes. Chikkamagaluru filter coffee is on the beverage board, alongside black coffee, ginger tea, tea, kadai milk, majjige, and badam milk hot or cold.",
+  },
+  {
+    q: "Are the dosas made to order?",
+    a: "Yes. The dosa and idly counter is a live counter, as are the meals counter and Annaporna. Each is named on the fascia and each cooks in front of you.",
+  },
+  {
+    q: "Can I open a Shri Aradhyam outlet?",
+    a: "We are opening more Shri Aradhyam kitchens across Bengaluru and are open to partners. Write to hello@shriaradhyam.com through the Partner With Us page and we will get back to you.",
+  },
+  {
+    q: "Is there parking at the Banashankari outlet?",
+    a: "Yes. The Banashankari outlet has basement parking. It stands on Outer Ring Road at Kathreguppe, opposite KEB.",
+  },
+];
+
+/** The local landing page for the first outlet. */
+export const BANASHANKARI = {
+  heading: "South Indian food on Outer Ring Road",
+  lead:
+    "The first Shri Aradhyam stands on Outer Ring Road at Kathreguppe, on the Banashankari 3rd Stage side, opposite KEB. It is a pure vegetarian house serving regional South Indian food across five traditions, with live counters for meals, for idly and dosa, and for Annaporna.",
+  /** What is actually in the room, drawn from the renders rather than claimed. */
+  inside: [
+    {
+      title: "A threshold, not a doorway",
+      body: "Stone columns, brass lamps hung overhead, and a lotus bowl set on the floor where you come in. You arrive somewhere before you order anything.",
+    },
+    {
+      title: "The shrine before the counters",
+      body: "A carved wooden shrine stands inside the door, a stone deity lit between two hanging lamps. The ordering kiosks sit either side of it, which is the right way round.",
+    },
+    {
+      title: "Three live counters",
+      body: "Meals, Idly and Dosa, and Annaporna, each named in brass on a copper fascia. The juice and coffee counter runs alongside on a granite top.",
+    },
+    {
+      title: "A hall to sit in",
+      body: "Granite tops and low cane stools under a coffered ceiling, with planted dividers and ferns along the bench backs the length of the room.",
+    },
+  ],
+  /** The seven lines painted on the dining room wall, restated for search. */
+  promise:
+    "The promise is painted on the wall in Kannada and in English: freshly prepared every day, premium ingredients, authentic recipes, no preservatives, no artificial colours, no artificial flavours, and one hundred percent pure vegetarian.",
 } as const;

@@ -7,12 +7,20 @@ import {
   RuleDiamond,
   Thoranam,
 } from "@/components/site/ornament";
+import { JsonLd } from "@/components/site/json-ld";
+import { breadcrumbSchema, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Gallery",
+  path: "/gallery",
   description:
-    "Twelve views of the Banashankari outlet: the threshold, the shrine, the counters and the room.",
-};
+    "Twelve views of the Banashankari outlet: the threshold and its brass lamps, the shrine inside the door, the live counters, and the dining hall under its coffered ceiling.",
+  keywords: [
+    "South Indian restaurant interior Bengaluru",
+    "temple style restaurant Bangalore",
+    "Banashankari restaurant photos",
+  ],
+});
 
 /** The span each tile size claims on the grid. Identical at both column
  *  counts, so the collage re-tiles itself from four columns down to two
@@ -38,6 +46,7 @@ const SIZES = {
 export default function GalleryPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Gallery", path: "/gallery" }])} />
       <section
         className="hero-dark relative isolate overflow-hidden bg-ink-900"
         style={{ marginTop: "calc(var(--header-h, 6.9rem) * -1)", zIndex: 0 }}

@@ -8,12 +8,20 @@ import {
   RuleDiamond,
   Thoranam,
 } from "@/components/site/ornament";
+import { JsonLd } from "@/components/site/json-ld";
+import { breadcrumbSchema, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Our Story",
+  path: "/story",
   description:
-    "Why Shri Aradhyam exists: one roof for the diversity of South Indian vegetarian food, staying true to where every dish comes from.",
-};
+    "Why Shri Aradhyam exists: one roof for the diversity of South Indian vegetarian food, and every recipe kept rooted in the region, city and tradition it belongs to.",
+  keywords: [
+    "authentic South Indian vegetarian food",
+    "regional South Indian cuisine",
+    "South Indian food traditions",
+  ],
+});
 
 /**
  * Two passages. The storefront you are standing outside, carrying the whole
@@ -23,6 +31,7 @@ export const metadata: Metadata = {
 export default function StoryPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Our Story", path: "/story" }])} />
       {/* Standing outside the building. */}
       <section
         className="hero-dark relative isolate overflow-hidden bg-ink-900"

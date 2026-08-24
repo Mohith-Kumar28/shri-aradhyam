@@ -14,12 +14,24 @@ import {
   JaaliBand,
   RuleDiamond,
 } from "@/components/site/ornament";
+import { JsonLd } from "@/components/site/json-ld";
+import { breadcrumbSchema, menuSchema, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Menu",
+  path: "/menu",
   description:
-    "Dosa from two cities, rice bowls from many regions, and traditional South Indian beverages. Served with devotion.",
-};
+    "Bengaluru and Chennai style dosa, benne dosa and pesarattu, five regional rice bowls from Mysore to Thanjavur, and Chikkamagaluru filter coffee. One hundred percent pure vegetarian.",
+  keywords: [
+    "benne dosa Bangalore",
+    "masala dosa Banashankari",
+    "bisi bele bath Bengaluru",
+    "ghee pongal Bangalore",
+    "pesarattu Bangalore",
+    "filter coffee Bengaluru",
+    "pure veg menu Bangalore",
+  ],
+});
 
 /** The plate that a group label is struck on. */
 const PLATE = {
@@ -33,9 +45,33 @@ const PLATE = {
  * ground, four columns, read all at once. No filters, no cards, no prices — a
  * board does not ask you to click anything.
  */
+/** The four sections of the board, handed to a crawler in its own format. */
+const MENU_SCHEMA = menuSchema([
+  ...DOSA.groups.map((group) => ({
+    name: `${DOSA.title} — ${group.label}`,
+    description: DOSA.note,
+    items: [...group.items],
+  })),
+  {
+    name: RICE_BOWLS.title,
+    description: RICE_BOWLS.note,
+    items: [
+      ...RICE_BOWLS.items.map((item) => `${item.name} (${item.place})`),
+      `${RICE_BOWLS.combo.name} — ${RICE_BOWLS.combo.detail}`,
+    ],
+  },
+  {
+    name: BEVERAGES.title,
+    description: BEVERAGES.note,
+    items: [...BEVERAGES.items],
+  },
+]);
+
 export default function MenuPage() {
   return (
     <section className="relative overflow-hidden bg-ink-800 py-14 sm:py-20">
+      <JsonLd data={breadcrumbSchema([{ name: "Menu", path: "/menu" }])} />
+      <JsonLd data={MENU_SCHEMA} />
       <JaaliBand className="absolute inset-x-0 top-0 opacity-25" height={40} />
       <div
         aria-hidden="true"

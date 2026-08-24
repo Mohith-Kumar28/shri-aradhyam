@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { BRAND, NAV } from "@/lib/site-data";
 import { Kolam, LotusRoundel, Mark, RuleDiamond } from "@/components/site/ornament";
 
-export const metadata = {
+/* Next marks a not-found response noindex on its own; nothing to add here. */
+export const metadata: Metadata = {
   title: "Page not found",
 };
 

@@ -9,12 +9,20 @@ import {
   RuleDiamond,
   Thoranam,
 } from "@/components/site/ornament";
+import { JsonLd } from "@/components/site/json-ld";
+import { breadcrumbSchema, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Partner With Us",
+  path: "/partner",
   description:
-    "Write to us about partnering with Shri Aradhyam as we open more kitchens across Bengaluru.",
-};
+    "Partner with Shri Aradhyam as we open more South Indian vegetarian kitchens across Bengaluru — the fit out standard, the audited recipe cards, counter and griddle training, and the supply chain.",
+  keywords: [
+    "restaurant franchise Bengaluru",
+    "South Indian restaurant partnership",
+    "food business opportunity Bangalore",
+  ],
+});
 
 const WITH_US = [
   "The kitchen, the drawings and the fit out standard",
@@ -26,6 +34,7 @@ const WITH_US = [
 export default function PartnerPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Partner With Us", path: "/partner" }])} />
       <section
         className="hero-dark relative isolate overflow-hidden bg-ink-900"
         style={{ marginTop: "calc(var(--header-h, 6.9rem) * -1)", zIndex: 0 }}

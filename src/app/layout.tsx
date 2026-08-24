@@ -13,7 +13,15 @@ import { SiteHeader } from "@/components/site/site-header";
 import { RevealProvider } from "@/components/site/reveal-provider";
 import { daysUntilOpening, isPreOpening } from "@/lib/today";
 import { SiteFooter } from "@/components/site/site-footer";
-import { BRAND, CONTACT, LOCATIONS } from "@/lib/site-data";
+import { JsonLd } from "@/components/site/json-ld";
+import { BRAND, OPENING } from "@/lib/site-data";
+import {
+  CORE_KEYWORDS,
+  RESTAURANT_SCHEMA,
+  SITE_NAME,
+  SITE_URL,
+  WEBSITE_SCHEMA,
+} from "@/lib/seo";
 
 const eczar = Eczar({
   subsets: ["latin"],
@@ -66,38 +74,48 @@ const notoMalayalam = Noto_Serif_Malayalam({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shriaradhyam.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Shri Aradhyam | All of South India. One roof. Endless flavours.",
-    template: "%s | Shri Aradhyam",
+    default: `${SITE_NAME} | All of South India. One roof. Endless flavours.`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Shri Aradhyam brings together the authentic vegetarian food traditions of South India — the recipes, flavours and stories of the places they come from. Opening at Banashankari, Bengaluru.",
+    "Shri Aradhyam brings together the authentic vegetarian food traditions of South India — Udupi and Thanjavur meals, dosa from two cities, regional rice bowls and filter coffee. Opening at Banashankari, Bengaluru.",
+  applicationName: SITE_NAME,
+  keywords: CORE_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Restaurant",
+  alternates: { canonical: SITE_URL },
+  /* An address on a page is an address, not a number to be turned into a
+     call button by a phone browser. */
+  formatDetection: { telephone: false, address: false, email: false },
   openGraph: {
-    title: "Shri Aradhyam",
-    description: BRAND.tagline,
     type: "website",
+    siteName: SITE_NAME,
     locale: "en_IN",
+    url: SITE_URL,
+    title: `${SITE_NAME} — ${BRAND.tagline}`,
+    description:
+      `Authentic South Indian vegetarian food from the regions it belongs to. Opening at ${OPENING.outlet}, ${OPENING.city} — ${OPENING.dateLabel}.`,
   },
-};
-
-const JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "FoodEstablishment",
-  name: BRAND.name,
-  alternateName: BRAND.nameKannada,
-  slogan: BRAND.tagline,
-  servesCuisine: ["South Indian", "Vegetarian"],
-  url: "https://shriaradhyam.com",
-  hasMenu: "https://shriaradhyam.com/menu",
-  email: CONTACT.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: LOCATIONS[0].address,
-    addressLocality: "Bengaluru",
-    addressRegion: "Karnataka",
-    postalCode: "560085",
-    addressCountry: "IN",
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — ${BRAND.tagline}`,
+    description:
+      `Authentic South Indian vegetarian food from the regions it belongs to. Opening at ${OPENING.outlet}, ${OPENING.city}.`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -106,7 +124,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={[
         eczar.variable,
         alegreya.variable,
@@ -118,10 +136,7 @@ export default function RootLayout({
       ].join(" ")}
     >
       <body className="flex min-h-dvh flex-col bg-bone-200 text-ink-700 antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
-        />
+        <JsonLd data={[RESTAURANT_SCHEMA, WEBSITE_SCHEMA]} />
         <a
           href="#main"
           className="label sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:bg-ink-800 focus:px-4 focus:py-3 focus:text-bone-100"
