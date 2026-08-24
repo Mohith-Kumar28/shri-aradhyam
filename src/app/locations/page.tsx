@@ -57,11 +57,11 @@ export default function LocationsPage() {
         <div className="paper absolute inset-0" aria-hidden="true" />
 
         <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          <div className="grid gap-8 lg:grid-cols-12">
+          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
             {/* The first outlet, on the dark ground, with the elevation. */}
             <article
               data-reveal
-              className="relative overflow-hidden bg-ink-800 lg:col-span-7"
+              className="relative flex flex-col overflow-hidden bg-ink-800"
             >
               <div
                 aria-hidden="true"
@@ -84,7 +84,7 @@ export default function LocationsPage() {
                 </div>
               ) : null}
 
-              <div className="relative px-8 py-10 sm:px-11 sm:py-12">
+              <div className="relative flex flex-1 flex-col px-8 py-10 sm:px-11 sm:py-12">
                 <p className="label text-[0.5625rem] text-brass-400">
                   {first.status}
                 </p>
@@ -115,7 +115,7 @@ export default function LocationsPage() {
 
                 <Link
                   href="/menu"
-                  className="label link-brass mt-9 inline-flex items-center gap-2.5 text-[0.625rem] text-bone-200"
+                  className="label link-brass mt-9 inline-flex w-fit items-center gap-2.5 pt-1 text-[0.625rem] text-bone-200"
                 >
                   See the menu
                   <Mark name="arrowRight" size={13} className="text-brass-400" />
@@ -127,19 +127,19 @@ export default function LocationsPage() {
             <article
               data-reveal
               style={{ ["--reveal-delay" as string]: "120ms" }}
-              className="relative overflow-hidden bg-bone-100 lg:col-span-4 lg:col-start-9 lg:mt-16"
+              className="relative flex flex-col overflow-hidden bg-bone-100"
             >
               <div aria-hidden="true" className="jaali absolute inset-0 opacity-[0.22]" />
-              <div className="relative px-8 py-10 sm:px-10 sm:py-12">
+              <div className="relative flex flex-1 flex-col px-8 py-10 sm:px-10 sm:py-12">
                 <p className="label text-[0.5625rem] text-kumkum-700">{next.status}</p>
-                <h2 className="mt-5 font-display text-[clamp(1.7rem,3vw,2.2rem)] font-semibold tracking-[-0.025em] text-ink-800">
-                  <span className="kn block text-[1.1rem] font-normal text-granite-500" lang="kn">
+                <h2 className="mt-5 font-display text-[clamp(1.9rem,3.6vw,2.6rem)] font-semibold tracking-[-0.025em] text-ink-800">
+                  <span className="kn block text-[1.2rem] font-normal text-granite-500" lang="kn">
                     {next.native}
                   </span>
                   {next.name}
                 </h2>
 
-                <RuleDiamond className="mt-7 max-w-[12rem]" />
+                <RuleDiamond className="mt-7 max-w-[18rem]" />
 
                 <p className="mt-7 text-[1.0625rem] leading-relaxed text-granite-500">
                   The second kitchen. The address will be published here once the
@@ -148,7 +148,7 @@ export default function LocationsPage() {
 
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="label link-brass mt-9 inline-flex items-center gap-2.5 text-[0.625rem] text-ink-700"
+                  className="label link-brass mt-auto inline-flex w-fit items-center gap-2.5 pt-9 text-[0.625rem] text-ink-700"
                 >
                   Ask us about it
                   <Mark name="arrowRight" size={13} className="text-brass-600" />

@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { BRAND, LOCATIONS, OPENING } from "@/lib/site-data";
+import { LOCATIONS, OPENING } from "@/lib/site-data";
 import { EaveCourse, LotusRoundel, Mark } from "@/components/site/ornament";
 
 /**
- * Layout family: split band on the dark ground, with a marked register beside
- * it. The page closes the way the building opens: the announcement, the street,
- * and the list of what is served inside.
+ * Layout family: a band on the dark ground. The page closes the way the
+ * building opens — the announcement, and the street it stands on.
  */
 export function Invite() {
   const [first, next] = LOCATIONS;
@@ -25,7 +24,7 @@ export function Invite() {
 
       <div className="relative mx-auto max-w-[88rem] px-5 py-24 sm:px-8 sm:py-28 lg:py-32">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-7">
             <LotusRoundel className="text-brass-500" size={40} />
 
             <p className="label mt-8 text-[0.5625rem] text-brass-500">
@@ -61,39 +60,6 @@ export function Invite() {
                 <Mark name="arrowRight" size={14} className="text-brass-400" />
               </Link>
             </div>
-          </div>
-
-          {/* What the board outside names, as a ruled register. */}
-          <div className="lg:col-span-5 lg:col-start-8">
-            <p className="label rule-bottom border-bone-500/30 pb-3 text-[0.625rem] text-brass-500">
-              Served inside
-            </p>
-            <ul>
-              {BRAND.signage.map((item, i) => (
-                <li
-                  key={item}
-                  data-reveal="rule"
-                  style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
-                  className="rule-bottom flex items-baseline gap-5 border-bone-500/22 py-4"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="mt-2.5 h-1 w-1 shrink-0 rotate-45 bg-brass-500"
-                  />
-                  <span className="text-[1.0625rem] leading-snug text-bone-200">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-8 text-[0.9375rem] leading-relaxed text-bone-500">
-              <span className="kn" lang="kn">
-                {BRAND.devotionKannada}
-              </span>
-              <span className="mx-2 text-granite-400">/</span>
-              {BRAND.devotion}
-            </p>
           </div>
         </div>
       </div>

@@ -10,11 +10,28 @@ import {
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "The restaurant, and what comes out of its kitchen.",
+  description:
+    "Twelve views of the Banashankari outlet: the threshold, the shrine, the counters and the room.",
 };
 
+/** The span each tile size claims on the grid. Identical at both column
+ *  counts, so the collage re-tiles itself from four columns down to two
+ *  without a second set of classes. */
+const SPAN = {
+  hero: "col-span-2 row-span-2",
+  wide: "col-span-2 row-span-1",
+  small: "col-span-1 row-span-1",
+} as const;
+
+/** What each tile is worth telling the browser about its rendered width. */
+const SIZES = {
+  hero: "(max-width: 1024px) 100vw, 50vw",
+  wide: "(max-width: 1024px) 100vw, 50vw",
+  small: "(max-width: 1024px) 50vw, 25vw",
+} as const;
+
 /**
- * A collage laid as a masonry of two tile widths, every plate framed in a brass
+ * A collage of the outlet in three tile sizes, every view framed in a brass
  * hairline the way a drawing is framed on the wall. No captions and no
  * lightbox: the pictures are the page.
  */
@@ -37,7 +54,8 @@ export default function GalleryPage() {
             Gallery
           </h1>
           <p className="mt-6 max-w-[42ch] text-[1.0625rem] leading-relaxed text-bone-400">
-            The building, the room and the plates. {BRAND.tagline}
+            The threshold, the shrine, the counters and the room at
+            Banashankari. {BRAND.tagline}
           </p>
         </div>
 
@@ -53,23 +71,26 @@ export default function GalleryPage() {
         <div className="paper absolute inset-0" aria-hidden="true" />
 
         <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          <div className="grid grid-flow-row-dense grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+          {/* The row height is set to about four fifths of a column, so a hero
+              tile lands near square and a wide tile near 2:1 — both modest
+              crops of a render that is natively 1.46:1. Dense flow is load
+              bearing, not a safety net: the last wide tile is placed after the
+              last hero in source order and has to fall back into the hole the
+              hero leaves beside it. */}
+          <div className="grid auto-rows-[37vw] grid-flow-row-dense grid-cols-2 gap-3 lg:auto-rows-[clamp(11rem,17vw,16rem)] lg:grid-cols-4 lg:gap-4">
             {GALLERY.map((image, i) => (
               <figure
                 key={image.src}
                 data-reveal
-                style={{ ["--reveal-delay" as string]: `${(i % 4) * 70}ms` }}
-                className={[
-                  "group relative overflow-hidden bg-bone-300",
-                  image.wide ? "col-span-2 aspect-16/9" : "aspect-square",
-                ].join(" ")}
+                style={{ ["--reveal-delay" as string]: `${(i % 4) * 80}ms` }}
+                className={`group relative overflow-hidden bg-bone-300 ${SPAN[image.size]}`}
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                  preload={i < 2}
+                  sizes={SIZES[image.size]}
+                  preload={i < 4}
                   className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                 />
                 <span
@@ -82,7 +103,7 @@ export default function GalleryPage() {
 
           <RuleDiamond className="mx-auto mt-16 w-[min(22rem,70%)]" />
           <p className="label mt-6 text-center text-[0.5625rem] text-granite-400">
-            Architectural renders and dishes from the kitchen
+            Architectural renders of the Banashankari outlet
           </p>
         </div>
 

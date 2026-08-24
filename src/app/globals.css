@@ -577,7 +577,14 @@ header[data-over="true"] .signage .btn-frame {
   border-color: rgba(250, 245, 236, 0.42);
 }
 
-header[data-over="true"] .signage .btn-frame:hover {
+/* The fill that slides in over the dark hall is bone, so the lettering has to
+   turn to ink or it disappears into it. Colouring the anchor is not enough:
+   the label is a span of its own, and the board's blanket span rule above
+   keeps painting it bone, so the span has to be named here too. */
+header[data-over="true"] .signage .btn-frame:hover,
+header[data-over="true"] .signage .btn-frame:focus-visible,
+header[data-over="true"] .signage .btn-frame:hover :is(span, svg),
+header[data-over="true"] .signage .btn-frame:focus-visible :is(span, svg) {
   color: var(--color-ink-900);
 }
 

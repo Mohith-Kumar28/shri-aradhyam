@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { BRAND, HOME, OPENING } from "@/lib/site-data";
+import { BRAND, HOME, STORE } from "@/lib/site-data";
 import {
   Diamond,
   EaveCourse,
@@ -28,9 +27,9 @@ export function Hero() {
       className="hero-dark relative isolate overflow-hidden bg-ink-900"
       style={{ marginTop: "calc(var(--header-h, 6.9rem) * -1)", zIndex: 0 }}
     >
-      {/* The building, behind everything, held well back. */}
+      {/* The room itself, behind everything, held well back. */}
       <Image
-        src="/brand/kathriguppe-night.webp"
+        src={STORE.entrance.src}
         alt=""
         aria-hidden="true"
         fill
@@ -72,172 +71,118 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-[88rem] px-5 pb-28 pt-20 sm:px-8 sm:pb-32 sm:pt-24">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* The leaf of plaster. */}
+        {/* The leaf of plaster, alone on the wall and full width. */}
+        <div
+          data-reveal
+          className="paper lift-leaf relative overflow-hidden bg-bone-100"
+        >
           <div
-            data-reveal
-            className="paper lift-leaf relative overflow-hidden bg-bone-100 lg:col-span-8"
-          >
-            <div
-              aria-hidden="true"
-              className="jaali absolute inset-y-0 left-0 w-7 opacity-30"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-3 border border-brass-600/25"
-            />
+            aria-hidden="true"
+            className="jaali absolute inset-y-0 left-0 w-7 opacity-30"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-3 border border-brass-600/25"
+          />
 
-            {/* The wall's drawings, bleeding off the leaf at both ends. */}
-            <Image
-              src="/art/gopuram.webp"
-              alt=""
-              aria-hidden="true"
-              width={308}
-              height={632}
-              loading="eager"
-              className="drawn pointer-events-none absolute -left-10 bottom-0 hidden w-[8rem] opacity-55 sm:block lg:w-[9.5rem]"
-            />
-            <Image
-              src="/art/tharavad.webp"
-              alt=""
-              aria-hidden="true"
-              width={820}
-              height={896}
-              loading="eager"
-              className="drawn pointer-events-none absolute -right-12 -bottom-4 w-[12rem] opacity-50 sm:w-[15rem] lg:w-[19rem]"
-            />
+          {/* The wall's drawings, bleeding off the leaf at both ends. */}
+          <Image
+            src="/art/gopuram.webp"
+            alt=""
+            aria-hidden="true"
+            width={308}
+            height={632}
+            loading="eager"
+            className="drawn pointer-events-none absolute -left-10 bottom-0 hidden w-[8rem] opacity-55 sm:block lg:w-[9.5rem]"
+          />
+          <Image
+            src="/art/tharavad.webp"
+            alt=""
+            aria-hidden="true"
+            width={820}
+            height={896}
+            loading="eager"
+            className="drawn pointer-events-none absolute -right-12 -bottom-4 w-[12rem] opacity-50 sm:w-[15rem] lg:w-[19rem]"
+          />
 
-            <div className="relative px-7 py-12 sm:px-14 sm:py-16 lg:py-20">
-              <div className="flex items-center gap-4">
-                <LotusRoundel className="shrink-0 text-ink-700" size={34} />
-                <span className="h-px flex-1 bg-brass-600/40" />
-                <p className="label shrink-0 text-[0.5625rem] text-brass-700">
-                  {HOME.eyebrow}
-                </p>
-              </div>
+          <div className="relative px-7 py-12 sm:px-14 sm:py-16 lg:py-20">
+            <div className="flex items-center gap-4">
+              <LotusRoundel className="shrink-0 text-ink-700" size={34} />
+              <span className="h-px flex-1 bg-brass-600/40" />
+              <p className="label shrink-0 text-[0.5625rem] text-brass-700">
+                {HOME.eyebrow}
+              </p>
+            </div>
 
-              <h1 className="mt-9">
-                <span className="display-caps block text-[1.55rem] font-medium text-ink-700 sm:text-[2.1rem]">
-                  {HOME.heading[0]}
-                </span>
-                <span className="display-caps mt-1.5 block text-[1.95rem] font-semibold text-ink-900 sm:text-[2.85rem]">
-                  {HOME.heading[1]}
-                </span>
-              </h1>
+            <h1 className="mt-9">
+              <span className="display-caps block text-[1.55rem] font-medium text-ink-700 sm:text-[2.1rem]">
+                {HOME.heading[0]}
+              </span>
+              <span className="display-caps mt-1.5 block text-[1.95rem] font-semibold text-ink-900 sm:text-[2.85rem]">
+                {HOME.heading[1]}
+              </span>
+            </h1>
 
-              <RuleDiamond className="mt-9 max-w-[22rem]" />
+            <RuleDiamond className="mt-9 max-w-[22rem]" />
 
-              {/* The four readings, each against one of the wall's drawings. */}
-              <ul className="mt-9 grid gap-x-10 gap-y-4 sm:grid-cols-2">
-                {HOME.lines.map((line, i) => (
-                  <li
-                    key={line.text}
-                    data-reveal
-                    style={{ ["--reveal-delay" as string]: `${120 + i * 90}ms` }}
-                    className="flex items-center gap-4"
-                  >
-                    <span className="flex w-7 shrink-0 justify-center">
-                      {line.icon ? (
-                        <Image
-                          src={line.icon.src}
-                          alt=""
-                          aria-hidden="true"
-                          width={line.icon.width}
-                          height={line.icon.height}
-                          loading="eager"
-                          className="drawn h-7 w-auto"
-                        />
-                      ) : (
-                        <Diamond className="text-brass-600" size={8} />
-                      )}
-                    </span>
-                    <span className="text-[1.0625rem] leading-snug text-ink-700">
-                      {line.text}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+            {/* The four readings, each against one of the wall's drawings. */}
+            <ul className="mt-9 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+              {HOME.lines.map((line, i) => (
+                <li
+                  key={line.text}
+                  data-reveal
+                  style={{ ["--reveal-delay" as string]: `${120 + i * 90}ms` }}
+                  className="flex items-center gap-4"
+                >
+                  <span className="flex w-7 shrink-0 justify-center">
+                    {line.icon ? (
+                      <Image
+                        src={line.icon.src}
+                        alt=""
+                        aria-hidden="true"
+                        width={line.icon.width}
+                        height={line.icon.height}
+                        loading="eager"
+                        className="drawn h-7 w-auto"
+                      />
+                    ) : (
+                      <Diamond className="text-brass-600" size={8} />
+                    )}
+                  </span>
+                  <span className="text-[1.0625rem] leading-snug text-ink-700">
+                    {line.text}
+                  </span>
+                </li>
+              ))}
+            </ul>
 
-              <p className="mt-10 max-w-[46ch] text-[1.0625rem] leading-relaxed text-granite-500">
+            {/* The paragraph and the line it closes on, set side by side so the
+                full width of the leaf carries text rather than empty plaster. */}
+            <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-2">
+              <p className="max-w-[46ch] text-[1.0625rem] leading-relaxed text-granite-500">
                 At <span className="font-medium text-ink-800">{BRAND.name}</span>,{" "}
                 {HOME.body}
               </p>
 
-              <p className="display-caps mt-11 text-[1.05rem] text-ink-700 sm:text-[1.3rem]">
+              <p className="display-caps self-center text-[1.05rem] text-ink-700 sm:text-[1.3rem]">
                 {HOME.close[0]}
                 <span className="mt-1 block font-semibold text-ink-900">
                   {HOME.close[1]}
                 </span>
               </p>
             </div>
-
-            {/* The paneled dado the lettering stands above. */}
-            <div aria-hidden="true" className="relative">
-              <div
-                className="h-9 border-t border-bone-400/70 bg-bone-200/70 sm:h-12"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(90deg, rgba(160,132,90,0.22) 0 1px, transparent 1px 9rem)",
-                }}
-              />
-              <div className="h-2 bg-ink-900/85" />
-            </div>
           </div>
 
-          {/* The announcement, pressed into brass, and the name read four ways. */}
-          <div className="lg:col-span-4 lg:pt-6">
+          {/* The paneled dado the lettering stands above. */}
+          <div aria-hidden="true" className="relative">
             <div
-              data-reveal="seal"
-              className="brass-plate relative px-7 py-8 text-ink-900"
-            >
-              <p className="label text-[0.5625rem] text-ink-900/70">Opening</p>
-              <p className="struck mt-3 font-display text-[1.6rem] font-semibold leading-tight">
-                <span className="kn block text-[1.15rem] font-normal" lang="kn">
-                  {OPENING.outletNative}
-                </span>
-                {OPENING.outlet}, {OPENING.city}
-              </p>
-              <span aria-hidden="true" className="mt-5 block h-px w-14 bg-ink-900/35" />
-              <p className="mt-5 text-[0.9375rem] leading-relaxed text-ink-900/85">
-                {OPENING.dateLabel}
-              </p>
-            </div>
-
-            <div className="mt-8 border border-bone-500/25 px-7 py-7">
-              <p className="label text-[0.5625rem] text-brass-400">
-                The name, read four ways
-              </p>
-              <ul className="mt-5 space-y-3">
-                {BRAND.nameInScripts.map((reading) => (
-                  <li
-                    key={reading.script}
-                    className={`${reading.script} text-[1.15rem] text-bone-200`}
-                    lang={reading.script}
-                  >
-                    {reading.text}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-[0.9375rem] leading-relaxed text-bone-400">
-                <span className="kn" lang="kn">
-                  {BRAND.devotionKannada}
-                </span>
-                <span className="mx-2 text-granite-400">/</span>
-                {BRAND.devotion}
-              </p>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
-              <Link href="/menu" className="label link-brass text-[0.625rem] text-bone-200">
-                See the menu
-              </Link>
-              <Link
-                href="/locations"
-                className="label link-brass text-[0.625rem] text-bone-200"
-              >
-                Where to find us
-              </Link>
-            </div>
+              className="h-9 border-t border-bone-400/70 bg-bone-200/70 sm:h-12"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(90deg, rgba(160,132,90,0.22) 0 1px, transparent 1px 9rem)",
+              }}
+            />
+            <div className="h-2 bg-ink-900/85" />
           </div>
         </div>
       </div>

@@ -6,13 +6,12 @@ import {
   DOSA,
   MENU_FOOTER,
   RICE_BOWLS,
+  STORE,
 } from "@/lib/site-data";
 import {
   Corbel,
   EaveCourse,
   JaaliBand,
-  Kolam,
-  LotusRoundel,
   RuleDiamond,
 } from "@/components/site/ornament";
 
@@ -57,15 +56,15 @@ export default function MenuPage() {
             className="pointer-events-none absolute inset-3 border border-brass-600/25"
           />
 
-          {/* The drawings the board carries in its corners, and a kolam under
-              the middle of the sheet. */}
+          {/* The drawings the board carries, moved down into the two corners
+              the columns leave empty now that the masthead is gone. */}
           <Image
             src="/art/gopuram.webp"
             alt=""
             aria-hidden="true"
             width={308}
             height={632}
-            className="drawn pointer-events-none absolute left-5 top-10 hidden w-[5.5rem] opacity-60 lg:block"
+            className="drawn pointer-events-none absolute bottom-6 left-6 hidden w-[5rem] opacity-40 lg:block"
           />
           <Image
             src="/art/tharavad.webp"
@@ -73,31 +72,14 @@ export default function MenuPage() {
             aria-hidden="true"
             width={820}
             height={896}
-            className="drawn pointer-events-none absolute right-5 top-10 hidden w-[9rem] opacity-55 lg:block"
-          />
-          <Kolam
-            className="pointer-events-none absolute bottom-16 left-1/2 hidden w-[18rem] -translate-x-1/2 text-ink-700/[0.07] lg:block"
-            size={300}
+            className="drawn pointer-events-none absolute bottom-4 right-6 hidden w-[8rem] opacity-35 lg:block"
           />
 
           <div className="relative px-5 py-14 sm:px-10 sm:py-16">
-            {/* Masthead */}
-            <header className="relative text-center">
-              <LotusRoundel className="mx-auto text-ink-700" size={32} />
-              <p className="kn mt-4 font-display text-lg text-ink-700" lang="kn">
-                {BRAND.nameKannada}
-              </p>
-              <h1 className="mt-1 font-display text-[2.25rem] font-semibold tracking-[-0.02em] text-ink-900 sm:text-[3rem]">
-                {BRAND.name}
-              </h1>
-              <p className="label mt-4 text-[0.5625rem] text-brass-700">
-                {BRAND.devotion}
-              </p>
-              <RuleDiamond className="mx-auto mt-6 w-[min(22rem,80%)]" />
-            </header>
-
-            {/* The sheet's four columns. */}
-            <div className="relative mt-12 grid gap-12 md:grid-cols-2 md:gap-x-10 lg:grid-cols-12 lg:gap-x-8">
+            {/* The sheet's four columns. The board carries no masthead: the
+                header above it already names the house. */}
+            <h1 className="sr-only">Menu</h1>
+            <div className="relative grid gap-12 md:grid-cols-2 md:gap-x-10 lg:grid-cols-12 lg:gap-x-8">
               {/* Dosa */}
               <div className="lg:col-span-3">
                 <ColumnHead title={DOSA.title} note={DOSA.note} />
@@ -124,27 +106,18 @@ export default function MenuPage() {
                 </div>
               </div>
 
-              {/* The plates, standing in the middle of the sheet as they do on
-                  the board. Every dish they show is named in a column. */}
+              {/* The counters the board is read from, standing in the middle of
+                  the sheet as they do in the room. */}
               <div className="space-y-3 md:order-last lg:order-none lg:col-span-3 lg:border-l lg:border-bone-400/70 lg:pl-8">
-                {[
-                  {
-                    src: "/dishes/dosa-masala.webp",
-                    alt: "Masala dosa served with chutney and sambar on a banana leaf",
-                  },
-                  {
-                    src: "/dishes/dosa-pesarattu.webp",
-                    alt: "Pesarattu, the green gram crepe, with coconut chutney",
-                  },
-                ].map((plate) => (
-                  <div key={plate.src} className="relative">
+                {[STORE.liveCounters, STORE.diningHall].map((view) => (
+                  <div key={view.src} className="relative">
                     <Image
-                      src={plate.src}
-                      alt={plate.alt}
-                      width={900}
-                      height={900}
+                      src={view.src}
+                      alt={view.alt}
+                      width={1439}
+                      height={985}
                       sizes="(max-width: 1024px) 100vw, 25vw"
-                      className="aspect-square w-full object-cover"
+                      className="aspect-4/3 w-full object-cover"
                     />
                     <span
                       aria-hidden="true"
@@ -200,12 +173,12 @@ export default function MenuPage() {
                 </ul>
                 <div className="relative mt-8">
                   <Image
-                    src="/dishes/coffee-filter.webp"
-                    alt="Filter coffee poured into a steel tumbler and dabara"
-                    width={900}
-                    height={900}
+                    src={STORE.beverageCounter.src}
+                    alt={STORE.beverageCounter.alt}
+                    width={1439}
+                    height={985}
                     sizes="(max-width: 1024px) 100vw, 25vw"
-                    className="aspect-square w-full object-cover"
+                    className="aspect-4/3 w-full object-cover"
                   />
                   <span
                     aria-hidden="true"

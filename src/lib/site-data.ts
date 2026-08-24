@@ -120,6 +120,65 @@ export const REGIONS: {
 ];
 
 /* ---------------------------------------------------------------------------
+   The store renders. The only photography on the site: twelve views of the
+   Banashankari outlet. Every page draws its pictures from here, so there is one
+   place to swap a render and no dummy image can creep back in.
+   --------------------------------------------------------------------------- */
+
+export type StoreRender = { src: string; alt: string };
+
+export const STORE = {
+  entrance: {
+    src: "/store/entrance.webp",
+    alt: "The entrance, looking in past stone columns and hanging brass lamps to the host desk and the lotus water bowl",
+  },
+  shrine: {
+    src: "/store/shrine.webp",
+    alt: "The carved wooden shrine inside the door, a stone deity lit between two hanging lamps, with the ordering kiosks either side",
+  },
+  promiseWall: {
+    src: "/store/promise-wall.webp",
+    alt: "The promise painted on the dining room wall in Kannada and English, with the seven assurance marks beneath it",
+  },
+  liveCounters: {
+    src: "/store/live-counters.webp",
+    alt: "The live counters under a copper fascia: Meals, Idly and Dosa, and Annaporna",
+  },
+  beverageCounter: {
+    src: "/store/beverage-counter.webp",
+    alt: "The juice and coffee counter, brass lettering on a carved fascia over a granite top",
+  },
+  diningHall: {
+    src: "/store/dining-hall.webp",
+    alt: "The dining hall under its coffered ceiling, planted dividers running between the granite tables",
+  },
+  hall: {
+    src: "/store/hall.webp",
+    alt: "The length of the hall, the lettered wall on one side and the counters on the other",
+  },
+  floor: {
+    src: "/store/floor.webp",
+    alt: "The dining floor: granite tops, low cane stools and ferns along the bench backs",
+  },
+  tables: {
+    src: "/store/tables.webp",
+    alt: "Round granite tables on the open floor, with the counters at the far end",
+  },
+  room: {
+    src: "/store/room.webp",
+    alt: "The room seen across the juice counter, the jaali screen and the counters beyond",
+  },
+  verandah: {
+    src: "/store/verandah.webp",
+    alt: "The covered verandah, stone columns and a jaali screen open to the street",
+  },
+  washCounter: {
+    src: "/store/wash-counter.webp",
+    alt: "The hand wash and R.O. water station set into stone, against a coloured glass jaali screen",
+  },
+} as const satisfies Record<string, StoreRender>;
+
+/* ---------------------------------------------------------------------------
    Home
    --------------------------------------------------------------------------- */
 
@@ -149,36 +208,32 @@ export const HOME = {
 } as const;
 
 /** The renders that run as a rail through the dark band of the home page. */
-export const ROOM = [
+export const ROOM: (StoreRender & { title: string; caption: string })[] = [
   {
-    src: "/brand/kathriguppe-night.webp",
-    alt: "The outlet lit at night: brass signage glowing under a stone eave, garlanded columns and a lamp course along the awning",
+    ...STORE.entrance,
     title: "The threshold",
     caption:
-      "The signage lights, the thoranam hangs across the awning, and the lamp course runs the length of the eave.",
+      "Stone columns, brass lamps overhead, and the lotus bowl set on the floor where you come in.",
   },
   {
-    src: "/brand/dining-floor.webp",
-    alt: "The dining floor: granite topped tables, low wooden stools, live counters at the far end and a lit deity niche with a marigold garland",
+    ...STORE.shrine,
+    title: "The shrine",
+    caption:
+      "The deity is lit inside the door, before the counters. A plate is an offering before it is a meal.",
+  },
+  {
+    ...STORE.liveCounters,
+    title: "The counters",
+    caption:
+      "Meals, idly and dosa, and Annaporna — each named on the fascia, each cooked in front of you.",
+  },
+  {
+    ...STORE.floor,
     title: "The floor",
     caption:
-      "Granite tops, low stools, planted dividers, and two live counters so you watch the dosa leave the griddle.",
+      "Granite tops, low cane stools, and ferns planted along the bench backs the length of the room.",
   },
-  {
-    src: "/brand/interior-wall.webp",
-    alt: "The dining wall carrying the promise in Kannada and English above a row of drawn assurance marks",
-    title: "The wall",
-    caption:
-      "The promise is painted where you eat, in Kannada and in English, with the seven marks under it.",
-  },
-  {
-    src: "/brand/kathriguppe-day.webp",
-    alt: "The storefront by day: stone columns, the Kannada and Latin lockup on the fascia and a board naming the menu sections",
-    title: "The elevation",
-    caption:
-      "By daylight, with the board outside naming what is inside: Udupi meals, Thanjavur meals, rice bowls, dosa, coffee.",
-  },
-] as const;
+];
 
 /* ---------------------------------------------------------------------------
    Our story
@@ -186,18 +241,21 @@ export const ROOM = [
 
 export const STORY = {
   heading: "Our story",
-  paragraphs: [
-    "Shri Aradhyam create a place where the diversity of South Indian vegetarian food could be experienced under one roof — while staying true to where every dish comes from.",
-    "Not one generic version of South Indian food.",
-    "But authentic recipes rooted in their regions, cities and traditions.",
-    "From Bengaluru's familiar favourites to the food traditions of Udupi and Mysuru.",
-    "From Madurai and Coimbatore to Thanjavur.",
-    "From Andhra's Pesarattu and Gongura traditions to the distinctive flavours of Telangana.",
-    "From Kerala's Appam and Puttu traditions to many more regional discoveries.",
+  /** The opening line, read first, beside the wall's creed. */
+  lead:
+    "Shri Aradhyam was created to be a place where the diversity of South Indian vegetarian food could be experienced under one roof — while staying true to where every dish comes from.",
+  /** The argument, in two paragraphs rather than a register of one-liners, so
+      the whole of it is read without scrolling. */
+  body: [
+    "Not one generic version of South Indian food, but authentic recipes rooted in the regions, cities and traditions they belong to.",
+    "From Bengaluru's familiar favourites to the food traditions of Udupi and Mysuru; from Madurai and Coimbatore to Thanjavur; from Andhra's pesarattu and gongura to the distinctive flavours of Telangana; and from Kerala's appam and puttu to many more regional discoveries.",
+  ],
+  /** The close, set large over the kolam. */
+  closing: [
     "Every place has something worth preserving.",
     "And something worth discovering.",
-    "That is why we created Shri Aradhyam.",
   ],
+  close: "That is why we created Shri Aradhyam.",
 } as const;
 
 /* ---------------------------------------------------------------------------
@@ -287,15 +345,12 @@ export const LOCATIONS: Location[] = [
     status: "Opening the last week of September",
     address:
       "221, Outer Ring Rd, opp. KEB, Kathreguppe, Banashankari 3rd Stage, Banashankari, Bengaluru, Karnataka 560085",
-    image: {
-      src: "/brand/kathriguppe-night.webp",
-      alt: "The Banashankari storefront lit at night",
-    },
+    image: STORE.entrance,
   },
   {
     name: "Sarjapur",
     native: "ಸರ್ಜಾಪುರ",
-    status: "Coming soon",
+    status: "Opening soon",
   },
 ];
 
@@ -303,58 +358,36 @@ export const LOCATIONS: Location[] = [
    Gallery
    --------------------------------------------------------------------------- */
 
-export const GALLERY: { src: string; alt: string; wide?: boolean }[] = [
-  {
-    src: "/brand/kathriguppe-day.webp",
-    alt: "The Banashankari storefront by day, stone columns under brass signage",
-    wide: true,
-  },
-  {
-    src: "/brand/interior-wall.webp",
-    alt: "Granite tables along the dining room wall, under the lettered wall panel",
-  },
-  {
-    src: "/dishes/dosa-masala.webp",
-    alt: "Masala dosa with chutney and sambar on a banana leaf",
-  },
-  {
-    src: "/brand/dining-floor.webp",
-    alt: "The dining floor, carved screens and a lit shrine beyond the counter",
-    wide: true,
-  },
-  {
-    src: "/dishes/thali-udupi.webp",
-    alt: "An Udupi meal laid out in small bowls around rice",
-  },
-  {
-    src: "/brand/storefront.webp",
-    alt: "The entrance under the awning, with the lotus emblem lit above the doors",
-  },
-  {
-    src: "/dishes/coffee-filter.webp",
-    alt: "Filter coffee poured into a steel tumbler and dabara",
-  },
-  {
-    src: "/brand/kathriguppe-night.webp",
-    alt: "The storefront lit at night, the signage and lamp course glowing",
-    wide: true,
-  },
-  {
-    src: "/dishes/thali-thanjavur.webp",
-    alt: "A Thanjavur meal with ghee pongal at the centre",
-  },
-  {
-    src: "/dishes/dosa-pesarattu.webp",
-    alt: "Pesarattu, the green gram crepe, with coconut chutney",
-  },
-  {
-    src: "/dishes/rice-vegetable-pulav.webp",
-    alt: "Vegetable pulao in a steel bowl",
-  },
-  {
-    src: "/dishes/rice-tomato-bath.webp",
-    alt: "Tomato rice in a steel bowl",
-  },
+/**
+ * The gallery is laid as a collage rather than a contact sheet, so the tiles
+ * come in three sizes:
+ *
+ *   hero  — two columns by two rows, cropped square. The symmetrical views.
+ *   wide  — two columns by one row, a panoramic strip. The horizontal views:
+ *           a counter, a wall, a colonnade, all of which read well as a band.
+ *   small — one cell. The busier views, which carry at a glance.
+ *
+ * The order is the order you walk the room, and the sizes are chosen so the
+ * twelve tiles tile a four column grid exactly: 4 heroes + 4 wides + 4 smalls
+ * is 28 cells, which is seven full rows with no holes. The one exception is the
+ * last pair, which relies on dense flow to back-fill the final row — see the
+ * comment on the grid in the gallery page.
+ */
+export type GalleryTile = StoreRender & { size: "hero" | "wide" | "small" };
+
+export const GALLERY: GalleryTile[] = [
+  { ...STORE.entrance, size: "hero" },
+  { ...STORE.shrine, size: "hero" },
+  { ...STORE.promiseWall, size: "wide" },
+  { ...STORE.liveCounters, size: "wide" },
+  { ...STORE.hall, size: "hero" },
+  { ...STORE.washCounter, size: "small" },
+  { ...STORE.diningHall, size: "small" },
+  { ...STORE.beverageCounter, size: "wide" },
+  { ...STORE.floor, size: "small" },
+  { ...STORE.tables, size: "small" },
+  { ...STORE.room, size: "hero" },
+  { ...STORE.verandah, size: "wide" },
 ];
 
 /* ---------------------------------------------------------------------------

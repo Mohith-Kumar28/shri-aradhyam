@@ -74,8 +74,9 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* The register footer: opening, outlets, and the one mailbox. */}
-        <div className="rule-top mt-20 grid gap-8 border-bone-500/25 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+        {/* The register footer: opening, the outlet that follows, and the one
+            mailbox. */}
+        <div className="rule-top mt-20 grid gap-8 border-bone-500/25 pt-10 sm:grid-cols-3">
           <div>
             <p className="label text-[0.625rem] text-bone-500">Opening</p>
             <p className="mt-2.5 text-[0.9375rem] text-bone-200">
@@ -102,12 +103,6 @@ export function SiteFooter() {
             >
               {CONTACT.email}
             </a>
-          </div>
-          <div>
-            <p className="label text-[0.625rem] text-bone-500">On the board</p>
-            <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-bone-400">
-              {BRAND.signage.join(" · ")}
-            </p>
           </div>
         </div>
 
