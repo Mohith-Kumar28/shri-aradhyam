@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BRAND, CONTACT, LOCATIONS, OPENING } from "./site-data";
+import { BRAND, CONTACT, LOCATIONS, OPENING, SOCIAL } from "./site-data";
 
 /**
  * One place for everything a crawler or a share sheet reads.
@@ -116,6 +116,8 @@ export const RESTAURANT_SCHEMA = {
   url: SITE_URL,
   hasMenu: `${SITE_URL}/menu`,
   email: CONTACT.email,
+  /* The profiles that are this business rather than one with a similar name. */
+  sameAs: SOCIAL.map((account) => account.url),
   servesCuisine: ["South Indian", "Vegetarian", "Udupi", "Andhra", "Tamil", "Kerala"],
   address: POSTAL,
   areaServed: { "@type": "City", name: "Bengaluru" },

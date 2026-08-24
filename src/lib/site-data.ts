@@ -52,6 +52,21 @@ export const NAV_MORE = [
   { href: "/faq", label: "Questions" },
 ] as const;
 
+/**
+ * The accounts the masthead links out to, and the same three URLs the
+ * Restaurant schema declares as `sameAs` — which is how a search engine ties a
+ * profile to this business rather than to a business with a similar name.
+ *
+ * The handle is assumed to be the brand name unhyphenated. Confirm each URL
+ * against the live account before this goes out: a social link is the one thing
+ * on the site that can land a visitor on somebody else's page.
+ */
+export const SOCIAL = [
+  { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/shriaradhyam/" },
+  { name: "Facebook", icon: "facebook", url: "https://www.facebook.com/shriaradhyam" },
+  { name: "YouTube", icon: "youtube", url: "https://www.youtube.com/@shriaradhyam" },
+] as const;
+
 export const CONTACT = {
   email: "hello@shriaradhyam.com",
   city: "Bengaluru, Karnataka",

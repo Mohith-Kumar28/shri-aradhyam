@@ -575,68 +575,68 @@
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
-    "mtime": 1787609274.6438923,
-    "ast_hash": "237862b2d6b3430e55c384ccb09511c7",
+    "mtime": 1787248646.0779676,
+    "ast_hash": "3d0ddcd48baf8cb17aed463dd2560593",
     "semantic_hash": ""
   },
   "src/app/locations/page.tsx": {
-    "mtime": 1787609015.3564122,
-    "ast_hash": "4bbfc10a04b1ad7a316775e04b66ba61",
+    "mtime": 1787249204.042433,
+    "ast_hash": "b626663883ff28058b689642cb7b4366",
     "semantic_hash": ""
   },
   "src/app/menu/page.tsx": {
-    "mtime": 1787608979.4727135,
-    "ast_hash": "320337135e24b10fafd16d1b62d158bf",
+    "mtime": 1787249983.9872663,
+    "ast_hash": "41c8f14d43fa96270a7c707396d8cc0f",
     "semantic_hash": ""
   },
   "src/app/not-found.tsx": {
-    "mtime": 1787609274.6442177,
-    "ast_hash": "59159844a74adfd0de189858a81527ac",
+    "mtime": 1787249272.5230844,
+    "ast_hash": "3dcd8d919d7e1ebebebb4d14f463cb65",
     "semantic_hash": ""
   },
   "src/app/opengraph-image.tsx": {
-    "mtime": 1787609078.4386485,
-    "ast_hash": "971968fa655224e0fc67a4e59a8917f5",
+    "mtime": 1787246880.531738,
+    "ast_hash": "130b8b62a2c265bdfc45d153500334c4",
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1787608002.229847,
-    "ast_hash": "6782950e92b5225f7f787ac1e1da8fa5",
+    "mtime": 1787248865.6874757,
+    "ast_hash": "a58528650377c6b79f6c80a7d644442a",
     "semantic_hash": ""
   },
   "src/app/robots.ts": {
-    "mtime": 1787608959.9667652,
-    "ast_hash": "f2b19bfb5391128eea2b33152aaa0ae6",
+    "mtime": 1786949519.3182914,
+    "ast_hash": "7d319a0950da17e166675509164c4aae",
     "semantic_hash": ""
   },
   "src/app/sitemap.ts": {
-    "mtime": 1787608965.8521888,
-    "ast_hash": "f5056c94162fb9edbbf7423dbb1b1490",
+    "mtime": 1787246880.5319102,
+    "ast_hash": "9bba4debc0faa9525b9940f183bb893a",
     "semantic_hash": ""
   },
   "src/app/story/page.tsx": {
-    "mtime": 1787608672.119974,
-    "ast_hash": "1da6fb08e637df0b636088e251204570",
+    "mtime": 1787249363.0712051,
+    "ast_hash": "d541b4060831cfded0823a17f72c7140",
     "semantic_hash": ""
   },
   "src/components/site/ornament.tsx": {
-    "mtime": 1787609713.3152115,
-    "ast_hash": "0ecff8dd9ad1cf27be1b7a6963a7ef59",
+    "mtime": 1787249856.4081063,
+    "ast_hash": "7dd4d28240c68a10f3d525a0dc8488a0",
     "semantic_hash": ""
   },
   "src/components/site/site-footer.tsx": {
-    "mtime": 1787609004.5348625,
-    "ast_hash": "36922c822b83fc4ad4dd354bc72b2a0d",
+    "mtime": 1787249939.7874885,
+    "ast_hash": "7e263c9f25937bc4a66ded1d6b91cef3",
     "semantic_hash": ""
   },
   "src/components/site/site-header.tsx": {
-    "mtime": 1787609818.4594343,
-    "ast_hash": "afe2f2afe9aa9d5e23f143b6f4dae614",
+    "mtime": 1787249088.902517,
+    "ast_hash": "91368d7a39852be44d69b210ed94cf5c",
     "semantic_hash": ""
   },
   "src/lib/site-data.ts": {
-    "mtime": 1787609713.3161273,
-    "ast_hash": "31d3c6dcb335473cf355997fc766e847",
+    "mtime": 1787248792.9499924,
+    "ast_hash": "dcda0879dc0db2da178cd55b8ef4322e",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -990,13 +990,13 @@
     "semantic_hash": ""
   },
   "src/app/gallery/page.tsx": {
-    "mtime": 1787608672.1202567,
-    "ast_hash": "336aaddc96cf19abf99402c8f53c588d",
+    "mtime": 1787249246.9800339,
+    "ast_hash": "b93e518d0ace075befd4ace027fc1da1",
     "semantic_hash": ""
   },
   "src/app/partner/page.tsx": {
-    "mtime": 1787608672.1203628,
-    "ast_hash": "760ef81365d909b5d94b6e3b131d698a",
+    "mtime": 1787249246.9836454,
+    "ast_hash": "4dfca3a4803df3ae1be4e8a05948f0d7",
     "semantic_hash": ""
   },
   "src/components/partner/enquiry-form.tsx": {
@@ -1040,13 +1040,13 @@
     "semantic_hash": ""
   },
   "src/components/home/hero.tsx": {
-    "mtime": 1787606917.4173117,
-    "ast_hash": "096e17ce8ad3348f025e093573067f38",
+    "mtime": 1787249568.2713325,
+    "ast_hash": "28d3ffd4ebe212cfc11b0262c3168936",
     "semantic_hash": ""
   },
   "src/components/home/invite.tsx": {
-    "mtime": 1787605876.4768283,
-    "ast_hash": "3871edbaf341d9659c7a0bc0dcafbbbe",
+    "mtime": 1787248865.6831024,
+    "ast_hash": "18d5c12b64e078474f6cdcb26bdd8684",
     "semantic_hash": ""
   },
   "src/components/home/the-room.tsx": {
@@ -1065,203 +1065,13 @@
     "semantic_hash": ""
   },
   "src/components/site/script-morph.tsx": {
-    "mtime": 1787250488.546903,
-    "ast_hash": "523bffc2ff359ff031c6c08ed94a1e87",
+    "mtime": 1787248403.0742612,
+    "ast_hash": "2a7e5d47b4b2493a11cedfaef4dee510",
     "semantic_hash": ""
   },
   "src/lib/today.ts": {
     "mtime": 1787248403.074874,
     "ast_hash": "41ba9560bf6f19d472c01c11855c9f34",
-    "semantic_hash": ""
-  },
-  "src/app/faq/opengraph-image.tsx": {
-    "mtime": 1787609230.0680199,
-    "ast_hash": "deb8cf48f7076b22d2943d65c22ca8de",
-    "semantic_hash": ""
-  },
-  "src/app/faq/page.tsx": {
-    "mtime": 1787609289.9974747,
-    "ast_hash": "2eb6abd3206b00e50eb2a1963e25487c",
-    "semantic_hash": ""
-  },
-  "src/app/gallery/opengraph-image.tsx": {
-    "mtime": 1787608614.4627435,
-    "ast_hash": "20f69bf88d04b30d112fbc61fdaa558a",
-    "semantic_hash": ""
-  },
-  "src/app/locations/banashankari/opengraph-image.tsx": {
-    "mtime": 1787609230.0676293,
-    "ast_hash": "af11c419a0a3c6d815765f643406e53e",
-    "semantic_hash": ""
-  },
-  "src/app/locations/banashankari/page.tsx": {
-    "mtime": 1787609492.4237206,
-    "ast_hash": "ceeb859b0951d60a56e6403a00b6002b",
-    "semantic_hash": ""
-  },
-  "src/app/locations/opengraph-image.tsx": {
-    "mtime": 1787609230.067835,
-    "ast_hash": "d6ff011f33bb13ad2ad424d7def50e4d",
-    "semantic_hash": ""
-  },
-  "src/app/menu/opengraph-image.tsx": {
-    "mtime": 1787608614.457713,
-    "ast_hash": "b4b875fd7912812fc2bfbc9d93fcacae",
-    "semantic_hash": ""
-  },
-  "src/app/partner/opengraph-image.tsx": {
-    "mtime": 1787609230.0674691,
-    "ast_hash": "d8abf73998afd72631e8cc695171b438",
-    "semantic_hash": ""
-  },
-  "src/app/story/opengraph-image.tsx": {
-    "mtime": 1787608614.45558,
-    "ast_hash": "d7a12780c757a8296e80a1adb15c30f2",
-    "semantic_hash": ""
-  },
-  "src/app/traditions/opengraph-image.tsx": {
-    "mtime": 1787609181.3191671,
-    "ast_hash": "fbcb7b1f4b64e42e0426ebd2f8f3416f",
-    "semantic_hash": ""
-  },
-  "src/app/traditions/page.tsx": {
-    "mtime": 1787608856.4606001,
-    "ast_hash": "66cff85ee7da897e893ea157da596bb1",
-    "semantic_hash": ""
-  },
-  "src/components/site/json-ld.tsx": {
-    "mtime": 1787608570.32397,
-    "ast_hash": "c5171b33665d1b4d3d2ace09d269102d",
-    "semantic_hash": ""
-  },
-  "src/lib/og.tsx": {
-    "mtime": 1787609230.0863004,
-    "ast_hash": "ec6a7d65ba29d4e0e5f64b4f091a4ffe",
-    "semantic_hash": ""
-  },
-  "src/lib/seo.ts": {
-    "mtime": 1787609728.8577104,
-    "ast_hash": "0ddaf15cd9f9c062b9db4165f9bfd0f7",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0000.jpg": {
-    "mtime": 1787606075.6266932,
-    "ast_hash": "b970dbb30aaa2fe08a3698601305e040",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0001.jpg": {
-    "mtime": 1787606075.6312177,
-    "ast_hash": "920752cfc715a36dd8013f0daf39e8a0",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0002.jpg": {
-    "mtime": 1787606075.65862,
-    "ast_hash": "3d5a5ca8f9c309c9d44be7af4380598f",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0003.jpg": {
-    "mtime": 1787606075.660952,
-    "ast_hash": "69a1a2fa88fde76f80ab215a8031d4f2",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0004.jpg": {
-    "mtime": 1787606075.6558216,
-    "ast_hash": "5e504a710359fd7277c7e94e4dde9245",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0005.jpg": {
-    "mtime": 1787606075.6879134,
-    "ast_hash": "c30db22484abb60daf4b57c7d99686ed",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0006.jpg": {
-    "mtime": 1787606075.6857305,
-    "ast_hash": "66336c7bdef99acfbdef79c38b380113",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0007.jpg": {
-    "mtime": 1787606075.6650572,
-    "ast_hash": "1878c7c8817e143ff2eebf9166a94ef0",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0008.jpg": {
-    "mtime": 1787606075.6629424,
-    "ast_hash": "0eb722ae47aae0f13cc52acf1103954e",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0010.jpg": {
-    "mtime": 1787606075.6832156,
-    "ast_hash": "3f85053429683357462e62360bcb3d39",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0011.jpg": {
-    "mtime": 1787606075.6923034,
-    "ast_hash": "54a77698f4151163c9eb04aba1f462c5",
-    "semantic_hash": ""
-  },
-  "public/store-renders/IMG-20260824-WA0012.jpg": {
-    "mtime": 1787606075.6902702,
-    "ast_hash": "1e3b783d9049adee3cc35eacbbd1dd05",
-    "semantic_hash": ""
-  },
-  "public/store/beverage-counter.webp": {
-    "mtime": 1787606867.103648,
-    "ast_hash": "161b8c33e0e69b6633b9bba14b493970",
-    "semantic_hash": ""
-  },
-  "public/store/dining-hall.webp": {
-    "mtime": 1787606866.4109073,
-    "ast_hash": "0b2c22147f22c7712792217dcb23d629",
-    "semantic_hash": ""
-  },
-  "public/store/entrance.webp": {
-    "mtime": 1787606867.1896884,
-    "ast_hash": "72c730617257aba0f2c9160fbd2cff3f",
-    "semantic_hash": ""
-  },
-  "public/store/floor.webp": {
-    "mtime": 1787606866.502894,
-    "ast_hash": "05bd0f4b77c9ab31ab0943250e9255ed",
-    "semantic_hash": ""
-  },
-  "public/store/hall.webp": {
-    "mtime": 1787606866.8438823,
-    "ast_hash": "9c3fbdaead8dee6adcda130e1d24745d",
-    "semantic_hash": ""
-  },
-  "public/store/live-counters.webp": {
-    "mtime": 1787606866.5896366,
-    "ast_hash": "cd08d5f9eff3001f169d6ebe968ca749",
-    "semantic_hash": ""
-  },
-  "public/store/promise-wall.webp": {
-    "mtime": 1787606866.6726003,
-    "ast_hash": "65721b71afa2c518c51220043b5bd2aa",
-    "semantic_hash": ""
-  },
-  "public/store/room.webp": {
-    "mtime": 1787606866.7600796,
-    "ast_hash": "b8c399fc9aafcf53728faef161b66d06",
-    "semantic_hash": ""
-  },
-  "public/store/shrine.webp": {
-    "mtime": 1787606866.2385218,
-    "ast_hash": "b54340a4ff5c61ce67632fca4a27eded",
-    "semantic_hash": ""
-  },
-  "public/store/tables.webp": {
-    "mtime": 1787606866.9309616,
-    "ast_hash": "978b68bdb46903b9df2d9133654f026e",
-    "semantic_hash": ""
-  },
-  "public/store/verandah.webp": {
-    "mtime": 1787606867.0199888,
-    "ast_hash": "72309dbc64ecc0316accd5b5d9a1fdea",
-    "semantic_hash": ""
-  },
-  "public/store/wash-counter.webp": {
-    "mtime": 1787606866.3224964,
-    "ast_hash": "310d2fed10d13a2dc7cb2fe3bd3eb9be",
     "semantic_hash": ""
   }
 }

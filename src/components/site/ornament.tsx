@@ -510,6 +510,29 @@ const MARKS: Record<string, React.ReactElement> = {
       <path d="M12.8 7.6 15.4 9.8 12.8 12" {...STROKE} />
     </>
   ),
+  /* The three houses we keep an account with, drawn as line marks in the same
+     hand as everything else here rather than dropped in as brand SVGs. Each is
+     the recognisable silhouette and nothing more: a lens, an f, a play. */
+  instagram: (
+    <>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" {...STROKE} />
+      <circle cx="12" cy="12" r="4.2" {...STROKE} />
+      <circle cx="16.9" cy="7.1" r="1.05" fill="currentColor" stroke="none" />
+    </>
+  ),
+  facebook: (
+    <>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" {...STROKE} />
+      <path d="M14.9 8.2h-1.3a1.7 1.7 0 0 0-1.7 1.7v10.6" {...STROKE} />
+      <path d="M9.6 12.6h4.7" {...STROKE} />
+    </>
+  ),
+  youtube: (
+    <>
+      <rect x="2.5" y="5.5" width="19" height="13" rx="4.2" {...STROKE} />
+      <path d="M10.4 9.4 15.4 12l-5 2.6Z" {...STROKE} />
+    </>
+  ),
   share: (
     <>
       <circle cx="17.5" cy="6" r="2.6" {...STROKE} />

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BRAND, NAV, OPENING } from "@/lib/site-data";
+import { BRAND, NAV, OPENING, SOCIAL } from "@/lib/site-data";
 import { EaveCourse, LotusRoundel, Mark } from "./ornament";
 import { ScriptMorph } from "./script-morph";
 
@@ -115,8 +115,8 @@ export function SiteHeader({
         style={{ maxHeight: compact ? 0 : "3rem", opacity: compact ? 0 : 1 }}
       >
         <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-4 px-5 py-2.5 sm:px-8">
-          <p className="label flex items-center gap-2.5 text-[0.625rem] text-bone-400">
-            <span className="inline-block h-1.5 w-1.5 rotate-45 bg-brass-500" />
+          <p className="label flex min-w-0 items-center gap-2.5 truncate text-[0.625rem] text-bone-400">
+            <span className="inline-block h-1.5 w-1.5 shrink-0 rotate-45 bg-brass-500" />
             <span className="text-bone-300">{preOpening ? "Opening" : "Now open"}</span>
             <span className="text-brass-400">
               <span className="kn" lang="kn">
@@ -129,16 +129,39 @@ export function SiteHeader({
               {preOpening ? OPENING.dateLabel : null}
             </span>
           </p>
-          <p className="label hidden text-[0.625rem] text-bone-500 md:block">
-            {preOpening && daysUntilOpening > 0 ? (
-              <>
-                <span className="data text-bone-400">{daysUntilOpening}</span>
-                {daysUntilOpening === 1 ? " day to go" : " days to go"}
-                &nbsp;&middot;&nbsp;
-              </>
-            ) : null}
-            Pure vegetarian
-          </p>
+          <div className="flex shrink-0 items-center gap-5">
+            <p className="label hidden text-[0.625rem] text-bone-500 md:block">
+              {preOpening && daysUntilOpening > 0 ? (
+                <>
+                  <span className="data text-bone-400">{daysUntilOpening}</span>
+                  {daysUntilOpening === 1 ? " day to go" : " days to go"}
+                  &nbsp;&middot;&nbsp;
+                </>
+              ) : null}
+              Pure vegetarian
+            </p>
+
+            {/* The three accounts, set as marks on the masthead so they are the
+                first thing on the page and the first thing to go: the band
+                collapses on scroll and takes them with it, which is the right
+                priority for a link nobody came here to click. */}
+            <ul className="flex items-center gap-1">
+              {SOCIAL.map((account) => (
+                <li key={account.name}>
+                  <a
+                    href={account.url}
+                    target="_blank"
+                    rel="noopener noreferrer me"
+                    aria-label={`${BRAND.name} on ${account.name}`}
+                    title={account.name}
+                    className="flex p-1 text-bone-400 transition-colors duration-500 hover:text-brass-400 sm:p-1.5"
+                  >
+                    <Mark name={account.icon} size={15} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 

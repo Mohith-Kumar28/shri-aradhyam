@@ -76,7 +76,7 @@ export default function BanashankariPage() {
           fill
           sizes="100vw"
           preload
-          className="-z-20 object-cover object-[50%_48%] opacity-40"
+          className="-z-20 object-cover object-[50%_48%] opacity-55"
         />
         <div
           aria-hidden="true"
@@ -84,7 +84,7 @@ export default function BanashankariPage() {
           style={{
             background:
               "radial-gradient(70% 60% at 50% 6%, rgba(201,162,39,0.14) 0%, rgba(31,17,9,0) 72%)," +
-              "linear-gradient(180deg, rgba(24,13,7,0.9) 0%, rgba(24,13,7,0.6) 44%, rgba(24,13,7,0.94) 100%)",
+              "linear-gradient(180deg, rgba(24,13,7,0.88) 0%, rgba(24,13,7,0.48) 46%, rgba(24,13,7,0.92) 100%)",
           }}
         />
 
@@ -123,7 +123,7 @@ export default function BanashankariPage() {
 
                 <ul className="mt-6 space-y-2.5">
                   {[
-                    `Opens ${OPENING.dateLabel}`,
+                    OPENING.dateLabel,
                     "Basement parking",
                     "One hundred percent pure vegetarian",
                   ].map((note) => (
