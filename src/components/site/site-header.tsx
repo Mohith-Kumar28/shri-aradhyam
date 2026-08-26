@@ -8,10 +8,14 @@ import { EaveCourse, LotusRoundel, Mark } from "./ornament";
 import { ScriptMorph } from "./script-morph";
 
 /**
- * How long each language holds on the board before the other takes over. One
+ * How long each language holds on the board before the next takes over. One
  * constant, shared with the colophon so the two never read differently.
+ *
+ * The name now cycles five readings rather than two, so the hold is shorter:
+ * ten seconds apiece would put nearly a minute between one sight of the English
+ * and the next, and a visitor would never see the rotation close.
  */
-export const SWAP = 10_000;
+export const SWAP = 4_200;
 
 /**
  * The signage board.
@@ -182,9 +186,8 @@ export function SiteHeader({
             <span className="flex flex-col leading-none">
               <span className="font-display text-[1.35rem] font-semibold tracking-[-0.02em] text-ink-800 sm:text-[1.5rem]">
                 <ScriptMorph
-                  native={BRAND.nameKannada}
+                  readings={BRAND.nameReadings}
                   latin={BRAND.name}
-                  script="kn"
                   mode="cycle"
                   interval={SWAP}
                 />

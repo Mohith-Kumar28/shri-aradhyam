@@ -37,6 +37,10 @@ export default function StoryPage() {
         className="hero-dark relative isolate overflow-hidden bg-ink-900"
         style={{ marginTop: "calc(var(--header-h, 6.9rem) * -1)", zIndex: 0 }}
       >
+        {/* The wall is the ground here, not the subject. It is held well back
+            and softened, because the whole of this section is prose and a
+            photographed wall of Kannada lettering competes with prose more than
+            any other picture on this site would. */}
         <Image
           src={STORE.promiseWall.src}
           alt=""
@@ -44,16 +48,23 @@ export default function StoryPage() {
           fill
           sizes="100vw"
           preload
-          className="-z-20 object-cover object-[50%_42%] opacity-45"
+          className="-z-20 scale-[1.06] object-cover object-[50%_42%] opacity-[0.18] blur-[2px]"
         />
+        {/* Two scrims. The first is flat and covers everything, so no part of
+            the picture ever reads at full strength. The second is weighted to
+            the left, which is where the reading column stands. */}
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(70% 60% at 50% 6%, rgba(201,162,39,0.14) 0%, rgba(31,17,9,0) 72%)," +
-              "linear-gradient(180deg, rgba(24,13,7,0.9) 0%, rgba(24,13,7,0.6) 42%, rgba(24,13,7,0.9) 100%)",
+              "radial-gradient(70% 60% at 50% 6%, rgba(201,162,39,0.12) 0%, rgba(31,17,9,0) 72%)," +
+              "linear-gradient(180deg, rgba(24,13,7,0.94) 0%, rgba(24,13,7,0.82) 42%, rgba(24,13,7,0.94) 100%)",
           }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 lg:bg-[linear-gradient(90deg,rgba(24,13,7,0.86)_0%,rgba(24,13,7,0.78)_54%,rgba(24,13,7,0.34)_100%)]"
         />
         <div
           aria-hidden="true"
@@ -79,7 +90,7 @@ export default function StoryPage() {
               {STORY.body.map((line) => (
                 <p
                   key={line}
-                  className="mt-5 max-w-[66ch] text-[1.0625rem] leading-relaxed text-bone-400"
+                  className="mt-5 max-w-[66ch] text-[1.0625rem] leading-relaxed text-bone-300/90"
                 >
                   {line}
                 </p>
@@ -87,7 +98,7 @@ export default function StoryPage() {
             </div>
 
             <div className="lg:col-span-4 lg:col-start-9 lg:pt-12">
-              <div className="border border-bone-500/25 px-7 py-7">
+              <div className="border border-bone-500/25 bg-ink-900/55 px-7 py-7 backdrop-blur-[3px]">
                 <p className="label text-[0.5625rem] text-brass-400">On the wall</p>
                 <p className="kn mt-5 font-display text-[1.35rem] leading-snug text-bone-100" lang="kn">
                   {BRAND.creedKannada}

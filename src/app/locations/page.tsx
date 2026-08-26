@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { CONTACT, LOCATIONS, OPENING } from "@/lib/site-data";
 import {
@@ -27,7 +26,18 @@ export const metadata: Metadata = pageMeta({
   ],
 });
 
-/** Two entries. An address and a date is all a visitor needs. */
+/**
+ * Two entries on one ground.
+ *
+ * Both kitchens are the same house, so both cards are the same card: the same
+ * ink panel, the same jaali behind it, the same brass rule and the same brass
+ * status line. What separates them is what is known about each — the first has
+ * an address and a date, the second has neither yet — and that difference is
+ * left to the words, not staged with a second colour scheme that would read as
+ * two different businesses.
+ *
+ * No render on either. An address and a date is all a visitor needs here.
+ */
 export default function LocationsPage() {
   const [first, next] = LOCATIONS;
 
@@ -67,8 +77,8 @@ export default function LocationsPage() {
         <div className="paper absolute inset-0" aria-hidden="true" />
 
         <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-            {/* The first outlet, on the dark ground, with the elevation. */}
+          <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
+            {/* The first outlet. Everything that is known about it. */}
             <article
               data-reveal
               className="relative flex flex-col overflow-hidden bg-ink-800"
@@ -77,22 +87,6 @@ export default function LocationsPage() {
                 aria-hidden="true"
                 className="jaali jaali-brass absolute inset-0 opacity-[0.16]"
               />
-              {first.image ? (
-                <div className="relative aspect-16/9">
-                  <Image
-                    src={first.image.src}
-                    alt={first.image.alt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    preload
-                    className="object-cover"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 border border-brass-500/25"
-                  />
-                </div>
-              ) : null}
 
               <div className="relative flex flex-1 flex-col px-8 py-10 sm:px-11 sm:py-12">
                 <p className="label text-[0.5625rem] text-brass-400">
@@ -123,7 +117,7 @@ export default function LocationsPage() {
                   ))}
                 </ul>
 
-                <div className="mt-9 flex flex-wrap items-center gap-x-9 gap-y-4">
+                <div className="mt-auto flex flex-wrap items-center gap-x-9 gap-y-4 pt-10">
                   <Link
                     href="/locations/banashankari"
                     className="label link-brass inline-flex w-fit items-center gap-2.5 pt-1 text-[0.625rem] text-bone-200"
@@ -140,19 +134,31 @@ export default function LocationsPage() {
                   </Link>
                 </div>
               </div>
+
+              <div
+                className="relative flex justify-between px-3 text-bone-100/15"
+                aria-hidden="true"
+              >
+                <Corbel className="h-7 w-4" />
+                <Corbel className="h-7 w-4" flip />
+              </div>
             </article>
 
-            {/* The next one, on paper, with nothing invented. */}
+            {/* The next one. The same card, with nothing invented in it. */}
             <article
               data-reveal
               style={{ ["--reveal-delay" as string]: "120ms" }}
-              className="relative flex flex-col overflow-hidden bg-bone-100"
+              className="relative flex flex-col overflow-hidden bg-ink-800"
             >
-              <div aria-hidden="true" className="jaali absolute inset-0 opacity-[0.22]" />
-              <div className="relative flex flex-1 flex-col px-8 py-10 sm:px-10 sm:py-12">
-                <p className="label text-[0.5625rem] text-kumkum-700">{next.status}</p>
-                <h2 className="mt-5 font-display text-[clamp(1.9rem,3.6vw,2.6rem)] font-semibold tracking-[-0.025em] text-ink-800">
-                  <span className="kn block text-[1.2rem] font-normal text-granite-500" lang="kn">
+              <div
+                aria-hidden="true"
+                className="jaali jaali-brass absolute inset-0 opacity-[0.16]"
+              />
+
+              <div className="relative flex flex-1 flex-col px-8 py-10 sm:px-11 sm:py-12">
+                <p className="label text-[0.5625rem] text-brass-400">{next.status}</p>
+                <h2 className="mt-5 font-display text-[clamp(1.9rem,3.6vw,2.6rem)] font-semibold tracking-[-0.025em] text-bone-100">
+                  <span className="kn block text-[1.2rem] font-normal text-brass-300" lang="kn">
                     {next.native}
                   </span>
                   {next.name}
@@ -160,22 +166,22 @@ export default function LocationsPage() {
 
                 <RuleDiamond className="mt-7 max-w-[18rem]" />
 
-                <p className="mt-7 text-[1.0625rem] leading-relaxed text-granite-500">
+                <p className="mt-7 max-w-[34ch] text-[1.0625rem] leading-relaxed text-bone-300">
                   The second kitchen. The address will be published here once the
                   site is signed.
                 </p>
 
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="label link-brass mt-auto inline-flex w-fit items-center gap-2.5 pt-9 text-[0.625rem] text-ink-700"
+                  className="label link-brass mt-auto inline-flex w-fit items-center gap-2.5 pt-10 text-[0.625rem] text-bone-200"
                 >
                   Ask us about it
-                  <Mark name="arrowRight" size={13} className="text-brass-600" />
+                  <Mark name="arrowRight" size={13} className="text-brass-400" />
                 </a>
               </div>
 
               <div
-                className="relative flex justify-between px-3 text-ink-800/20"
+                className="relative flex justify-between px-3 text-bone-100/15"
                 aria-hidden="true"
               >
                 <Corbel className="h-7 w-4" />

@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMeta({
   title: "Gallery",
   path: "/gallery",
   description:
-    "Twelve views of the Banashankari outlet: the threshold and its brass lamps, the shrine inside the door, the live counters, and the dining hall under its coffered ceiling.",
+    "The Banashankari outlet: the signed shopfront on Outer Ring Road, the threshold and its brass lamps, the shrine inside the door, the live counters, and the dining hall under its coffered ceiling.",
   keywords: [
     "South Indian restaurant interior Bengaluru",
     "temple style restaurant Bangalore",
@@ -22,26 +22,12 @@ export const metadata: Metadata = pageMeta({
   ],
 });
 
-/** The span each tile size claims on the grid. Identical at both column
- *  counts, so the collage re-tiles itself from four columns down to two
- *  without a second set of classes. */
-const SPAN = {
-  hero: "col-span-2 row-span-2",
-  wide: "col-span-2 row-span-1",
-  small: "col-span-1 row-span-1",
-} as const;
-
-/** What each tile is worth telling the browser about its rendered width. */
-const SIZES = {
-  hero: "(max-width: 1024px) 100vw, 50vw",
-  wide: "(max-width: 1024px) 100vw, 50vw",
-  small: "(max-width: 1024px) 50vw, 25vw",
-} as const;
-
 /**
- * A collage of the outlet in three tile sizes, every view framed in a brass
- * hairline the way a drawing is framed on the wall. No captions and no
- * lightbox: the pictures are the page.
+ * Five views of the outlet, each framed in a brass hairline the way a drawing
+ * is framed on the wall. The shopfront runs the full width because it is the
+ * one picture that has to be read before the others make sense — you are
+ * outside the building, and then you are inside it. The four interiors pair off
+ * beneath it. No lightbox: the pictures are the page.
  */
 export default function GalleryPage() {
   return (
@@ -63,8 +49,8 @@ export default function GalleryPage() {
             Gallery
           </h1>
           <p className="mt-6 max-w-[42ch] text-[1.0625rem] leading-relaxed text-bone-400">
-            The threshold, the shrine, the counters and the room at
-            Banashankari. {BRAND.tagline}
+            The building on Outer Ring Road, and the threshold, the shrine, the
+            counters and the hall inside it. {BRAND.tagline}
           </p>
         </div>
 
@@ -80,32 +66,54 @@ export default function GalleryPage() {
         <div className="paper absolute inset-0" aria-hidden="true" />
 
         <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          {/* The row height is set to about four fifths of a column, so a hero
-              tile lands near square and a wide tile near 2:1 — both modest
-              crops of a render that is natively 1.46:1. Dense flow is load
-              bearing, not a safety net: the last wide tile is placed after the
-              last hero in source order and has to fall back into the hole the
-              hero leaves beside it. */}
-          <div className="grid auto-rows-[37vw] grid-flow-row-dense grid-cols-2 gap-3 lg:auto-rows-[clamp(11rem,17vw,16rem)] lg:grid-cols-4 lg:gap-4">
-            {GALLERY.map((image, i) => (
+          {/* Outside, at full width. The render is natively about 2.44:1, so
+              the desktop frame is cut to match it and the narrow frame crops in
+              rather than shrinking the whole shopfront to a letterbox. */}
+          <figure data-reveal className="group relative block bg-bone-300">
+            <div className="relative aspect-4/3 sm:aspect-16/9 lg:aspect-[2.44/1]">
+              <Image
+                src={GALLERY[0].src}
+                alt={GALLERY[0].alt}
+                fill
+                sizes="(max-width: 1408px) 100vw, 1408px"
+                preload
+                className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 border border-brass-600/30"
+              />
+            </div>
+            <figcaption className="label mt-3.5 text-[0.5625rem] text-granite-400">
+              {GALLERY[0].title}
+            </figcaption>
+          </figure>
+
+          {/* And inside, two by two. */}
+          <div className="mt-4 grid gap-4 sm:mt-6 sm:grid-cols-2 sm:gap-6">
+            {GALLERY.slice(1).map((image, i) => (
               <figure
                 key={image.src}
                 data-reveal
-                style={{ ["--reveal-delay" as string]: `${(i % 4) * 80}ms` }}
-                className={`group relative overflow-hidden bg-bone-300 ${SPAN[image.size]}`}
+                style={{ ["--reveal-delay" as string]: `${(i % 2) * 90}ms` }}
+                className="group relative block bg-bone-300"
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes={SIZES[image.size]}
-                  preload={i < 4}
-                  className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-                />
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 border border-brass-600/30"
-                />
+                <div className="relative aspect-4/3">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 44vw"
+                    className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 border border-brass-600/30"
+                  />
+                </div>
+                <figcaption className="label mt-3.5 text-[0.5625rem] text-granite-400">
+                  {image.title}
+                </figcaption>
               </figure>
             ))}
           </div>

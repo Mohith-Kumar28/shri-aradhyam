@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { BRAND, CONTACT, LOCATIONS, OPENING, SOCIAL } from "./site-data";
+import {
+  BRAND,
+  CONTACT,
+  LOCATIONS,
+  NAME_IN_SCRIPTS,
+  OPENING,
+  SOCIAL,
+} from "./site-data";
 
 /**
  * One place for everything a crawler or a share sheet reads.
@@ -106,10 +113,7 @@ export const RESTAURANT_SCHEMA = {
   "@type": "Restaurant",
   "@id": `${SITE_URL}/#restaurant`,
   name: BRAND.name,
-  alternateName: [
-    BRAND.nameKannada,
-    ...BRAND.nameInScripts.map((entry) => entry.text),
-  ],
+  alternateName: NAME_IN_SCRIPTS.map((reading) => reading.text),
   slogan: BRAND.tagline,
   description:
     "Shri Aradhyam brings the authentic vegetarian food traditions of South India under one roof — Udupi and Thanjavur meals, dosa from Bengaluru and Chennai, regional rice bowls and Chikkamagaluru filter coffee — each cooked the way the place it comes from cooks it.",

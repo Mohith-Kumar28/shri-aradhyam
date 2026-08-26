@@ -9,16 +9,26 @@
 
 export type ScriptKey = "kn" | "ta" | "te" | "ml";
 
+/** A reading of a word: the Latin one, or one of the four southern scripts. */
+export type ReadingKey = ScriptKey | "en";
+export type Reading = { script: ReadingKey; text: string };
+
 export const BRAND = {
   name: "Shri Aradhyam",
   nameKannada: "ಶ್ರೀ ಆರಾಧ್ಯಂ",
-  /** The name in the four scripts of the south, in the brand's order. */
-  nameInScripts: [
+  /**
+   * The name as the signage says it: English first, because it is the reading
+   * every visitor can take, then the four scripts of the south in the order the
+   * house names them. The masthead and the colophon cycle this whole list, so
+   * the board says the name in all five the way the building would.
+   */
+  nameReadings: [
+    { script: "en", text: "Shri Aradhyam" },
     { script: "kn", text: "ಶ್ರೀ ಆರಾಧ್ಯಂ" },
-    { script: "ta", text: "ஸ்ரீ ஆராத்யம்" },
     { script: "te", text: "శ్రీ ఆరాధ్యం" },
+    { script: "ta", text: "ஸ்ரீ ஆராத்யம்" },
     { script: "ml", text: "ശ്രീ ആരാധ്യം" },
-  ] as { script: ScriptKey; text: string }[],
+  ] as Reading[],
   tagline: "All of South India. One roof. Endless flavours.",
   devotion: "Served with devotion",
   devotionKannada: "ಭಕ್ತಿಯಿಂದ ಸೇವೆ",
@@ -30,6 +40,15 @@ export const BRAND = {
   /** The product architecture, exactly as the storefront signage lists it. */
   signage: ["Udupi Meals", "Thanjavur Meals", "Rice Bowls", "Dosa", "Coffee"],
 } as const;
+
+/**
+ * The four script readings alone, without the Latin one. This is what the
+ * Restaurant schema hands a search engine as `alternateName`, so somebody
+ * searching the name in their own script lands on this house.
+ */
+export const NAME_IN_SCRIPTS: Reading[] = BRAND.nameReadings.filter(
+  (reading) => reading.script !== "en",
+);
 
 export const NAV = [
   { href: "/", label: "Home" },
@@ -147,14 +166,22 @@ export const REGIONS: {
 ];
 
 /* ---------------------------------------------------------------------------
-   The store renders. The only photography on the site: twelve views of the
-   Banashankari outlet. Every page draws its pictures from here, so there is one
-   place to swap a render and no dummy image can creep back in.
+   The store renders. The only photography on the site: the shopfront and
+   twelve views inside the Banashankari outlet. Every page draws its pictures
+   from here, so there is one place to swap a render and no dummy image can
+   creep back in.
    --------------------------------------------------------------------------- */
 
 export type StoreRender = { src: string; alt: string };
 
 export const STORE = {
+  /** The only view of the building from outside, and the one that has to come
+      first anywhere the outlet is shown: the whole shopfront, its signage in
+      both scripts, the awning and the steps up off the street. */
+  storefront: {
+    src: "/brand/kathriguppe-day.webp",
+    alt: "The Banashankari shopfront on Outer Ring Road: the signed awning in Kannada and English over stone columns, the menu pylon at the kerb and the steps up from the street",
+  },
   entrance: {
     src: "/store/entrance.webp",
     alt: "The entrance, looking in past stone columns and hanging brass lamps to the host desk and the lotus water bowl",
@@ -289,34 +316,52 @@ export const STORY = {
    The menu, as the board prints it. No prices on the site.
    --------------------------------------------------------------------------- */
 
-export type MenuGroup = { label: string; accent: "palm" | "kumkum" | "brass"; items: string[] };
+export type MenuAccent = "palm" | "kumkum" | "brass";
+export type MenuGroup = { label: string; accent: MenuAccent; items: string[] };
 
-export const DOSA: { title: string; note: string; groups: MenuGroup[] } = {
+/**
+ * The dosa column.
+ *
+ * The board prints the same five dosas twice, once under each city, because the
+ * two lists are the same list — Bengaluru and Chennai are two ways of making
+ * one dosa, not two menus. So the name is printed once and the city is offered
+ * as a choice against it, which is the choice you actually make at the counter.
+ * The special dosas belong to no city and keep their own group.
+ */
+export const DOSA: {
+  title: string;
+  note: string;
+  /** The two cities, each with what its griddle actually does differently. */
+  styles: { label: string; accent: MenuAccent; note: string }[];
+  items: string[];
+  special: MenuGroup;
+} = {
   title: "Dosa",
   note: "Two Cities. One Tradition.",
-  groups: [
+  styles: [
     {
       label: "Bengaluru Style",
       accent: "palm",
-      items: ["Plain Dosa", "Masala Dosa", "Ghee Dosa", "Rawa Dosa", "Rawa Masala Dosa"],
+      note: "Butter on the griddle rather than oil. Soft in the middle, lacquered at the edge.",
     },
     {
       label: "Chennai Style",
       accent: "kumkum",
-      items: ["Plain Dosa", "Masala Dosa", "Ghee Dosa", "Rawa Dosa", "Rawa Masala Dosa"],
-    },
-    {
-      label: "Special Dosas",
-      accent: "brass",
-      items: [
-        "Benne Dosa",
-        "Khali Dosa",
-        "Vegetable Oothapam",
-        "Multi-millet Dosa",
-        "Andhra Pesarattu or Guntur Pesarattu",
-      ],
+      note: "Thinner and crisper, browned evenly across. Made to be eaten with sambar.",
     },
   ],
+  items: ["Plain Dosa", "Masala Dosa", "Ghee Dosa", "Rawa Dosa", "Rawa Masala Dosa"],
+  special: {
+    label: "Special Dosas",
+    accent: "brass",
+    items: [
+      "Benne Dosa",
+      "Khali Dosa",
+      "Vegetable Oothapam",
+      "Multi-millet Dosa",
+      "Andhra Pesarattu or Guntur Pesarattu",
+    ],
+  },
 };
 
 export const RICE_BOWLS = {
@@ -355,6 +400,11 @@ export const MENU_FOOTER = "All of South India. One roof. Endless flavours.";
 
 /* ---------------------------------------------------------------------------
    Locations. Two, and only two.
+
+   No render on either one. The page says which two kitchens there are and when
+   they open, and a picture of the first would answer a question nobody asked
+   here while leaving the second looking like it did not exist. The gallery is
+   where the building is looked at.
    --------------------------------------------------------------------------- */
 
 export type Location = {
@@ -362,7 +412,6 @@ export type Location = {
   native: string;
   status: string;
   address?: string;
-  image?: { src: string; alt: string };
 };
 
 export const LOCATIONS: Location[] = [
@@ -372,7 +421,6 @@ export const LOCATIONS: Location[] = [
     status: "Opening the last week of September",
     address:
       "221, Outer Ring Rd, opp. KEB, Kathreguppe, Banashankari 3rd Stage, Banashankari, Bengaluru, Karnataka 560085",
-    image: STORE.entrance,
   },
   {
     name: "Sarjapur",
@@ -386,35 +434,23 @@ export const LOCATIONS: Location[] = [
    --------------------------------------------------------------------------- */
 
 /**
- * The gallery is laid as a collage rather than a contact sheet, so the tiles
- * come in three sizes:
+ * Five views, and no more.
  *
- *   hero  — two columns by two rows, cropped square. The symmetrical views.
- *   wide  — two columns by one row, a panoramic strip. The horizontal views:
- *           a counter, a wall, a colonnade, all of which read well as a band.
- *   small — one cell. The busier views, which carry at a glance.
+ * A dozen renders of one room is a contact sheet, not a gallery: past the
+ * fourth or fifth the visitor stops looking and starts scrolling, and every
+ * view after that costs the ones before it. So the page carries the building
+ * from outside and then the four things actually worth walking in for — the
+ * threshold, the shrine, the counters, the hall — and stops.
  *
- * The order is the order you walk the room, and the sizes are chosen so the
- * twelve tiles tile a four column grid exactly: 4 heroes + 4 wides + 4 smalls
- * is 28 cells, which is seven full rows with no holes. The one exception is the
- * last pair, which relies on dense flow to back-fill the final row — see the
- * comment on the grid in the gallery page.
+ * The first entry is the whole shopfront, run full width. Everything else
+ * pairs off underneath it.
  */
-export type GalleryTile = StoreRender & { size: "hero" | "wide" | "small" };
-
-export const GALLERY: GalleryTile[] = [
-  { ...STORE.entrance, size: "hero" },
-  { ...STORE.shrine, size: "hero" },
-  { ...STORE.promiseWall, size: "wide" },
-  { ...STORE.liveCounters, size: "wide" },
-  { ...STORE.hall, size: "hero" },
-  { ...STORE.washCounter, size: "small" },
-  { ...STORE.diningHall, size: "small" },
-  { ...STORE.beverageCounter, size: "wide" },
-  { ...STORE.floor, size: "small" },
-  { ...STORE.tables, size: "small" },
-  { ...STORE.room, size: "hero" },
-  { ...STORE.verandah, size: "wide" },
+export const GALLERY: (StoreRender & { title: string })[] = [
+  { ...STORE.storefront, title: "The building" },
+  { ...STORE.entrance, title: "The threshold" },
+  { ...STORE.shrine, title: "The shrine" },
+  { ...STORE.liveCounters, title: "The counters" },
+  { ...STORE.diningHall, title: "The hall" },
 ];
 
 /* ---------------------------------------------------------------------------

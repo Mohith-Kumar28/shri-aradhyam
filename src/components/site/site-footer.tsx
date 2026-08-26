@@ -22,9 +22,8 @@ export function SiteFooter() {
               <div className="leading-tight">
                 <p className="font-display text-2xl tracking-[-0.02em] text-bone-100">
                   <ScriptMorph
-                    native={BRAND.nameKannada}
+                    readings={BRAND.nameReadings}
                     latin={BRAND.name}
-                    script="kn"
                     mode="cycle"
                     interval={SWAP}
                   />

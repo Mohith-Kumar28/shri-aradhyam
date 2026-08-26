@@ -6,8 +6,8 @@ import {
   DOSA,
   MENU_FOOTER,
   RICE_BOWLS,
-  STORE,
 } from "@/lib/site-data";
+import { DosaColumn } from "@/components/menu/dosa-column";
 import {
   Corbel,
   EaveCourse,
@@ -33,25 +33,21 @@ export const metadata: Metadata = pageMeta({
   ],
 });
 
-/** The plate that a group label is struck on. */
-const PLATE = {
-  palm: "bg-palm-700 text-bone-100",
-  kumkum: "bg-kumkum-700 text-bone-100",
-  brass: "bg-brass-600 text-ink-900",
-} as const;
-
-/**
- * The board, as it hangs in the restaurant: one printed sheet on a stone
- * ground, four columns, read all at once. No filters, no cards, no prices — a
- * board does not ask you to click anything.
- */
-/** The four sections of the board, handed to a crawler in its own format. */
+/** The sections of the board, handed to a crawler in its own format. Each
+ *  city style is its own section, because to a search engine they are two
+ *  different ways of ordering the same five dosas and it should be able to
+ *  answer for either one. */
 const MENU_SCHEMA = menuSchema([
-  ...DOSA.groups.map((group) => ({
-    name: `${DOSA.title} — ${group.label}`,
-    description: DOSA.note,
-    items: [...group.items],
+  ...DOSA.styles.map((style) => ({
+    name: `${DOSA.title} — ${style.label}`,
+    description: style.note,
+    items: [...DOSA.items],
   })),
+  {
+    name: `${DOSA.title} — ${DOSA.special.label}`,
+    description: DOSA.note,
+    items: [...DOSA.special.items],
+  },
   {
     name: RICE_BOWLS.title,
     description: RICE_BOWLS.note,
@@ -67,6 +63,11 @@ const MENU_SCHEMA = menuSchema([
   },
 ]);
 
+/**
+ * The board, as it hangs in the restaurant: one printed sheet on a stone
+ * ground, three columns, read all at once. No photographs, no cards and no
+ * prices — the only thing on the sheet is what the kitchen cooks.
+ */
 export default function MenuPage() {
   return (
     <section className="relative overflow-hidden bg-ink-800 py-14 sm:py-20">
@@ -112,59 +113,19 @@ export default function MenuPage() {
           />
 
           <div className="relative px-5 py-14 sm:px-10 sm:py-16">
-            {/* The sheet's four columns. The board carries no masthead: the
-                header above it already names the house. */}
+            {/* The sheet's three columns — the board itself and nothing else.
+                The board carries no masthead: the header above it already names
+                the house, and no photograph belongs on a menu. */}
             <h1 className="sr-only">Menu</h1>
-            <div className="relative grid gap-12 md:grid-cols-2 md:gap-x-10 lg:grid-cols-12 lg:gap-x-8">
+            <div className="relative grid gap-12 md:grid-cols-2 md:gap-x-10 lg:grid-cols-12 lg:gap-x-10">
               {/* Dosa */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-4">
                 <ColumnHead title={DOSA.title} note={DOSA.note} />
-                <div className="mt-8 space-y-8">
-                  {DOSA.groups.map((group) => (
-                    <div key={group.label}>
-                      <p
-                        className={`label inline-block px-3.5 py-2 text-[0.5625rem] ${PLATE[group.accent]}`}
-                      >
-                        {group.label}
-                      </p>
-                      <ul className="mt-4">
-                        {group.items.map((item) => (
-                          <li
-                            key={item}
-                            className="rule-bottom py-2.5 text-[1.0625rem] text-ink-700 last:border-b-0"
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* The counters the board is read from, standing in the middle of
-                  the sheet as they do in the room. */}
-              <div className="space-y-3 md:order-last lg:order-none lg:col-span-3 lg:border-l lg:border-bone-400/70 lg:pl-8">
-                {[STORE.liveCounters, STORE.diningHall].map((view) => (
-                  <div key={view.src} className="relative">
-                    <Image
-                      src={view.src}
-                      alt={view.alt}
-                      width={1439}
-                      height={985}
-                      sizes="(max-width: 1024px) 100vw, 25vw"
-                      className="aspect-4/3 w-full object-cover"
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 border border-brass-600/35"
-                    />
-                  </div>
-                ))}
+                <DosaColumn />
               </div>
 
               {/* Rice bowls */}
-              <div className="lg:col-span-3 lg:border-l lg:border-bone-400/70 lg:pl-8">
+              <div className="lg:col-span-4 lg:border-l lg:border-bone-400/70 lg:pl-10">
                 <ColumnHead title={RICE_BOWLS.title} note={RICE_BOWLS.note} />
                 <ul className="mt-8">
                   {RICE_BOWLS.items.map((item) => (
@@ -181,7 +142,7 @@ export default function MenuPage() {
 
                 <div className="mt-8 border border-bone-400 bg-bone-200/70 px-5 py-5">
                   <p
-                    className={`label inline-block px-3 py-1.5 text-[0.5625rem] ${PLATE.kumkum}`}
+                    className="label inline-block bg-kumkum-700 px-3 py-1.5 text-[0.5625rem] text-bone-100"
                   >
                     {RICE_BOWLS.combo.label}
                   </p>
@@ -195,7 +156,7 @@ export default function MenuPage() {
               </div>
 
               {/* Beverages */}
-              <div className="lg:col-span-3 lg:border-l lg:border-bone-400/70 lg:pl-8">
+              <div className="lg:col-span-4 lg:border-l lg:border-bone-400/70 lg:pl-10">
                 <ColumnHead title={BEVERAGES.title} note={BEVERAGES.note} />
                 <ul className="mt-8">
                   {BEVERAGES.items.map((item) => (
@@ -207,20 +168,6 @@ export default function MenuPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="relative mt-8">
-                  <Image
-                    src={STORE.beverageCounter.src}
-                    alt={STORE.beverageCounter.alt}
-                    width={1439}
-                    height={985}
-                    sizes="(max-width: 1024px) 100vw, 25vw"
-                    className="aspect-4/3 w-full object-cover"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 border border-brass-600/35"
-                  />
-                </div>
               </div>
             </div>
 
@@ -245,10 +192,7 @@ export default function MenuPage() {
             <Corbel className="h-7 w-4" flip />
           </div>
         </div>
-
-      
       </div>
-
     </section>
   );
 }

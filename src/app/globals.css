@@ -622,6 +622,21 @@ header[data-over="true"] .eave-line {
   transform: translate3d(0, 0.16em, 0);
 }
 
+/* A rotation of more than two readings: each one waits below the slot, and the
+   standing one is the only one in it. Under reduced motion the index never
+   advances, so the first reading simply holds. */
+.morph > .morph-reading {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translate3d(0, 0.16em, 0);
+}
+
+.morph > .morph-reading[data-on="true"] {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
 /* Hover swaps in the Latin reading only where the Latin reading is the thing
    held back on purpose, which is what hover mode is for. Left unscoped, this
    also caught a settling word during the second or so before it settles: the
@@ -641,6 +656,25 @@ header[data-over="true"] .eave-line {
   opacity: 1;
   filter: blur(0);
   transform: none;
+}
+
+/* The dosa style note, which is remounted whenever the city changes. It has to
+   arrive rather than appear, or the swap reads as a flicker. */
+.style-note {
+  animation: style-note 520ms var(--ease-almanac) both;
+}
+
+@keyframes style-note {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.3em, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .style-note {
+    animation: none;
+  }
 }
 
 /* Brass underline that grows from the left on hover. */
