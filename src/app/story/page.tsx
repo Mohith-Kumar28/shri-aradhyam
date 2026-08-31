@@ -37,10 +37,10 @@ export default function StoryPage() {
         className="hero-dark relative isolate overflow-hidden bg-ink-900"
         style={{ marginTop: "calc(var(--header-h, 6.9rem) * -1)", zIndex: 0 }}
       >
-        {/* The wall is the ground here, not the subject. It is held well back
-            and softened, because the whole of this section is prose and a
-            photographed wall of Kannada lettering competes with prose more than
-            any other picture on this site would. */}
+        {/* The wall is the ground here, not the subject — but it is a picture
+            and it is meant to be seen, so it is only lightly softened and the
+            scrims below decide where it shows rather than flattening it
+            everywhere. */}
         <Image
           src={STORE.promiseWall.src}
           alt=""
@@ -48,27 +48,32 @@ export default function StoryPage() {
           fill
           sizes="100vw"
           preload
-          className="-z-20 scale-[1.06] object-cover object-[50%_42%] opacity-[0.18] blur-[2px]"
+          className="-z-20 scale-[1.06] object-cover object-[50%_42%] opacity-[0.72] blur-[1px]"
         />
-        {/* Two scrims. The first is flat and covers everything, so no part of
-            the picture ever reads at full strength. The second is weighted to
-            the left, which is where the reading column stands. */}
+        {/* Base veil, over the whole picture so nothing reads at full strength.
+            On phones the prose runs the full width and this veil is the only
+            thing protecting it, so it stays dense; from lg up the column moves
+            to the left and the veil lifts, letting the wall come through. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(70% 60% at 50% 6%, rgba(201,162,39,0.12) 0%, rgba(31,17,9,0) 72%)," +
-              "linear-gradient(180deg, rgba(24,13,7,0.94) 0%, rgba(24,13,7,0.82) 42%, rgba(24,13,7,0.94) 100%)",
-          }}
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(24,13,7,0.84)_0%,rgba(24,13,7,0.72)_42%,rgba(24,13,7,0.88)_100%)] lg:bg-[linear-gradient(180deg,rgba(24,13,7,0.5)_0%,rgba(24,13,7,0.3)_45%,rgba(24,13,7,0.62)_100%)]"
+        />
+        {/* The reading side: a shelf of ink under the prose column that has
+            released to almost nothing by the right edge. The text gets flat
+            ground, the photograph gets somewhere to be seen. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 lg:bg-[linear-gradient(90deg,rgba(24,13,7,0.8)_0%,rgba(24,13,7,0.74)_46%,rgba(24,13,7,0.2)_76%,rgba(24,13,7,0.02)_100%)]"
+        />
+        {/* Brass light at the head of the section, kept above the scrims so it
+            still warms the top edge. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_50%_6%,rgba(201,162,39,0.12)_0%,rgba(31,17,9,0)_72%)]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 lg:bg-[linear-gradient(90deg,rgba(24,13,7,0.86)_0%,rgba(24,13,7,0.78)_54%,rgba(24,13,7,0.34)_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="jaali jaali-brass absolute inset-y-0 right-0 -z-10 w-[16vw] opacity-[0.18]"
+          className="jaali jaali-brass absolute inset-y-0 right-0 -z-10 w-[16vw] opacity-[0.1]"
         />
 
         <div style={{ height: "var(--header-h, 6.9rem)" }} aria-hidden="true" />
@@ -98,7 +103,7 @@ export default function StoryPage() {
             </div>
 
             <div className="lg:col-span-4 lg:col-start-9 lg:pt-12">
-              <div className="border border-bone-500/25 bg-ink-900/55 px-7 py-7 backdrop-blur-[3px]">
+              <div className="border border-bone-500/25 bg-ink-900/80 px-7 py-7 backdrop-blur-[8px]">
                 <p className="label text-[0.5625rem] text-brass-400">On the wall</p>
                 <p className="kn mt-5 font-display text-[1.35rem] leading-snug text-bone-100" lang="kn">
                   {BRAND.creedKannada}
