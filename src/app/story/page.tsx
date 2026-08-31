@@ -80,40 +80,25 @@ export default function StoryPage() {
         <Thoranam className="relative opacity-75" height={28} />
 
         <div className="relative mx-auto max-w-[88rem] px-5 pb-14 pt-8 sm:px-8 sm:pb-16 sm:pt-10">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <p className="label text-[0.5625rem] text-brass-500">
-                {BRAND.tagline}
+          <div className="max-w-[68rem]">
+            <p className="label text-[0.5625rem] text-brass-500">
+              {BRAND.tagline}
+            </p>
+            <h1 className="display-caps mt-4 text-[clamp(1.9rem,4.2vw,3rem)] font-semibold text-bone-100">
+              {STORY.heading}
+            </h1>
+            <RuleDiamond className="mt-6 max-w-[20rem]" />
+            <p className="mt-6 max-w-[62ch] text-[1.125rem] leading-relaxed text-bone-300">
+              {STORY.lead}
+            </p>
+            {STORY.body.map((line) => (
+              <p
+                key={line}
+                className="mt-5 max-w-[66ch] text-[1.0625rem] leading-relaxed text-bone-300/90"
+              >
+                {line}
               </p>
-              <h1 className="display-caps mt-4 text-[clamp(1.9rem,4.2vw,3rem)] font-semibold text-bone-100">
-                {STORY.heading}
-              </h1>
-              <RuleDiamond className="mt-6 max-w-[20rem]" />
-              <p className="mt-6 max-w-[62ch] text-[1.125rem] leading-relaxed text-bone-300">
-                {STORY.lead}
-              </p>
-              {STORY.body.map((line) => (
-                <p
-                  key={line}
-                  className="mt-5 max-w-[66ch] text-[1.0625rem] leading-relaxed text-bone-300/90"
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
-
-            <div className="lg:col-span-4 lg:col-start-9 lg:pt-12">
-              <div className="border border-bone-500/25 bg-ink-900/80 px-7 py-7 backdrop-blur-[8px]">
-                <p className="label text-[0.5625rem] text-brass-400">On the wall</p>
-                <p className="kn mt-5 font-display text-[1.35rem] leading-snug text-bone-100" lang="kn">
-                  {BRAND.creedKannada}
-                </p>
-                <span aria-hidden="true" className="mt-5 block h-px w-14 bg-brass-500/60" />
-                <p className="mt-5 text-[1.0625rem] leading-relaxed text-bone-300">
-                  {BRAND.creed}
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
