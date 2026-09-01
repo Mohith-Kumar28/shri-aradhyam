@@ -66,11 +66,12 @@ export default function GalleryPage() {
         <div className="paper absolute inset-0" aria-hidden="true" />
 
         <div className="relative mx-auto max-w-[88rem] px-5 sm:px-8">
-          {/* Outside, at full width. The render is natively about 2.44:1, so
-              the desktop frame is cut to match it and the narrow frame crops in
-              rather than shrinking the whole shopfront to a letterbox. */}
+          {/* Outside, at full width. The render is natively about 3:2, and the
+              building fills it top to bottom, so the frame stays close to that:
+              16/9 trims a little sky and a little road off a centred crop, where
+              a letterbox would cut the awning and the people off the steps. */}
           <figure data-reveal className="group relative block bg-bone-300">
-            <div className="relative aspect-4/3 sm:aspect-16/9 lg:aspect-[2.44/1]">
+            <div className="relative aspect-4/3 sm:aspect-16/9">
               <Image
                 src={GALLERY[0].src}
                 alt={GALLERY[0].alt}

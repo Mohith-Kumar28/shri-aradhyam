@@ -179,8 +179,8 @@ export const STORE = {
       first anywhere the outlet is shown: the whole shopfront, its signage in
       both scripts, the awning and the steps up off the street. */
   storefront: {
-    src: "/brand/kathriguppe-day.webp",
-    alt: "The Banashankari shopfront on Outer Ring Road: the signed awning in Kannada and English over stone columns, the menu pylon at the kerb and the steps up from the street",
+    src: "/brand/kathriguppe-street.webp",
+    alt: "The Banashankari shopfront on Outer Ring Road: the lotus crest and the name in Kannada and English along the lit awning, the lotus bud parapet running above it, and the open front with its steps up from the pavement",
   },
   entrance: {
     src: "/store/entrance.webp",
