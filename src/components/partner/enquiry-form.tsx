@@ -44,19 +44,34 @@ export function EnquiryForm() {
     }
     setError(null);
 
+    /* The subject carries who is writing and from where, so the enquiry is
+       identifiable in the mailbox before it is opened. */
+    const subject = `Partnership enquiry — ${fields.name.trim()}, ${fields.city.trim()}`;
+
+    /* Every blank the visitor filled, labelled, in the order the form asks
+       them. Optional blanks left empty are dropped rather than sent as
+       headings with nothing under them. */
     const body = [
-      `Name: ${fields.name}`,
-      `Phone: ${fields.phone}`,
-      fields.email ? `Email: ${fields.email}` : null,
-      `City: ${fields.city}`,
+      "Partnership enquiry via shriaradhyam.com",
       "",
-      fields.message,
+      `Name: ${fields.name.trim()}`,
+      `Phone: ${fields.phone.trim()}`,
+      fields.email.trim() ? `Email: ${fields.email.trim()}` : null,
+      `City: ${fields.city.trim()}`,
+      ...(fields.message.trim() ? ["", "Message:", fields.message.trim()] : []),
+      "",
+      "—",
+      `Sent from the Partner With Us page on ${new Date().toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })}.`,
     ]
       .filter((line) => line !== null)
       .join("\n");
 
     window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
-      "Partnership enquiry",
+      subject,
     )}&body=${encodeURIComponent(body)}`;
     setHandedOff(true);
   };

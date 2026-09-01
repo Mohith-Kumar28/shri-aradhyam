@@ -87,7 +87,7 @@ export const SOCIAL = [
 ] as const;
 
 export const CONTACT = {
-  email: "hello@shriaradhyam.com",
+  email: "management@shriaradhyam.com",
   city: "Bengaluru, Karnataka",
 } as const;
 
@@ -597,7 +597,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Can I open a Shri Aradhyam outlet?",
-    a: "We are opening more Shri Aradhyam kitchens across Bengaluru and are open to partners. Write to hello@shriaradhyam.com through the Partner With Us page and we will get back to you.",
+    a: `We are opening more Shri Aradhyam kitchens across Bengaluru and are open to partners. Write to ${CONTACT.email} through the Partner With Us page and we will get back to you.`,
   },
   {
     q: "Is there parking at the Banashankari outlet?",
