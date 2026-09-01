@@ -41,7 +41,7 @@
   "39": "injected/index.mjs",
   "40": "impeccable-paths.mjs",
   "41": "compilerOptions",
-  "42": "scheduleLazyVisualContrast",
+  "42": "resolveLengthPx",
   "43": "checkHtmlPatterns",
   "44": "ornament.tsx",
   "45": "new-work.md",
@@ -71,7 +71,7 @@
   "69": "impeccable/SKILL.md",
   "70": "init",
   "71": "sampleCssBackground",
-  "72": "checkElementDesignSystemDOM",
+  "72": "checkQuality",
   "73": "detect-utils.mjs",
   "74": "inlineSvelteComponentAccept",
   "75": "resolveLiveInjectionAnchor",
@@ -80,7 +80,7 @@
   "78": "context-signals.mjs",
   "79": "sampleCssBackground",
   "80": "session-store.mjs",
-  "81": "serializeFindings",
+  "81": "resolveProject",
   "82": "serve-question.mjs",
   "83": "components.json",
   "84": "detect-html.mjs",
@@ -171,6 +171,5 @@
   "169": "partner/opengraph-image.tsx",
   "170": "story/opengraph-image.tsx",
   "171": "applyDeferredSvelteComponentAccepts",
-  "172": "selectAvailablePendingEvent",
-  "173": "1. THE THREE DIALS (Core Configuration)"
+  "172": "selectAvailablePendingEvent"
 }

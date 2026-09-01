@@ -635,8 +635,8 @@
     "semantic_hash": ""
   },
   "src/lib/site-data.ts": {
-    "mtime": 1788256099.5971253,
-    "ast_hash": "34ead289ae56e80eb68b055fe5974cee",
+    "mtime": 1788254625.9204483,
+    "ast_hash": "521332d6ada7b3738fe47dc04e4f3c65",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -895,7 +895,7 @@
     "semantic_hash": ""
   },
   "public/brand/kathriguppe-day.webp": {
-    "mtime": 1788256094.0678039,
+    "mtime": 1787249428.4800367,
     "ast_hash": "a0207b2b7c67606a91dcab471794dc9b",
     "semantic_hash": ""
   },
@@ -990,8 +990,8 @@
     "semantic_hash": ""
   },
   "src/app/gallery/page.tsx": {
-    "mtime": 1788256032.2939517,
-    "ast_hash": "0f041b0ebd42208f7a9a42a3d0da0a1a",
+    "mtime": 1787753646.3810115,
+    "ast_hash": "714b3b029ace7625cb367a9635c05594",
     "semantic_hash": ""
   },
   "src/app/partner/page.tsx": {
@@ -1267,11 +1267,6 @@
   "src/components/menu/dosa-column.tsx": {
     "mtime": 1787753582.3161438,
     "ast_hash": "8a9e141827eaa962278d79a90425d3cc",
-    "semantic_hash": ""
-  },
-  "public/brand/kathriguppe-street.webp": {
-    "mtime": 1788256094.0744812,
-    "ast_hash": "5eee19602ec8b35573bfced12c6e6a84",
     "semantic_hash": ""
   }
 }

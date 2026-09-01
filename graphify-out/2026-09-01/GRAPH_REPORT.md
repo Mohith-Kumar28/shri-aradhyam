@@ -1,16 +1,16 @@
-# Graph Report - shri-aradhyam  (2026-09-01)
+# Graph Report - shri-aradhyam  (2026-08-26)
 
 ## Corpus Check
-- 203 files · ~814,053 words
+- 203 files · ~804,356 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3765 nodes · 8882 edges · 174 communities (168 shown, 6 thin omitted)
+- 3765 nodes · 8882 edges · 173 communities (167 shown, 6 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 118 edges (avg confidence: 0.66)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f4c1b4af`
+- Built from commit: `339ee067`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -57,7 +57,7 @@
 - injected/index.mjs
 - impeccable-paths.mjs
 - compilerOptions
-- scheduleLazyVisualContrast
+- resolveLengthPx
 - checkHtmlPatterns
 - ornament.tsx
 - new-work.md
@@ -87,7 +87,7 @@
 - impeccable/SKILL.md
 - init
 - sampleCssBackground
-- checkElementDesignSystemDOM
+- checkQuality
 - detect-utils.mjs
 - inlineSvelteComponentAccept
 - resolveLiveInjectionAnchor
@@ -96,7 +96,7 @@
 - context-signals.mjs
 - sampleCssBackground
 - session-store.mjs
-- serializeFindings
+- resolveProject
 - serve-question.mjs
 - components.json
 - detect-html.mjs
@@ -187,7 +187,6 @@
 - story/opengraph-image.tsx
 - applyDeferredSvelteComponentAccepts
 - selectAvailablePendingEvent
-- 1. THE THREE DIALS (Core Configuration)
 
 ## God Nodes (most connected - your core abstractions)
 1. `el()` - 51 edges
@@ -216,7 +215,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (174 total, 6 thin omitted)
+## Communities (173 total, 6 thin omitted)
 
 ### Community 0 - "live-browser.js"
 Cohesion: 0.03
@@ -227,8 +226,8 @@ Cohesion: 0.04
 Nodes (111): borderColorsFromStyle(), borderWidthsFromStyle(), checkClippedOverflow(), checkEdgeFlushCardsDOM(), checkElementBlinkingCursorDOM(), checkElementClippedOverflow(), checkElementClippedOverflowDOM(), checkElementGptBorderShadow() (+103 more)
 
 ### Community 2 - "context.mjs"
-Cohesion: 0.05
-Nodes (93): appendAutonomyCounterDirective(), appendDetectorFallback(), appendImageGenDirective(), appendImageToolsDirective(), appendStalenessDirective(), appendSubagentAuthorizationDirective(), appendSurfaceBriefContext(), automaticHookMode() (+85 more)
+Cohesion: 0.06
+Nodes (78): appendAutonomyCounterDirective(), appendDetectorFallback(), appendImageGenDirective(), appendImageToolsDirective(), appendStalenessDirective(), appendSubagentAuthorizationDirective(), appendSurfaceBriefContext(), automaticHookMode() (+70 more)
 
 ### Community 3 - "connectSSE"
 Cohesion: 0.06
@@ -247,8 +246,8 @@ Cohesion: 0.09
 Nodes (39): blankCssComments(), BLOCK_BRACE_PREFIX_KEYWORDS, CSS_IN_JS_EXTENSIONS, detectText(), extFromFilePath(), extractCSSinJS(), extractStyleBlocks(), findCSSinJSTemplates() (+31 more)
 
 ### Community 7 - "hook-lib.mjs"
-Cohesion: 0.06
-Nodes (57): ACK_EXTS, ADVISORY_RULES, canonicalPath(), canonicalPathCache, clampByte(), cleanIgnoreValueDisplay(), CO_SCAN_STYLE_NAMES, coLocatedStylesheets() (+49 more)
+Cohesion: 0.07
+Nodes (54): ACK_EXTS, ADVISORY_RULES, canonicalPath(), canonicalPathCache, clampByte(), clampGroupedToBudget(), clampToBudget(), cleanIgnoreValueDisplay() (+46 more)
 
 ### Community 8 - "setLiveState"
 Cohesion: 0.10
@@ -271,8 +270,8 @@ Cohesion: 0.09
 Nodes (52): ae(), be(), bt(), Ce(), Ct(), de(), dt(), _e() (+44 more)
 
 ### Community 13 - "detect-antipatterns-browser.js"
-Cohesion: 0.06
-Nodes (63): checkClippedOverflow(), checkElementClippedOverflow(), checkElementClippedOverflowDOM(), checkElementHeroEyebrow(), checkElementHeroEyebrowDOM(), checkElementItalicSerif(), checkElementItalicSerifDOM(), checkElementOversizedH1() (+55 more)
+Cohesion: 0.05
+Nodes (63): addBrowserFindings(), addVisualContrastFindings(), addVisualContrastResult(), analyzeVisualContrast(), browserColorsClose(), browserDesignSystemConfig(), browserHasDirectText(), browserPrimaryFont() (+55 more)
 
 ### Community 14 - "initGlobalBar"
 Cohesion: 0.07
@@ -363,8 +362,8 @@ Cohesion: 0.07
 Nodes (43): buildCollapsible(), buildColorModels(), buildDesignHeader(), buildListHtml(), buildRadiiModels(), buildTypographyModels(), copyToClipboard(), cssSafe() (+35 more)
 
 ### Community 36 - "runHook"
-Cohesion: 0.16
-Nodes (22): bumpEditCount(), clampGroupedToBudget(), clampToBudget(), dedupeAgainstCache(), depthIsSet(), directiveFooter(), ensureFile(), ensureSession() (+14 more)
+Cohesion: 0.15
+Nodes (23): bumpEditCount(), coLocatedStylesheets(), dedupeAgainstCache(), depthIsSet(), ensureFile(), ensureSession(), expandScanTargets(), findingCacheKey() (+15 more)
 
 ### Community 37 - "live-copy-edit-agent.mjs"
 Cohesion: 0.14
@@ -386,9 +385,9 @@ Nodes (24): CRITIQUE_DIR, firstExisting(), getDesignSidecarCandidates(), getDesi
 Cohesion: 0.07
 Nodes (28): dom, dom.iterable, esnext, **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, node_modules (+20 more)
 
-### Community 42 - "scheduleLazyVisualContrast"
-Cohesion: 0.18
-Nodes (14): addBrowserFindings(), addVisualContrastFindings(), addVisualContrastResult(), analyzeVisualContrast(), clearOverlays(), detachOverlay(), disconnectLazyVisualContrastObserver(), postExtensionError() (+6 more)
+### Community 42 - "resolveLengthPx"
+Cohesion: 0.12
+Nodes (22): checkElementHeroEyebrow(), checkElementHeroEyebrowDOM(), checkElementQualityDOM(), checkHeroEyebrow(), checkKickerAboveHeading(), checkKickerAboveHeadingDOM(), checkKickerAboveHeadingFromDoc(), checkNumberedSectionLabels() (+14 more)
 
 ### Community 43 - "checkHtmlPatterns"
 Cohesion: 0.14
@@ -502,9 +501,9 @@ Nodes (19): attachSteerFocusDebug(), attachSteerFocusGuard(), clearSteerFocusRec
 Cohesion: 0.23
 Nodes (13): analyzeVisualContrastCandidate(), blendRgba(), clampByte(), firstCssUrl(), getLayerValue(), loadVisualContrastImage(), pickWorstContrastColor(), pointToImageSource() (+5 more)
 
-### Community 72 - "checkElementDesignSystemDOM"
-Cohesion: 0.15
-Nodes (13): browserColorsClose(), browserDesignSystemConfig(), browserHasDirectText(), browserPrimaryFont(), browserRadiusTokens(), browserSampleText(), checkBrowserDesignSystemSources(), checkElementDesignSystemDOM() (+5 more)
+### Community 72 - "checkQuality"
+Cohesion: 0.16
+Nodes (14): checkElementOversizedH1(), checkElementOversizedH1DOM(), checkElementQuality(), checkOversizedH1(), checkQuality(), colorsNearlyMatch(), cssColorIsTransparent(), getComputedStyleFor() (+6 more)
 
 ### Community 73 - "detect-utils.mjs"
 Cohesion: 0.25
@@ -538,9 +537,9 @@ Nodes (18): analyzeVisualContrastCandidate(), blendRgba(), clampByte(), firstCss
 Cohesion: 0.18
 Nodes (13): safeSessionId(), missedCompletionFromSnapshot(), applyEvent(), baseSnapshot(), COMPLETED_PHASES, deriveRenderState(), GENERATION_FENCED_PHASES, getJournalPath() (+5 more)
 
-### Community 81 - "serializeFindings"
-Cohesion: 0.25
-Nodes (9): buildSelectorSegment(), generateSelector(), isElementHidden(), isLikelyHashedClass(), postSerializedFindings(), renderBrowserFindings(), scanResultMeta(), serializeFindings() (+1 more)
+### Community 81 - "resolveProject"
+Cohesion: 0.17
+Nodes (15): contextSourcePath(), contextSourceStatus(), firstExisting(), isCandidateProjectRoot(), isPathInside(), isPathInsideOrEqual(), nearestPackageRootBetween(), nearestTargetContextRoot() (+7 more)
 
 ### Community 82 - "serve-question.mjs"
 Cohesion: 0.13
@@ -555,8 +554,8 @@ Cohesion: 0.14
 Nodes (20): collectStaticCssText(), checkStaticPageTypography(), detectHtml(), STATIC_ELEMENT_RULES, checkCreamPalette(), checkElementGlow(), checkPageQualityDOM(), checkPageQualityFromDoc() (+12 more)
 
 ### Community 85 - "tasteskill: Anti-Slop Frontend Skill"
-Cohesion: 0.18
-Nodes (11): 0.A Read these signals first, 0.B Output a one-line "Design Read" before generating, 0. BRIEF INFERENCE (Read the Room Before Anything Else), 0.C If the brief is ambiguous, ask one question, do not guess, 0.D Anti-Default Discipline, 13. OUT OF SCOPE, 14. FINAL PRE-FLIGHT CHECK, 2.A When to reach for a real design system (use official packages) (+3 more)
+Cohesion: 0.13
+Nodes (15): 0.A Read these signals first, 0.B Output a one-line "Design Read" before generating, 0. BRIEF INFERENCE (Read the Room Before Anything Else), 0.C If the brief is ambiguous, ask one question, do not guess, 0.D Anti-Default Discipline, 13. OUT OF SCOPE, 14. FINAL PRE-FLIGHT CHECK, 1.A Dial Inference (design read → dial values) (+7 more)
 
 ### Community 86 - "Appendix B - Canonical Sources (read these before reinventing)"
 Cohesion: 0.13
@@ -855,8 +854,8 @@ Cohesion: 0.50
 Nodes (3): Deploy on Vercel, Getting Started, Learn More
 
 ### Community 160 - "readConfig"
-Cohesion: 0.19
-Nodes (13): isStopEvent(), applyConfigSource(), applyDetectorConfigSource(), cloneDefaultConfig(), detectorSection(), hookSection(), numberOr(), readConfig() (+5 more)
+Cohesion: 0.16
+Nodes (15): isStopEvent(), applyConfigSource(), applyDetectorConfigSource(), cloneDefaultConfig(), detectorSection(), hookSection(), ignoreValueFilesKey(), mergeIgnoreValues() (+7 more)
 
 ### Community 165 - "banashankari/opengraph-image.tsx"
 Cohesion: 0.40
@@ -882,10 +881,6 @@ Nodes (3): alt, contentType, size
 Cohesion: 0.60
 Nodes (5): applyLegacyDeferredAcceptsOnStartup(), applyDeferredSvelteComponentAccepts(), deferredAcceptsPath(), readDeferredAccepts(), writeDeferredAccept()
 
-### Community 173 - "1. THE THREE DIALS (Core Configuration)"
-Cohesion: 0.50
-Nodes (4): 1.A Dial Inference (design read → dial values), 1.B Use-Case Presets, 1.C How the Dials Drive Output, 1. THE THREE DIALS (Core Configuration)
-
 ## Knowledge Gaps
 - **827 isolated node(s):** `here`, `API_BASE`, `API_TIMEOUT_MS`, `localStates`, `SEED_MODES` (+822 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -894,7 +889,7 @@ Nodes (4): 1.A Dial Inference (design read → dial values), 1.B Use-Case Preset
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `el()` connect `el` to `live-browser.js`, `checks.mjs`, `design-system.mjs`, `GENERIC_FONTS`, `setLiveState`, `detect-antipatterns-browser.js`, `initGlobalBar`, `serializeFindings`, `css-cascade.mjs`, `serializeFindings`, `detect-html.mjs`, `parseRgb`, `collectBrowserFindings`, `svelte-ast.mjs`, `collectVisualContrastCandidates`, `SAFE_TAGS`?**
+- **Why does `el()` connect `el` to `live-browser.js`, `checks.mjs`, `design-system.mjs`, `GENERIC_FONTS`, `setLiveState`, `detect-antipatterns-browser.js`, `initGlobalBar`, `serializeFindings`, `css-cascade.mjs`, `detect-html.mjs`, `parseRgb`, `collectBrowserFindings`, `svelte-ast.mjs`, `collectVisualContrastCandidates`, `SAFE_TAGS`?**
   _High betweenness centrality (0.162) - this node is a cross-community bridge._
 - **Why does `ACTIONS` connect `el` to `hook-admin.mjs`?**
   _High betweenness centrality (0.061) - this node is a cross-community bridge._

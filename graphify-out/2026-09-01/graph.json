@@ -516,8 +516,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_resolvecontextdir",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "resolvecontextdir()"
     },
     {
@@ -538,8 +538,8 @@
       "source_location": "L129",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_resolvecontext",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "resolvecontext()"
     },
     {
@@ -571,8 +571,8 @@
       "source_location": "L200",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_resolveproject",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "resolveproject()"
     },
     {
@@ -582,8 +582,8 @@
       "source_location": "L226",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_ispathinside",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "ispathinside()"
     },
     {
@@ -593,8 +593,8 @@
       "source_location": "L231",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_resolvelocalcontextdir",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "resolvelocalcontextdir()"
     },
     {
@@ -604,8 +604,8 @@
       "source_location": "L244",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_resolveenvcontextdir",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "resolveenvcontextdir()"
     },
     {
@@ -615,8 +615,8 @@
       "source_location": "L251",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_resolvetargetdir",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "resolvetargetdir()"
     },
     {
@@ -681,8 +681,8 @@
       "source_location": "L347",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_resolvecandidatecontextsummary",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "resolvecandidatecontextsummary()"
     },
     {
@@ -692,8 +692,8 @@
       "source_location": "L363",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_contextsourcestatus",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "contextsourcestatus()"
     },
     {
@@ -703,8 +703,8 @@
       "source_location": "L377",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_contextsourcepath",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "contextsourcepath()"
     },
     {
@@ -758,8 +758,8 @@
       "source_location": "L452",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_iscandidateprojectroot",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "iscandidateprojectroot()"
     },
     {
@@ -824,8 +824,8 @@
       "source_location": "L545",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_nearesttargetcontextroot",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "nearesttargetcontextroot()"
     },
     {
@@ -846,8 +846,8 @@
       "source_location": "L577",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_nearestpackagerootbetween",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "nearestpackagerootbetween()"
     },
     {
@@ -857,8 +857,8 @@
       "source_location": "L590",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_ispathinsideorequal",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "ispathinsideorequal()"
     },
     {
@@ -1033,8 +1033,8 @@
       "source_location": "L788",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_context_firstexisting",
-      "community": 2,
-      "community_name": "context.mjs",
+      "community": 81,
+      "community_name": "resolveProject",
       "norm_label": "firstexisting()"
     },
     {
@@ -3640,8 +3640,8 @@
       "source_location": "L1119",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_isaccentcolor",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "isaccentcolor()"
     },
     {
@@ -3651,8 +3651,8 @@
       "source_location": "L1163",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_resolveheroheadingsizepx",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "resolveheroheadingsizepx()"
     },
     {
@@ -3662,8 +3662,8 @@
       "source_location": "L1198",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkheroeyebrow",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checkheroeyebrow()"
     },
     {
@@ -3673,8 +3673,8 @@
       "source_location": "L1253",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkkickeraboveheading",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checkkickeraboveheading()"
     },
     {
@@ -4135,8 +4135,8 @@
       "source_location": "L2860",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_domaccentdashpseudo",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "domaccentdashpseudo()"
     },
     {
@@ -4146,8 +4146,8 @@
       "source_location": "L2875",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkelementheroeyebrowdom",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checkelementheroeyebrowdom()"
     },
     {
@@ -4278,8 +4278,8 @@
       "source_location": "L3266",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_cleaninlinetext",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "cleaninlinetext()"
     },
     {
@@ -4289,8 +4289,8 @@
       "source_location": "L3275",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_iskickercardcontext",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "iskickercardcontext()"
     },
     {
@@ -4300,8 +4300,8 @@
       "source_location": "L3288",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_iskickercandidate",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "iskickercandidate()"
     },
     {
@@ -4311,8 +4311,8 @@
       "source_location": "L3328",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_kickerheadinglevel",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "kickerheadinglevel()"
     },
     {
@@ -4322,8 +4322,8 @@
       "source_location": "L3338",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_collectkickercandidates",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "collectkickercandidates()"
     },
     {
@@ -4333,8 +4333,8 @@
       "source_location": "L3391",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkkickeraboveheadingdom",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checkkickeraboveheadingdom()"
     },
     {
@@ -4344,8 +4344,8 @@
       "source_location": "L3412",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_parsenumberedlabeltext",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "parsenumberedlabeltext()"
     },
     {
@@ -4355,8 +4355,8 @@
       "source_location": "L3423",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_isnumberedsectionlabelcandidate",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "isnumberedsectionlabelcandidate()"
     },
     {
@@ -4366,8 +4366,8 @@
       "source_location": "L3451",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_collectnumberedsectionlabelcandidates",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "collectnumberedsectionlabelcandidates()"
     },
     {
@@ -4377,8 +4377,8 @@
       "source_location": "L3507",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checknumberedsectionlabels",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checknumberedsectionlabels()"
     },
     {
@@ -4388,8 +4388,8 @@
       "source_location": "L3519",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checknumberedsectionlabelsfromdoc",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checknumberedsectionlabelsfromdoc()"
     },
     {
@@ -4399,8 +4399,8 @@
       "source_location": "L3528",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checknumberedsectionlabelsdom",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checknumberedsectionlabelsdom()"
     },
     {
@@ -4531,8 +4531,8 @@
       "source_location": "L3800",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_resolvefontsizepx",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "resolvefontsizepx()"
     },
     {
@@ -4542,8 +4542,8 @@
       "source_location": "L3826",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_resolvelengthpx",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "resolvelengthpx()"
     },
     {
@@ -4553,8 +4553,8 @@
       "source_location": "L3838",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_csscoloristransparent",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "csscoloristransparent()"
     },
     {
@@ -4564,8 +4564,8 @@
       "source_location": "L3847",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_colorsnearlymatch",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "colorsnearlymatch()"
     },
     {
@@ -4575,8 +4575,8 @@
       "source_location": "L3860",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_getcomputedstylefor",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "getcomputedstylefor()"
     },
     {
@@ -4586,8 +4586,8 @@
       "source_location": "L3870",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_hasvisiblebackgroundboundary",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "hasvisiblebackgroundboundary()"
     },
     {
@@ -4597,8 +4597,8 @@
       "source_location": "L3889",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_hasmeaningfuldirecttext",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "hasmeaningfuldirecttext()"
     },
     {
@@ -4608,8 +4608,8 @@
       "source_location": "L3897",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_textdescendantsflushsides",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "textdescendantsflushsides()"
     },
     {
@@ -4619,8 +4619,8 @@
       "source_location": "L3922",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_isvisuallyhidden",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "isvisuallyhidden()"
     },
     {
@@ -4630,8 +4630,8 @@
       "source_location": "L3951",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_isnonrenderedtext",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "isnonrenderedtext()"
     },
     {
@@ -4641,8 +4641,8 @@
       "source_location": "L3972",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkquality",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "checkquality()"
     },
     {
@@ -4652,8 +4652,8 @@
       "source_location": "L4344",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkelementqualitydom",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checkelementqualitydom()"
     },
     {
@@ -4685,8 +4685,8 @@
       "source_location": "L4393",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkelementquality",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "checkelementquality()"
     },
     {
@@ -4751,8 +4751,8 @@
       "source_location": "L4603",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkelementheroeyebrow",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checkelementheroeyebrow()"
     },
     {
@@ -4762,8 +4762,8 @@
       "source_location": "L4640",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkkickeraboveheadingfromdoc",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 42,
+      "community_name": "resolveLengthPx",
       "norm_label": "checkkickeraboveheadingfromdoc()"
     },
     {
@@ -4949,8 +4949,8 @@
       "source_location": "L5257",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkoversizedh1",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "checkoversizedh1()"
     },
     {
@@ -4960,8 +4960,8 @@
       "source_location": "L5275",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkelementoversizedh1",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "checkelementoversizedh1()"
     },
     {
@@ -4971,8 +4971,8 @@
       "source_location": "L5282",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkelementoversizedh1dom",
-      "community": 13,
-      "community_name": "detect-antipatterns-browser.js",
+      "community": 72,
+      "community_name": "checkQuality",
       "norm_label": "checkelementoversizedh1dom()"
     },
     {
@@ -5477,8 +5477,8 @@
       "source_location": "L6492",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_detachoverlay",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "detachoverlay()"
     },
     {
@@ -5510,8 +5510,8 @@
       "source_location": "L6749",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_islikelyhashedclass",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "islikelyhashedclass()"
     },
     {
@@ -5521,8 +5521,8 @@
       "source_location": "L6757",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_buildselectorsegment",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "buildselectorsegment()"
     },
     {
@@ -5532,8 +5532,8 @@
       "source_location": "L6788",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_generateselector",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "generateselector()"
     },
     {
@@ -5785,8 +5785,8 @@
       "source_location": "L7429",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_waitforvisualpaint",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "waitforvisualpaint()"
     },
     {
@@ -5796,8 +5796,8 @@
       "source_location": "L7435",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_analyzevisualcontrast",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "analyzevisualcontrast()"
     },
     {
@@ -5807,8 +5807,8 @@
       "source_location": "L7467",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_iselementhidden",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "iselementhidden()"
     },
     {
@@ -5818,8 +5818,8 @@
       "source_location": "L7474",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_serializefindings",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "serializefindings()"
     },
     {
@@ -5829,8 +5829,8 @@
       "source_location": "L7519",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_addbrowserfindings",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "addbrowserfindings()"
     },
     {
@@ -5851,8 +5851,8 @@
       "source_location": "L7534",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_normalizebrowserfontname",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "normalizebrowserfontname()"
     },
     {
@@ -5862,8 +5862,8 @@
       "source_location": "L7543",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_browserprimaryfont",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "browserprimaryfont()"
     },
     {
@@ -5873,8 +5873,8 @@
       "source_location": "L7551",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_browserdesignsystemconfig",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "browserdesignsystemconfig()"
     },
     {
@@ -5884,8 +5884,8 @@
       "source_location": "L7573",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_browsercolorsclose",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "browsercolorsclose()"
     },
     {
@@ -5895,8 +5895,8 @@
       "source_location": "L7582",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_isbrowserdesigncolorallowed",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "isbrowserdesigncolorallowed()"
     },
     {
@@ -5906,8 +5906,8 @@
       "source_location": "L7593",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_isbrowsertransparentcss",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "isbrowsertransparentcss()"
     },
     {
@@ -5917,8 +5917,8 @@
       "source_location": "L7600",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_isbrowserdesignradiusallowed",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "isbrowserdesignradiusallowed()"
     },
     {
@@ -5928,8 +5928,8 @@
       "source_location": "L7611",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_browserradiustokens",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "browserradiustokens()"
     },
     {
@@ -5939,8 +5939,8 @@
       "source_location": "L7619",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_browserhasdirecttext",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "browserhasdirecttext()"
     },
     {
@@ -5950,8 +5950,8 @@
       "source_location": "L7623",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_browsersampletext",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "browsersampletext()"
     },
     {
@@ -5961,8 +5961,8 @@
       "source_location": "L7628",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_shouldskipdesignelement",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "shouldskipdesignelement()"
     },
     {
@@ -5972,8 +5972,8 @@
       "source_location": "L7633",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkelementdesignsystemdom",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "checkelementdesignsystemdom()"
     },
     {
@@ -5983,8 +5983,8 @@
       "source_location": "L7692",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_decodebrowsergooglefamily",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "decodebrowsergooglefamily()"
     },
     {
@@ -5994,8 +5994,8 @@
       "source_location": "L7701",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_checkbrowserdesignsystemsources",
-      "community": 72,
-      "community_name": "checkElementDesignSystemDOM",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "checkbrowserdesignsystemsources()"
     },
     {
@@ -6016,8 +6016,8 @@
       "source_location": "L7913",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_shouldrunvisualcontrast",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "shouldrunvisualcontrast()"
     },
     {
@@ -6027,8 +6027,8 @@
       "source_location": "L7917",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_visualcontrastoptions",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "visualcontrastoptions()"
     },
     {
@@ -6038,8 +6038,8 @@
       "source_location": "L7945",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_remembervisualcontrastanalysis",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "remembervisualcontrastanalysis()"
     },
     {
@@ -6049,8 +6049,8 @@
       "source_location": "L7955",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_disconnectlazyvisualcontrastobserver",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "disconnectlazyvisualcontrastobserver()"
     },
     {
@@ -6060,8 +6060,8 @@
       "source_location": "L7963",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_addvisualcontrastresult",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "addvisualcontrastresult()"
     },
     {
@@ -6071,8 +6071,8 @@
       "source_location": "L7985",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_scanresultmeta",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "scanresultmeta()"
     },
     {
@@ -6082,8 +6082,8 @@
       "source_location": "L7991",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_postserializedfindings",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "postserializedfindings()"
     },
     {
@@ -6093,8 +6093,8 @@
       "source_location": "L8002",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_postextensionerror",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "postextensionerror()"
     },
     {
@@ -6104,8 +6104,8 @@
       "source_location": "L8010",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_reportvisualcontrasterror",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "reportvisualcontrasterror()"
     },
     {
@@ -6115,8 +6115,8 @@
       "source_location": "L8024",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_schedulelazyvisualcontrast",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "schedulelazyvisualcontrast()"
     },
     {
@@ -6126,8 +6126,8 @@
       "source_location": "L8084",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_addvisualcontrastfindings",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "addvisualcontrastfindings()"
     },
     {
@@ -6148,8 +6148,8 @@
       "source_location": "L8111",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_clearoverlays",
-      "community": 42,
-      "community_name": "scheduleLazyVisualContrast",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "clearoverlays()"
     },
     {
@@ -6159,8 +6159,8 @@
       "source_location": "L8120",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_detect_antipatterns_browser_renderbrowserfindings",
-      "community": 81,
-      "community_name": "serializeFindings",
+      "community": 13,
+      "community_name": "detect-antipatterns-browser.js",
       "norm_label": "renderbrowserfindings()"
     },
     {
@@ -11758,8 +11758,8 @@
       "source_location": "L225",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_lookslikeprojectroot",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "lookslikeprojectroot()"
     },
     {
@@ -11769,8 +11769,8 @@
       "source_location": "L238",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_resolvecachecwd",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "resolvecachecwd()"
     },
     {
@@ -12044,8 +12044,8 @@
       "source_location": "L567",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_mergeignorevalues",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 160,
+      "community_name": "readConfig",
       "norm_label": "mergeignorevalues()"
     },
     {
@@ -12055,8 +12055,8 @@
       "source_location": "L578",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_ignorevaluefileskey",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 160,
+      "community_name": "readConfig",
       "norm_label": "ignorevaluefileskey()"
     },
     {
@@ -12341,8 +12341,8 @@
       "source_location": "L969",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_rendertemplate",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "rendertemplate()"
     },
     {
@@ -12352,8 +12352,8 @@
       "source_location": "L1000",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_rendergroupedtemplate",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "rendergroupedtemplate()"
     },
     {
@@ -12363,8 +12363,8 @@
       "source_location": "L1040",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_clampgroupedtobudget",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "clampgroupedtobudget()"
     },
     {
@@ -12374,8 +12374,8 @@
       "source_location": "L1063",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_clamptobudget",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "clamptobudget()"
     },
     {
@@ -12385,8 +12385,8 @@
       "source_location": "L1086",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_formatfindingline",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "formatfindingline()"
     },
     {
@@ -12418,8 +12418,8 @@
       "source_location": "L1118",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_relativize",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "relativize()"
     },
     {
@@ -12528,8 +12528,8 @@
       "source_location": "L1312",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_ui_code_exts",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "ui_code_exts"
     },
     {
@@ -12539,8 +12539,8 @@
       "source_location": "L1313",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_style_exts",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "style_exts"
     },
     {
@@ -12561,8 +12561,8 @@
       "source_location": "L1324",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_haspathtraversal",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "haspathtraversal()"
     },
     {
@@ -12572,8 +12572,8 @@
       "source_location": "L1328",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_isinsideproject",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "isinsideproject()"
     },
     {
@@ -12616,8 +12616,8 @@
       "source_location": "L1383",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_parsestaticstyleimports",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "parsestaticstyleimports()"
     },
     {
@@ -12627,8 +12627,8 @@
       "source_location": "L1398",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_colocatedstylesheets",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "colocatedstylesheets()"
     },
     {
@@ -12638,8 +12638,8 @@
       "source_location": "L1417",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_normalizescantargets",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "normalizescantargets()"
     },
     {
@@ -12649,8 +12649,8 @@
       "source_location": "L1441",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_expandscantargets",
-      "community": 7,
-      "community_name": "hook-lib.mjs",
+      "community": 36,
+      "community_name": "runHook",
       "norm_label": "expandscantargets()"
     },
     {
@@ -12704,8 +12704,8 @@
       "source_location": "L1562",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_rendercleanack",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "rendercleanack()"
     },
     {
@@ -12715,8 +12715,8 @@
       "source_location": "L1568",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_renderpendingack",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "renderpendingack()"
     },
     {
@@ -12759,8 +12759,8 @@
       "source_location": "L1615",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_hook_lib_directivefooter",
-      "community": 36,
-      "community_name": "runHook",
+      "community": 7,
+      "community_name": "hook-lib.mjs",
       "norm_label": "directivefooter()"
     },
     {
@@ -34297,8 +34297,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "agents_skills_design_taste_frontend_skill_1_the_three_dials_core_configuration",
-      "community": 173,
-      "community_name": "1. THE THREE DIALS (Core Configuration)",
+      "community": 85,
+      "community_name": "tasteskill: Anti-Slop Frontend Skill",
       "norm_label": "1. the three dials (core configuration)"
     },
     {
@@ -34308,8 +34308,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "agents_skills_design_taste_frontend_skill_1_a_dial_inference_design_read_dial_values",
-      "community": 173,
-      "community_name": "1. THE THREE DIALS (Core Configuration)",
+      "community": 85,
+      "community_name": "tasteskill: Anti-Slop Frontend Skill",
       "norm_label": "1.a dial inference (design read \u2192 dial values)"
     },
     {
@@ -34319,8 +34319,8 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "agents_skills_design_taste_frontend_skill_1_b_use_case_presets",
-      "community": 173,
-      "community_name": "1. THE THREE DIALS (Core Configuration)",
+      "community": 85,
+      "community_name": "tasteskill: Anti-Slop Frontend Skill",
       "norm_label": "1.b use-case presets"
     },
     {
@@ -34330,8 +34330,8 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "agents_skills_design_taste_frontend_skill_1_c_how_the_dials_drive_output",
-      "community": 173,
-      "community_name": "1. THE THREE DIALS (Core Configuration)",
+      "community": 85,
+      "community_name": "tasteskill: Anti-Slop Frontend Skill",
       "norm_label": "1.c how the dials drive output"
     },
     {
@@ -131452,7 +131452,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/gallery/page.tsx",
-      "source_location": "L95",
+      "source_location": "L94",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_gallery_page_gallerypage",
@@ -144401,5 +144401,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f4c1b4afca8c1cbab67a4ac66007e7a8513a80a1"
+  "built_at_commit": "339ee06744a6bd3af94d5c6f498188e59c041999"
 }
