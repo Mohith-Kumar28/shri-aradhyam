@@ -620,8 +620,8 @@
     "semantic_hash": ""
   },
   "src/components/site/ornament.tsx": {
-    "mtime": 1789292183.8555458,
-    "ast_hash": "5ab9ec4c1c89de47276c6d75bb139a2d",
+    "mtime": 1787609713.3152115,
+    "ast_hash": "0ecff8dd9ad1cf27be1b7a6963a7ef59",
     "semantic_hash": ""
   },
   "src/components/site/site-footer.tsx": {
@@ -980,8 +980,8 @@
     "semantic_hash": ""
   },
   "src/app/icon.svg": {
-    "mtime": 1789292202.0421581,
-    "ast_hash": "0f1b44c6e0072826a462c7a2087cd046",
+    "mtime": 1786949553.7186916,
+    "ast_hash": "309e30cb1e5f809d646aa36de50a847f",
     "semantic_hash": ""
   },
   "public/brand/torana-arch.webp": {
@@ -1135,8 +1135,8 @@
     "semantic_hash": ""
   },
   "src/lib/og.tsx": {
-    "mtime": 1789292192.704877,
-    "ast_hash": "2df9c25959428f429d91491d8f4b71fa",
+    "mtime": 1787609230.0863004,
+    "ast_hash": "ec6a7d65ba29d4e0e5f64b4f091a4ffe",
     "semantic_hash": ""
   },
   "src/lib/seo.ts": {
@@ -1272,11 +1272,6 @@
   "public/brand/kathriguppe-street.webp": {
     "mtime": 1788256094.0744812,
     "ast_hash": "5eee19602ec8b35573bfced12c6e6a84",
-    "semantic_hash": ""
-  },
-  "src/lib/emblem.ts": {
-    "mtime": 1789292172.6806974,
-    "ast_hash": "e95b6328ea9aebd84f87e207c27d648e",
     "semantic_hash": ""
   }
 }

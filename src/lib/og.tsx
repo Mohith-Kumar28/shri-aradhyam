@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { EMBLEM_PATHS, EMBLEM_ROUNDEL } from "@/lib/emblem";
 import { BRAND, LOCATIONS } from "@/lib/site-data";
 
 /**
@@ -122,13 +123,16 @@ function Kolam({ size, color }: { size: number; color: string }) {
 function Emblem({ size, fill, petal }: { size: number; fill: string; petal: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="23" fill={fill} />
+      <circle
+        cx={EMBLEM_ROUNDEL.cx}
+        cy={EMBLEM_ROUNDEL.cy}
+        r={EMBLEM_ROUNDEL.r}
+        fill={fill}
+      />
       <g fill={petal}>
-        <path d="M24 7.2C26.4 11.8 27.6 15.5 27.6 18.3C27.6 20.6 26.4 22.6 24 24.1C21.6 22.6 20.4 20.6 20.4 18.3C20.4 15.5 21.6 11.8 24 7.2Z" />
-        <path d="M14.38 10.14C18.94 12.61 22.01 15.01 23.57 17.33C24.86 19.24 24.98 21.57 23.83 24.15C21 24.25 18.89 23.26 17.6 21.36C16.04 19.03 14.96 15.3 14.38 10.14Z" />
-        <path d="M33.62 10.14C33.04 15.3 31.96 19.03 30.4 21.36C29.11 23.26 27 24.25 24.17 24.15C23.02 21.57 23.14 19.24 24.43 17.33C25.99 15.01 29.06 12.61 33.62 10.14Z" />
-        <path d="M11.6 27.2c-.9 5.1.5 9.1 4.1 11.9 2.3 1.8 5.1 2.8 8.3 3.1v-3.3c-2.6-.3-4.8-1.1-6.5-2.5-2.7-2.2-3.8-5.5-3.2-9.7Z" />
-        <path d="M36.4 27.2c.9 5.1-.5 9.1-4.1 11.9-2.3 1.8-5.1 2.8-8.3 3.1v-3.3c2.6-.3 4.8-1.1 6.5-2.5 2.7-2.2 3.8-5.5 3.2-9.7Z" />
+        {EMBLEM_PATHS.map((d) => (
+          <path key={d} d={d} />
+        ))}
       </g>
     </svg>
   );

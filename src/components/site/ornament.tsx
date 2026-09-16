@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { EMBLEM_LABEL, EMBLEM_PATHS, EMBLEM_ROUNDEL } from "@/lib/emblem";
+
 /**
  * The ornament set. Every mark here is drawn, in one stroke language, from the
  * building itself: the lotus roundel on the signage, the corbel brackets under
@@ -21,10 +23,13 @@ const STROKE = {
  * The signage emblem: a lotus cradled in two open hands, inside a filled
  * roundel.
  *
- * The hands are the emblem. An earlier drawing here had petals over a plain
- * rule, which reads as a lotus on a shelf rather than as an offering being
- * held up, and it is not the mark on the building. The petals are drawn as
- * solid shapes rather than outlines so the emblem holds at 24px in the header.
+ * The outlines are traced from the brand artwork and live in `lib/emblem`, so
+ * the header, the footer, the share cards and the favicon all draw the same
+ * mark. Earlier drawings here were approximations made by eye — three petals
+ * over a pair of arcs — and they were not the mark on the building.
+ *
+ * The petals and the palms are filled in bone rather than outlined, so the
+ * emblem still holds at the 20px the masthead shrinks it to.
  */
 export function LotusRoundel({
   className,
@@ -40,23 +45,18 @@ export function LotusRoundel({
       height={size}
       className={className}
       role="img"
-      aria-label="Shri Aradhyam emblem: a lotus held in two open hands"
+      aria-label={EMBLEM_LABEL}
     >
-      <circle cx="24" cy="24" r="23" fill="currentColor" />
-      {/* The bloom: one upright petal with a pair leaning off it at 34
-          degrees. The side petals are written out at their rotated
-          coordinates rather than wrapped in a transform, so a page holding
-          several emblems never depends on a shared id or a transform origin. */}
+      <circle
+        cx={EMBLEM_ROUNDEL.cx}
+        cy={EMBLEM_ROUNDEL.cy}
+        r={EMBLEM_ROUNDEL.r}
+        fill="currentColor"
+      />
       <g fill="var(--color-bone-100)">
-        <path d="M24 7.2C26.4 11.8 27.6 15.5 27.6 18.3C27.6 20.6 26.4 22.6 24 24.1C21.6 22.6 20.4 20.6 20.4 18.3C20.4 15.5 21.6 11.8 24 7.2Z" />
-        <path d="M14.38 10.14C18.94 12.61 22.01 15.01 23.57 17.33C24.86 19.24 24.98 21.57 23.83 24.15C21 24.25 18.89 23.26 17.6 21.36C16.04 19.03 14.96 15.3 14.38 10.14Z" />
-        <path d="M33.62 10.14C33.04 15.3 31.96 19.03 30.4 21.36C29.11 23.26 27 24.25 24.17 24.15C23.02 21.57 23.14 19.24 24.43 17.33C25.99 15.01 29.06 12.61 33.62 10.14Z" />
-      </g>
-      {/* Two open palms cupped beneath it, holding the bloom up rather than
-          standing it on a shelf. */}
-      <g fill="var(--color-bone-100)">
-        <path d="M11.6 27.2c-.9 5.1.5 9.1 4.1 11.9 2.3 1.8 5.1 2.8 8.3 3.1v-3.3c-2.6-.3-4.8-1.1-6.5-2.5-2.7-2.2-3.8-5.5-3.2-9.7Z" />
-        <path d="M36.4 27.2c.9 5.1-.5 9.1-4.1 11.9-2.3 1.8-5.1 2.8-8.3 3.1v-3.3c2.6-.3 4.8-1.1 6.5-2.5 2.7-2.2 3.8-5.5 3.2-9.7Z" />
+        {EMBLEM_PATHS.map((d) => (
+          <path key={d} d={d} />
+        ))}
       </g>
     </svg>
   );
