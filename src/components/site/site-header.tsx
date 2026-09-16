@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BRAND, NAV, OPENING, SOCIAL } from "@/lib/site-data";
-import { EaveCourse, LotusRoundel, Mark } from "./ornament";
+import { EaveCourse, Emblem, Mark } from "./ornament";
 import { ScriptMorph } from "./script-morph";
 
 /**
@@ -179,7 +179,7 @@ export function SiteHeader({
           }}
         >
           <Link href="/" className="group flex items-center gap-3.5">
-            <LotusRoundel
+            <Emblem
               className="shrink-0 text-ink-700 transition-opacity duration-500 group-hover:opacity-80"
               size={compact ? 34 : 40}
             />
@@ -265,7 +265,7 @@ export function SiteHeader({
           <div className="jaali jaali-brass absolute inset-y-0 left-0 w-8 opacity-70" />
           <div className="relative px-8 py-8">
             <div className="flex items-center justify-between">
-              <LotusRoundel className="text-ink-700" size={34} />
+              <Emblem className="text-ink-700" size={34} />
               <button
                 type="button"
                 onClick={() => setOpen(false)}

@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { EMBLEM_LABEL, EMBLEM_PATHS, EMBLEM_ROUNDEL } from "@/lib/emblem";
+import { EMBLEM_LABEL, EMBLEM_PATHS, EMBLEM_VIEWBOX } from "@/lib/emblem";
 
 /**
  * The ornament set. Every mark here is drawn, in one stroke language, from the
- * building itself: the lotus roundel on the signage, the corbel brackets under
+ * building itself: the lotus emblem on the signage, the corbel brackets under
  * the eave, the lotus bud eave course, the diamond jaali screen, and the kolam
  * that gets drawn on a South Indian threshold at dawn.
  *
@@ -20,18 +20,22 @@ const STROKE = {
 };
 
 /**
- * The signage emblem: a lotus cradled in two open hands, inside a filled
- * roundel.
+ * The signage emblem: a lotus held up in two open palms.
  *
- * The outlines are traced from the brand artwork and live in `lib/emblem`, so
- * the header, the footer, the share cards and the favicon all draw the same
- * mark. Earlier drawings here were approximations made by eye — three petals
- * over a pair of arcs — and they were not the mark on the building.
+ * The outlines are traced from the supplied brand artwork and live in
+ * `lib/emblem`, so the header, the footer, the share cards and the favicon all
+ * draw the same mark. Earlier drawings here were approximations made by eye,
+ * and they were not the mark on the building.
  *
- * The petals and the palms are filled in bone rather than outlined, so the
- * emblem still holds at the 20px the masthead shrinks it to.
+ * The artwork comes in two colourways — a dark brown for bone grounds and a
+ * light one for ink grounds — which is a single silhouette painted twice, so
+ * the mark is filled with `currentColor` and each caller sets the colour with
+ * a text class rather than picking between two files.
+ *
+ * `size` is the width; the mark is wider than it is tall, so the height
+ * follows from the artwork's own proportions.
  */
-export function LotusRoundel({
+export function Emblem({
   className,
   size = 40,
 }: {
@@ -40,20 +44,14 @@ export function LotusRoundel({
 }) {
   return (
     <svg
-      viewBox="0 0 48 48"
+      viewBox={`0 0 ${EMBLEM_VIEWBOX.width} ${EMBLEM_VIEWBOX.height}`}
       width={size}
-      height={size}
+      height={(size * EMBLEM_VIEWBOX.height) / EMBLEM_VIEWBOX.width}
       className={className}
       role="img"
       aria-label={EMBLEM_LABEL}
     >
-      <circle
-        cx={EMBLEM_ROUNDEL.cx}
-        cy={EMBLEM_ROUNDEL.cy}
-        r={EMBLEM_ROUNDEL.r}
-        fill="currentColor"
-      />
-      <g fill="var(--color-bone-100)">
+      <g fill="currentColor">
         {EMBLEM_PATHS.map((d) => (
           <path key={d} d={d} />
         ))}

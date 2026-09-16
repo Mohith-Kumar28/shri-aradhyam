@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LOCATIONS, OPENING } from "@/lib/site-data";
-import { EaveCourse, LotusRoundel, Mark } from "@/components/site/ornament";
+import { EaveCourse, Emblem, Mark } from "@/components/site/ornament";
 
 /**
  * Layout family: a band on the dark ground. The page closes the way the
@@ -25,7 +25,7 @@ export function Invite() {
       <div className="relative mx-auto max-w-[88rem] px-5 py-24 sm:px-8 sm:py-28 lg:py-32">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <LotusRoundel className="text-brass-500" size={40} />
+            <Emblem className="text-brass-500" size={58} />
 
             <p className="label mt-8 text-[0.5625rem] text-brass-500">
               {OPENING.dateLabel}

@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { EMBLEM_PATHS, EMBLEM_ROUNDEL } from "@/lib/emblem";
+import { EMBLEM_PATHS, EMBLEM_VIEWBOX } from "@/lib/emblem";
 import { BRAND, LOCATIONS } from "@/lib/site-data";
 
 /**
@@ -119,17 +119,19 @@ function Kolam({ size, color }: { size: number; color: string }) {
   );
 }
 
-/** The signage emblem, drawn at whatever size the card needs it. */
-function Emblem({ size, fill, petal }: { size: number; fill: string; petal: string }) {
+/**
+ * The signage emblem, drawn at whatever size the card needs it. `size` is the
+ * width; the mark is wider than it is tall, so the height follows from the
+ * artwork. The card is bone, so it takes the dark colourway.
+ */
+function Emblem({ size, fill }: { size: number; fill: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48">
-      <circle
-        cx={EMBLEM_ROUNDEL.cx}
-        cy={EMBLEM_ROUNDEL.cy}
-        r={EMBLEM_ROUNDEL.r}
-        fill={fill}
-      />
-      <g fill={petal}>
+    <svg
+      width={size}
+      height={(size * EMBLEM_VIEWBOX.height) / EMBLEM_VIEWBOX.width}
+      viewBox={`0 0 ${EMBLEM_VIEWBOX.width} ${EMBLEM_VIEWBOX.height}`}
+    >
+      <g fill={fill}>
         {EMBLEM_PATHS.map((d) => (
           <path key={d} d={d} />
         ))}
@@ -196,7 +198,7 @@ export function ShareCard({ eyebrow, title, subtitle, footnote }: ShareCard) {
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          <Emblem size={64} fill={C.ink800} petal={C.bone100} />
+          <Emblem size={76} fill={C.ink800} />
           <div style={{ display: "flex", flexDirection: "column", marginLeft: 20 }}>
             <div
               style={{

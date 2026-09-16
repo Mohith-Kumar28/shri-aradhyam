@@ -3,8 +3,8 @@ import { BRAND, HOME, STORE } from "@/lib/site-data";
 import {
   Diamond,
   EaveCourse,
+  Emblem,
   HangingDiya,
-  LotusRoundel,
   RuleDiamond,
   Thoranam,
 } from "@/components/site/ornament";
@@ -107,7 +107,7 @@ export function Hero() {
 
           <div className="relative px-7 py-12 sm:px-14 sm:py-16 lg:py-20">
             <div className="flex items-center gap-4">
-              <LotusRoundel className="shrink-0 text-ink-700" size={34} />
+              <Emblem className="shrink-0 text-ink-700" size={34} />
               <span className="h-px flex-1 bg-brass-600/40" />
               <p className="label shrink-0 text-[0.5625rem] text-brass-700">
                 {HOME.eyebrow}

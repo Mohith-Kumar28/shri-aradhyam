@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BRAND, NAV } from "@/lib/site-data";
-import { Kolam, LotusRoundel, Mark, RuleDiamond } from "@/components/site/ornament";
+import { Emblem, Kolam, Mark, RuleDiamond } from "@/components/site/ornament";
 
 /* Next marks a not-found response noindex on its own; nothing to add here. */
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function NotFound() {
       <div className="paper absolute inset-0" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-[44rem] px-5 text-center sm:px-8">
-        <LotusRoundel className="mx-auto text-ink-700" size={38} />
+        <Emblem className="mx-auto text-ink-700" size={64} />
 
         <Kolam
           size={300}

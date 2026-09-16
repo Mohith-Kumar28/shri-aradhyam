@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BRAND, CONTACT, LOCATIONS, NAV, NAV_MORE, OPENING } from "@/lib/site-data";
-import { Corbel, JaaliBand, LotusRoundel } from "./ornament";
+import { Corbel, Emblem, JaaliBand } from "./ornament";
 import { ScriptMorph } from "./script-morph";
 import { SWAP } from "./site-header";
 
@@ -18,7 +18,7 @@ export function SiteFooter() {
           {/* Imprint */}
           <div>
             <div className="flex items-center gap-4">
-              <LotusRoundel className="text-brass-500" size={44} />
+              <Emblem className="text-brass-500" size={44} />
               <div className="leading-tight">
                 <p className="font-display text-2xl tracking-[-0.02em] text-bone-100">
                   <ScriptMorph

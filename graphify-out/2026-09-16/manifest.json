@@ -590,8 +590,8 @@
     "semantic_hash": ""
   },
   "src/app/not-found.tsx": {
-    "mtime": 1789555658.715094,
-    "ast_hash": "da451c758854894186405a13677a17b5",
+    "mtime": 1787609274.6442177,
+    "ast_hash": "59159844a74adfd0de189858a81527ac",
     "semantic_hash": ""
   },
   "src/app/opengraph-image.tsx": {
@@ -620,18 +620,18 @@
     "semantic_hash": ""
   },
   "src/components/site/ornament.tsx": {
-    "mtime": 1789555397.0778,
-    "ast_hash": "82b22321ed87dac98308ec2d47061bec",
+    "mtime": 1789292183.8555458,
+    "ast_hash": "5ab9ec4c1c89de47276c6d75bb139a2d",
     "semantic_hash": ""
   },
   "src/components/site/site-footer.tsx": {
-    "mtime": 1789555416.093711,
-    "ast_hash": "193a83ceb341a0b89c747de2fb770b23",
+    "mtime": 1787753405.6454718,
+    "ast_hash": "0b9b129cef81a0dba60c2515c1c89ff1",
     "semantic_hash": ""
   },
   "src/components/site/site-header.tsx": {
-    "mtime": 1789555403.21898,
-    "ast_hash": "fb476c340730e882e9724e1d5111f4db",
+    "mtime": 1787753405.644942,
+    "ast_hash": "5a8452b1d6e41302794149234e13fc69",
     "semantic_hash": ""
   },
   "src/lib/site-data.ts": {
@@ -980,8 +980,8 @@
     "semantic_hash": ""
   },
   "src/app/icon.svg": {
-    "mtime": 1789555455.284001,
-    "ast_hash": "77089d1bc0ceb0063a5f2d8ac8914362",
+    "mtime": 1789292202.0421581,
+    "ast_hash": "0f1b44c6e0072826a462c7a2087cd046",
     "semantic_hash": ""
   },
   "public/brand/torana-arch.webp": {
@@ -1040,13 +1040,13 @@
     "semantic_hash": ""
   },
   "src/components/home/hero.tsx": {
-    "mtime": 1789555420.366288,
-    "ast_hash": "c5bc114addcff109a6601c52dd8c0c31",
+    "mtime": 1787606917.4173117,
+    "ast_hash": "096e17ce8ad3348f025e093573067f38",
     "semantic_hash": ""
   },
   "src/components/home/invite.tsx": {
-    "mtime": 1789555658.7215044,
-    "ast_hash": "775b5f2ef1994afb83b41e4b43816e3e",
+    "mtime": 1787605876.4768283,
+    "ast_hash": "3871edbaf341d9659c7a0bc0dcafbbbe",
     "semantic_hash": ""
   },
   "src/components/home/the-room.tsx": {
@@ -1135,8 +1135,8 @@
     "semantic_hash": ""
   },
   "src/lib/og.tsx": {
-    "mtime": 1789555436.06771,
-    "ast_hash": "629fae89735df79ad7016aae0c1f3453",
+    "mtime": 1789292192.704877,
+    "ast_hash": "2df9c25959428f429d91491d8f4b71fa",
     "semantic_hash": ""
   },
   "src/lib/seo.ts": {
@@ -1275,18 +1275,8 @@
     "semantic_hash": ""
   },
   "src/lib/emblem.ts": {
-    "mtime": 1789555370.8421519,
-    "ast_hash": "7af8fb4e68da6b881e4be42cb5de9509",
-    "semantic_hash": ""
-  },
-  "public/brand/emblem-bone.png": {
-    "mtime": 1789555464.3495688,
-    "ast_hash": "7df55654f42cb31b956372e0d82a49b5",
-    "semantic_hash": ""
-  },
-  "public/brand/emblem-ink.png": {
-    "mtime": 1789555464.0970643,
-    "ast_hash": "9ef2f923a21e31336abe6f74c5785a0c",
+    "mtime": 1789292172.6806974,
+    "ast_hash": "e95b6328ea9aebd84f87e207c27d648e",
     "semantic_hash": ""
   }
 }
